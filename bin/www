@@ -5,17 +5,11 @@ var app = require('../app');
 var http = require('http');
 
 /* Set Port */
-var PORT = 8070;
-app.set('port', '8070');
+var PORT = 8080;
+app.set('port', '8080');
 
 /* Create & Start the Server */
 http.createServer(app).listen(PORT, () => {
 	console.log("Server Status: [LIVE]");
 	console.log(`Server running at 'http://localhost:${PORT}/'`);
 });
-
-// kai was here!
-
-// Kevin here
-
-// this is Aymen
