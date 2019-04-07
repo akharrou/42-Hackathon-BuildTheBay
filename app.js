@@ -28,7 +28,9 @@ app.use(express.urlencoded({ extended: false }));
 // Use 'express-session' to Automatically Create Cookies
 var sess_options = {
 	secret: 'whippersnapper' + Math.floor((Math.random() * 1000000000000) + 1),
-	cookie: { maxAge: 60000 }
+	cookie: { secure: true, maxAge: 60000 },
+	resave: false,
+	saveUninitialized: true,
 };
 app.use(session(sess_options));
 
