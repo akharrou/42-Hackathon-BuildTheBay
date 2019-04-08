@@ -3,11 +3,11 @@
 class Restaurant extends React.Component {
 	render() {
 		return (
-		<div className="restaurant">
-			<div className="embed-responsive embed-responsive-1by1">
-
+			<div className="restaurant">
+							<img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/GG-2.png"
+            	 className="img-responsive" alt="Responsive image"
+				 width="10%" />
 			</div>
-		</div>
 		);
 	}
 }
