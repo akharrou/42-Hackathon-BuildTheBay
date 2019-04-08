@@ -1,0 +1,38 @@
+.filter {
+	width: 80%;
+	height: 4%;
+	margin: 0 auto;
+	position: relative;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	border-radius: 1%;
+	border-color: #1d2c3f;
+	border-style: solid;
+	border-width: thick;
+}
+
+.title {
+	height: 100%;
+	background: #1d2c3f;
+	color: white;
+	font-family: 'Oswald', sans-serif;
+	font-size: 2em;
+}
+
+.field {
+	line-height:100%;
+	margin: 0 10px;
+}
+
+.field:hover {
+	color: #c2b37c;
+}
+
+
+/*.title {
+	height: 30%;
+	background: #c2b37c;
+	vertical-align: middle;
+	color: #1d2c3f;
+	font-family: 'Oswald', sans-serif;
+	font-size: 2em;
+}*/
