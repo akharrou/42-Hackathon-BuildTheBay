@@ -5,8 +5,8 @@ var app = require('../app');
 var http = require('http');
 
 /* Set Port */
-var PORT = 8080;
-app.set('port', '8080');
+var PORT = 8030;
+app.set('port', '8030');
 
 /* Create & Start the Server */
 http.createServer(app).listen(PORT, () => {

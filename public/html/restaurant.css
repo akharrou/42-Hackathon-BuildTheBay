@@ -1,0 +1,8 @@
+.restaurant {
+	width: 80%;
+	height: 10%;
+	margin: 3% auto;
+	padding: 75px 50px 50px 50px;
+	position: relative;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
