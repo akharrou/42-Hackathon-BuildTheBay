@@ -2,18 +2,15 @@
 
 class Center_map extends React.Component {
 	render() {
-		// const logged_in = this.props.logged_in;
-		// const user = this.user;
-
 		return (
-			<div className="map"></div>
+			<div id="c_map" className="center_map"></div>
 		);
 	}
 }
 
 ReactDOM.render(
 	<Center_map />,
-	document.getElementById('center_map')
+	document.getElementById('map')
 );
 
-// export default Navibar;
+// export default Center_map;
