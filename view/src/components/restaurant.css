@@ -68,11 +68,21 @@
 	border-color: rgb(0, 255, 179);
 }
 
-.restaurantInfo {
-	border-style: solid;
-	border-color: rgb(0, 255, 179);
+.restaurantPopup {
+	position: fixed;
+	margin: 3% auto;
 
-	position: absolute;
-	left: 200px;
-	top: 200px;
+	color: #fcf9fc;
+
+	top: 100px;
+	left: 10%;
+
+	background: #1d2c3f;
+
+	height: 70%;
+	width: 80%;
+
+	border-radius: 18px;
+	border-style: solid;
+	border-color: #1d2c3f;
 }
