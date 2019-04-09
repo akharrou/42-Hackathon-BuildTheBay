@@ -1,20 +1,70 @@
 .restaurant {
-	width: 80%;
-	height: 10%;
-	margin: 1% auto;
-	position: relative;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	margin-top: 15px;
+	margin: 2% auto;
+	height: 150px;
+	width: 70%;
+	width: 50vmax;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
-	border-color: rgb(103, 140, 151);
 	border-style: solid;
-	border-width: thin;
+	border-color: black;
 }
 
-.rest_picture {
-	object-fit: contain;
-	/* width: 20%; */
-	/* height: 100%; */
-	border-color: red;
+.restaurant_photo {
+	width: 115px;
+	height: 115px;
+
+	margin: 15px;
+
+	position: relative;
+
 	border-style: solid;
-	padding: 3%;
+	border-color: rgb(255, 0, 0);
+}
+
+.restaurantHeader {
+	position: relative;
+	left: 150px;
+	top: -130px;
+
+	width: 70%;
+
+
+	border-style: solid;
+	border-color: rgb(4, 0, 255);
+}
+
+.restaurantInfo {
+	position: relative;
+	left: 150px;
+	top: -130px;
+
+	width: 70%;
+
+
+	border-style: solid;
+	border-color: rgb(0, 255, 179);
+}
+
+.restaurantIcons {
+	position: relative;
+	left: 75%;
+	top: -130px;
+
+	width: 20%;
+	height: 25px;
+
+
+	border-style: solid;
+	border-color: rgb(140, 0, 255);
+}
+
+.container-restaurants {
+	display: block;
+}
+
+.text {
+	border-radius: 5px;
+	border-style: solid;
+	border-color: rgb(0, 255, 179);
 }

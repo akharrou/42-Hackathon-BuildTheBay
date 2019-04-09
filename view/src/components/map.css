@@ -1,12 +1,22 @@
-.map {
+/* .map {
 	width: 70%;
 	height: 40%;
 	margin: 3% auto;
 	padding: 75px 50px 50px 50px;
 	position: relative;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
+} */
 
-#map {
+/* #map {
 	height: 30%;
+} */
+
+.containerMap {
+	width: 80%;
+	height: 40vmax;
+
+	margin: 3% auto;
+
+	position: relative;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }

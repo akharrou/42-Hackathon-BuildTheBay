@@ -1,16 +1,20 @@
 import React from "react";
 import "./restaurant.css";
 
-class Restaurant extends React.Component {
-	render() {
+class RestaurantItem extends React.Component {
+
+	render () {
 		return (
 			<div className="restaurant">
-							<img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/GG-2.png"
-            	 className="img-responsive" alt="Responsive"
-				 width="10%" />
+				<div className="restaurant_photo">
+					[Photo here]
+				</div>
+				<p className="restaurantHeader">[Restaurant Name Here]</p>
+				<p className="restaurantInfo">[Table list]</p>
+				<div className="restaurantIcons">[Icons]</div>
 			</div>
 		);
 	}
 }
 
-export default Restaurant;
+export default RestaurantItem;
