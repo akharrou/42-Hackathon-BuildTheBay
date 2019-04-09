@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 //import Filter from './components/filter.js';
-import RestaurantList from './components/restaurantlist.js';
-import Navibar from './components/navibar.js';
-import Map from './components/map.js';
 import Login from './components/login.js';
-import Main from './components/main.js';
+import LandingPage from './components/main.js';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -13,8 +10,10 @@ class App extends Component {
 	constructor(){
     super();
     this.state = {
-      lat: 37.529659,
-      lng: -122.040237,
+	  coords: {
+			lat: 37.529659,
+      		lng: -122.040237
+	  },
       user: null
     }
 		this.get_coords = this.get_coords.bind(this);
@@ -29,8 +28,6 @@ class App extends Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         });
-        console.log(position.coords.latitude);
-         console.log(position.coords.longitude);
     });
   
 	}}
@@ -44,11 +41,11 @@ class App extends Component {
 	<div className="App">
   <BrowserRouter>
 		{/* <Navibar user={this.state.user}/>
-		{<Filter />}
-		<Map get_coords={this.get_coords} lat={this.state.lat} lng={this.state.lng}/>
+		{/* <Filter /> */}
+		{/* <Map get_coords={this.get_coords} lat={this.state.lat} lng={this.state.lng}/>
     <RestaurantList /> */}
+    <Route path="/home" render={(props) => <LandingPage coords={this.state.coords} user={this.state.user} get_coords={this.get_coords}/>} />
     <Route path="/login" render={(props) => <Login />} />
-    <Route path="/home" render={(props) => <Main />} />
     </BrowserRouter>
 	</div>
 	);
