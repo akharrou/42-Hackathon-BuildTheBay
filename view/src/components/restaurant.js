@@ -3,9 +3,13 @@ import "./restaurant.css";
 
 class RestaurantItem extends React.Component {
 
+	showModal = () => {
+		var ModalToggle = false;
+	}
+
 	render () {
 		return (
-			<div className="restaurant">
+			<div className="restaurant" onClick={() => alert("Testin")}>
 				<div className="restaurant_photo">
 					[Photo here]
 				</div>

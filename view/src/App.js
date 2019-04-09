@@ -17,8 +17,8 @@ class App extends Component {
       user: null
     }
 		this.get_coords = this.get_coords.bind(this);
-  }	
-  
+  }
+
 
      get_coords = () => {
     if (navigator.geolocation)
@@ -31,7 +31,7 @@ class App extends Component {
           }
         });
     });
-  
+
 	}}
 
 	componentDidMount() {
@@ -42,10 +42,6 @@ class App extends Component {
 	return (
 	<div className="App">
   <BrowserRouter>
-		{/* <Navibar user={this.state.user}/>
-		{/* <Filter /> */}
-		{/* <Map get_coords={this.get_coords} lat={this.state.lat} lng={this.state.lng}/>
-    <RestaurantList /> */}
     <Route path="/home" render={(props) => <LandingPage coords={this.state.coords} user={this.state.user} get_coords={this.get_coords}/>} />
     <Route path="/login" render={(props) => <Login />} />
     <Route path="/admin" render={(props) => <Login />} />

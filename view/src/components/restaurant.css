@@ -3,23 +3,22 @@
 	margin: 2% auto;
 	height: 150px;
 	width: 70%;
-	width: 50vmax;
+	width: 60vmax;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
-	border-style: solid;
-	border-color: black;
+	color: rgb(3, 31, 56);
+	background: #fcf9fc;
 }
 
 .restaurant_photo {
 	width: 115px;
 	height: 115px;
 
-	margin: 15px;
+	margin: 15px 15px 15px;
 
 	position: relative;
 
 	border-style: solid;
-	border-color: rgb(255, 0, 0);
+	border-color: rgb(211, 186, 47);
 }
 
 .restaurantHeader {
