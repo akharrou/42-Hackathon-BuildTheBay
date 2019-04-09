@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
 	  coords: {
 			lat: 37.529659,
-      		lng: -122.040237
+      lng: -122.040237
 	  },
       user: null
     }
@@ -25,8 +25,10 @@ class App extends Component {
     {
       navigator.geolocation.getCurrentPosition((position) => {
         this.setState({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
+          coords: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
         });
     });
   
@@ -46,6 +48,7 @@ class App extends Component {
     <RestaurantList /> */}
     <Route path="/home" render={(props) => <LandingPage coords={this.state.coords} user={this.state.user} get_coords={this.get_coords}/>} />
     <Route path="/login" render={(props) => <Login />} />
+    <Route path="/admin" render={(props) => <Login />} />
     </BrowserRouter>
 	</div>
 	);

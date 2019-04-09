@@ -22,7 +22,7 @@ export class MapContainer extends React.Component {
 				<Map
 					google={this.props.google}
 					zoom={15}
-					initialCenter={{ lat: this.props.coords.lat, lng: this.props.coords.lng}}
+					initialCenter={{ lat: this.props.lat, lng: this.props.lng}}
 				/>
 			</div>
 		);

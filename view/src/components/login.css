@@ -1,8 +1,11 @@
 body {
-    font-family: "Lato", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-
+h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 5em;
+}
 
 .main-head{
     height: 150px;
@@ -51,6 +54,9 @@ body {
 
     .login-form{
         margin-top: 80%;
+        background-color: #c2b37c;
+        padding: 10%;
+        color: #1d2c3f;
     }
 
     .register-form{
@@ -72,4 +78,17 @@ body {
 .btn-black{
     background-color: #1d2c3f !important;
     color: #fff;
+}
+
+#ULog {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 3em;
+    color: #1d2c3f;
+}
+.form-title{
+    padding-right: 10%;
+}
+.login-conten {
+    padding-left: 0;
+    display: flex;
 }
