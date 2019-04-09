@@ -1,22 +1,52 @@
 import React from "react";
 import "./restaurant.css";
 
-class RestaurantItem extends React.Component {
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
-	showModal = () => {
-		var ModalToggle = false;
+class RestaurantItem extends React.Component {
+	constructor(props, context) {
+		super(props, context);
+
+		this.handleShow = this.handleShow.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+
+		this.state = {
+			show: false,
+		};
+	}
+
+	handleClose() {
+		this.setState({ show: false });
+	}
+
+	handleShow() {
+		this.setState({ show: true });
 	}
 
 	render () {
 		return (
-			<div className="restaurant" onClick={() => alert("Testin")}>
-				<div className="restaurant_photo">
-					[Photo here]
+			<>
+				<div className="restaurantInfo">
+					<Modal show={this.state.show} onHide={this.handleClose}>
+						<Modal.Body>Something</Modal.Body>
+							<Button variant="secondary" onClick={this.handleClose}>
+								Close
+							</Button>
+					</Modal>
 				</div>
-				<p className="restaurantHeader">[Restaurant Name Here]</p>
-				<p className="restaurantInfo">[Table list]</p>
-				<div className="restaurantIcons">[Icons]</div>
-			</div>
+
+				<div>
+					<div className="restaurant" onClick={this.handleShow}>
+						<div className="restaurant_photo">
+							[Photo here]
+						</div>
+						<p className="restaurantHeader">[Restaurant Name Here]</p>
+						<p className="restaurantInfo">[Table list]</p>
+						<div className="restaurantIcons">[Icons]</div>
+					</div>
+				</div>
+			</>
 		);
 	}
 }

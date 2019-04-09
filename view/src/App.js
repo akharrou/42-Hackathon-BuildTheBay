@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-//import Filter from './components/filter.js';
 import Login from './components/login.js';
 import LandingPage from './components/main.js';
 import { BrowserRouter, Route } from 'react-router-dom';
