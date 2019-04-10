@@ -1,13 +1,12 @@
 // Application Dependencies
 // ===============================================================================
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
 /* Import Application Dependencies */
-var path = require('path');
-var express = require('express');
-var session = require('express-session');
-
+const path = require('path');
+const express = require('express');
+const session = require('express-session');
 const MongoClient = require('mongodb').MongoClient;
 
 // Connection URL
