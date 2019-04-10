@@ -12,5 +12,5 @@ app.set('port', PORT);
 /* Create & Start the Server */
 http.createServer(app).listen(PORT, () => {
 	console.log("Server Status: [LIVE]");
-	console.log(`Server running at 'http:${LOCALHOST}:${PORT}/'`);
+	console.log(`Server running at 'http://${LOCALHOST}:${PORT}/'`);
 });
