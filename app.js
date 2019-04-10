@@ -56,12 +56,7 @@ app.use(session({
 // Set Created Routes
 app.use('/', indexRouter);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 76d03ef2fd87866a2f015c8be54cd49950780a87
 // Export
 // ===============================================================================
 
 module.exports = app;
-
