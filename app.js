@@ -41,17 +41,17 @@ app.use('/', indexRouter);
 
 // Trying to configure mysql -Joseph
 const db = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	// password: '1234',
-	// database: 'btb'
+    host: 'localhost',
+    port: '1488',
+	user: 'jk',
+    password: '1234',
+    database: 'test',
+    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
 });
 
 // Connect
 db.connect((err) => {
-    if(err){
-        throw err;
-    }
+    console.log(err.message);
     console.log('MySql Connected...');
 });
 
