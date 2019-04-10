@@ -1,6 +1,27 @@
 .navi_bar {
+	
 	background: #1d2c3f;
 	color: white;
 	width: 100%;
-	height: 100px;
+	height: 60px;
+
+	border-bottom: solid #293e5a;
 }
+
+.naviIcon {
+	border: none;
+	border-right: solid #293e5a;
+
+	background: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 60px;
+	height: 60px;
+}
+
+.HomeIcon {
+	width: 100%;
+}
+
+button:focus {outline:0;}
