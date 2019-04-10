@@ -13,9 +13,6 @@ const MongoClient = require('mongodb').MongoClient;
 // Connection URL
 const URL = "mongodb+srv://42:42@42-buildthebay-project-7nufr.mongodb.net/test?retryWrites=true";
 
-// Database Name
-const dbName = 'restaurants';
-
 const client = new MongoClient(URL, { useNewUrlParser: true });
 
 client.connect(err => {
