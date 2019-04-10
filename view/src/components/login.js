@@ -25,7 +25,7 @@ class Login extends React.Component {
     render() {
         return (
         <div className="logbody">
-            <img className="bg" src={require('../loginbg.png')}/>
+            <img className="bg" src={require('../loginbg.png')} alt=""/>
             <div className="sidenav">
                 <div className="login-main-text">
                     <h1>Welcome to<br /> Newark</h1>
