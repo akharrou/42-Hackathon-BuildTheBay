@@ -37,11 +37,10 @@ app.use(session(sess_options));
 // Set Created Routes
 app.use('/', indexRouter);
 
-
-
 // Trying to configure mysql -Joseph
 const db = mysql.createConnection({
 	host: 'localhost',
+	port: '1234',
 	user: 'root',
 	// password: '1234',
 	// database: 'btb'
@@ -75,6 +74,24 @@ app.get('/createtable-restraunts', (req, res) => {
     });
 });
 
+
+
+// Users Handeling
+
+app.post('/register', (req, res) => {
+	// insert user into database (This is assuming validation has been made).
+	const email = req.body.email;
+	const password = req.body.password;
+    let sql = 'INSERT INTO users (email, password) VALUES (?, ?)';
+    bcrypt.hash(password, saltRounds, (err, hash) => {
+        if (err) throw err;
+        db.query(sql, [email, hash], (err, result) => {
+            if(err) throw err;
+            console.log(result);
+            res.render('index'); //To go and go to index.html if the insertion of the user was successful...
+        });
+    });
+});
 
 
 // Export
