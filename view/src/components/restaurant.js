@@ -29,7 +29,7 @@ class RestaurantItem extends React.Component {
 			<>
 				<div>
 					<Modal className="restaurantPopup" show={this.state.show} onHide={this.handleClose}>
-						<Modal.Title>Modal heading</Modal.Title>
+						<h className="PopupHeading">[Restaurant Name Here]</h>
 						<Modal.Body>Something</Modal.Body>
 							<Button variant="secondary" onClick={this.handleClose}>
 								Close
@@ -43,6 +43,7 @@ class RestaurantItem extends React.Component {
 							[Photo here]
 						</div>
 						<p className="restaurantHeader">[Restaurant Name Here]</p>
+						<p className="restaurantInfo">[Closing Time] [Category] [Avg Price] [Distane]</p>
 						<p className="restaurantInfo">[Table list]</p>
 						<div className="restaurantIcons">
 							[Icons]

@@ -13,7 +13,7 @@ class LandingPage extends React.Component {
 			<>
 				<Navibar user={this.props.user}/>
 				<Map get_coords={this.props.get_coords} lat={this.props.coords.lat} lng={this.props.coords.lng}/>
-				{/* <Filter /> */}
+				<Filter />
 				<RestaurantList />
 			</>
 		);

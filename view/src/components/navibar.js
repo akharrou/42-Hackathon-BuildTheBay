@@ -22,8 +22,12 @@ class Navibar extends React.Component {
 
 		return (
 			<div id ="navi_bar" className="navi_bar">
-				<p>Hello world</p>
+				<p>Welcome to the E-Guide</p>
 				{this.login_button()}
+				<ul>
+					<li><a href={"./home"}>Home</a></li>
+
+				</ul>
 			</div>
 		);		
 	}
