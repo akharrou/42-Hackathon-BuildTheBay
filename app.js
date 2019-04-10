@@ -20,6 +20,8 @@ const client = new MongoClient(URL, { useNewUrlParser: true });
 client.connect(err => {
 
 	console.log("Connected successfully to server");
+
+	// Get the Collection (i.e table) holding the Data
 	const collection = client.db("restaurants").collection("profiles");
 
   // perform actions on the collection object
