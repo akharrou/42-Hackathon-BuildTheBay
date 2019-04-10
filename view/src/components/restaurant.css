@@ -36,7 +36,7 @@
 .restaurantInfo {
 	position: relative;
 	left: 150px;
-	top: -130px;
+	top: -140px;
 
 	width: 70%;
 
@@ -48,7 +48,7 @@
 .restaurantIcons {
 	position: relative;
 	left: 75%;
-	top: -130px;
+	top: -145px;
 
 	width: 20%;
 	height: 25px;
@@ -69,20 +69,27 @@
 }
 
 .restaurantPopup {
+	outline: none;
 	position: fixed;
 	margin: 3% auto;
 
-	color: #fcf9fc;
+	color: #1d2c3f;
 
 	top: 100px;
-	left: 10%;
+	left: 8%;
 
-	background: #1d2c3f;
+	background: #fafafa;
 
 	height: 70%;
 	width: 80%;
 
+	padding: 10px;
+
 	border-radius: 18px;
 	border-style: solid;
-	border-color: #1d2c3f;
+	border-color: #ebebeb;
+}
+
+.PopupHeading {
+	font-size: 30px;
 }

@@ -7,7 +7,7 @@ class RestaurantList extends React.Component {
 	createList = () => {
 		let list = []
 
-		for (let i = 0; i < 6; i++) {
+		for (let i = 0; i < 8; i++) {
 			list.push(< RestaurantItem />)
 		}
 		return list;

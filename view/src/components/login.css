@@ -1,6 +1,9 @@
 body {
     font-family: 'Source Sans Pro', sans-serif;
 }
+.logbody {
+    margin: auto;
+}
 
 h1 {
     font-family: 'Source Sans Pro', sans-serif;
@@ -53,8 +56,11 @@ h1 {
     }
 
     .login-form{
-        margin-top: 70%;
+        margin-top: 150%;
+        margin-left: 10%;
+        width: 200%;
         background-color: #c2b37c;
+        border-radius: 5px;
         padding: 10%;
         color: #1d2c3f;
     }
@@ -76,8 +82,21 @@ h1 {
 }
 
 .btn-black{
+    position: relative;
+    margin-right: 20%;
     background-color: #1d2c3f !important;
     color: #fff;
+    font-size: 1.3em;
+    border-radius: 5px;
+    padding-right: 20;
+    border: none;
+}
+.btn-secondary {
+    background-color: #1d2c3f !important;
+    color: #fff;
+    font-size: 1.3em;
+    border-radius: 5px;
+    border: none;
 }
 
 #ULog {
@@ -89,11 +108,28 @@ h1 {
 .form-title{
     padding-left: 20%;
     padding-right: 10%;
-    font-size: 1.2em;
     font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .login-conten {
     padding-left: 0;
     display: flex;
     padding-bottom: 3%;
+    margin: 0 auto;
+}
+
+.form-control {
+    font-size: 120%;
+    border-radius: 5px;
+    padding: 0%;
+}
+
+.bg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.txt {
+    font-size: 120%;
 }
