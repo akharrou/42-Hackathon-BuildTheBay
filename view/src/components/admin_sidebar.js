@@ -2,19 +2,15 @@ import React from 'react';
 import './sidebar.css';
 
 
-const SideBar = () => {
+const SideBar = (props) => {
         return (
-            <div class="wrapper">
-            <aside class="main_sidebar">
+            <div className="wrapper">
+            <aside className="main_sidebar">
                 <ul>
-                    <li><i class="fa fa-arrows"></i><a href="#">Welcome</a></li>
-                    <li><i class="fa fa-battery-2"></i><a href="#">Edit information</a></li>
-                    <li><i class="fa fa-battery-2"></i><a href="#">Comments</a></li>
+                    <li onClick={() => props.change_page('edit')}>Edit information</li>
+                    <li onClick={() => props.change_page('comment')}>Comments</li>
                 </ul>
             </aside>
-            <div class="main">
-                <h1></h1>
-            </div>
         </div> 
         )
     }

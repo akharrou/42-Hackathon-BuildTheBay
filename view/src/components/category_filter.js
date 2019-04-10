@@ -1,6 +1,6 @@
  import React from "react";
 
-class Category_filter extends React.Component {
+class CategoryFilter extends React.Component {
 	render() {
 		return (
 			<div className="container">
@@ -42,4 +42,4 @@ class Category_filter extends React.Component {
 	}
 }
 
- export default Category_filter;
+ export default CategoryFilter;
