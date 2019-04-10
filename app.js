@@ -9,6 +9,10 @@ const express = require('express');
 const session = require('express-session');
 const MongoClient = require('mongodb').MongoClient;
 
+
+// Database
+// ===============================================================================
+
 // Connection URL
 const URL = "mongodb+srv://42:42@42-buildthebay-project-7nufr.mongodb.net/test?retryWrites=true";
 
