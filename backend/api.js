@@ -15,22 +15,80 @@ const DB       = require('mongoose').connect(URI, { useNewUrlParser: true });
 /* Create API Router */
 const router   = express.Router();
 
+
 // =============================================================================
+/* ~ GET Requests ~ */
 
 router.get('/all', (req, res) => {
-	res.end('Hello World !')
+	res.end('API under construction...');
 })
 
-router.get('/base', (req, res) => {
-	res.end('Hello World !')
+router.get('/restaurant', (req, res) => {
+	res.end('API under construction...');
 })
 
-router.get('/authenticate', (req, res) => {
-	res.end('Hello World !')
+router.get('/categories', (req, res) => {
+	res.end('API under construction...');
 })
 
-router.get('/update/:field', (req, res) => {
-	res.end('Hello World !')
+
+
+// =============================================================================
+/* ~ POST Requests ~ */
+
+router.post('/authenticate', (req, res) => {
+
+	var login   = req.params.login;
+	var passwd  = req.params.passwd;
+
+	console.log(login);
+	console.log(passwd);
+
+	res.end('API under construction...');
+})
+
+router.post('/update/:field', (req, res) => {
+
+	switch (/* :field */) {
+
+		case 'name':
+			/* update name */
+			break;
+
+		case 'address':
+			/* update address */
+			break;
+
+		case 'website':
+			/* update website */
+			break;
+
+		case 'description':
+			/* update description */
+			break;
+
+		case 'hours':
+			/* update hours */
+			break;
+
+		case 'phone':
+			/* update phone */
+			break;
+
+		case 'photos':
+			/* update photos */
+			break;
+
+		case 'cater':
+			/* update cater */
+			break;
+
+		case 'service':
+			/* update service */
+			break;
+	}
+
+	res.end('API under construction...')
 })
 
 // =============================================================================
