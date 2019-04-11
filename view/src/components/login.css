@@ -139,11 +139,13 @@ h1 {
     border-radius: 5px;
 }
 
-.homeIcon {
+.homeBtn {
+    display: block;
     position: absolute;
-    top: 2%;
-    left: 2%;
+    top: 1%;
+    left: -105px;
+    z-index: +9;
 }
-.homeIcon img {
-    width: 200%;
+.homeBtn img {
+    width: 17%;
 }
