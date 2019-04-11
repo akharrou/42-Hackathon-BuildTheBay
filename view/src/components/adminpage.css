@@ -1,0 +1,9 @@
+.label-admin {
+	display: block;
+	text-align: left;
+	margin: 50px 0 0 550px;
+}
+
+.label-admin input {
+	margin: 0 0 0 15px;
+}

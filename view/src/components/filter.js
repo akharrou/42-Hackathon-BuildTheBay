@@ -1,6 +1,6 @@
 import React from "react";
 import "./filter.css";
-import CategoryFilter from "./category_filter.js";
+import DistanceFilter from "./distance_filter.js";
 
 class Filter extends React.Component {
 	render() {
@@ -11,7 +11,7 @@ class Filter extends React.Component {
 		<div className="filter">
 			<div className="title">
 				{/*<Main_dropdown />*/}
-				<CategoryFilter />
+				<DistanceFilter />
 				<select className="field">
             		<option>Distance</option>
             		<option>5 miles</option>

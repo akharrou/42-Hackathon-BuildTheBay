@@ -20,7 +20,7 @@ class Login extends React.Component {
         this.setState({
             pass: e.target.value
         });
-    }
+	}
 
     render() {
         return (
