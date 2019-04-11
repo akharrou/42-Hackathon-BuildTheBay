@@ -5,8 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 class RestaurantItem extends React.Component {
-	constructor(props, context) {
-		super(props, context);
+	constructor(props) {
+		super(props);
 
 		this.handleShow = this.handleShow.bind(this);
 		this.handleClose = this.handleClose.bind(this);
@@ -53,34 +53,47 @@ class RestaurantItem extends React.Component {
 			this.setState({galleyno: this.state.galleyno});
 	}
 
+	restaurantCard() {
+		return (
+			<div>
+				<div className="restaurant" onClick={this.handleShow}>
+					<div className="restaurant_photo">
+						[Photo here]
+					</div>
+					<p className="restaurantHeader">{this.props.name}</p>
+					<p className="restaurantInfo">Type: {this.props.category} | Price: {this.props.price} | [??Distane??]</p>
+					<p className="restaurantInfo">[Table list]</p>
+					<div className="restaurantIcons">
+						[Icons]
+					</div>
+				</div>
+			</div>
+		);
+	}
+
+	restaurantModal() {
+		return (
+
+			<Modal className="restaurantPopup" show={this.state.show} onHide={this.handleClose}>
+				<Modal.Header>[Restaurant Name]</Modal.Header>
+				<div className="restaurantGallery">
+					<a className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</a>
+					<a className="next" onClick={() => this.plusSlides(1)}>&#10095;</a>
+					() => {this.slideshow()}
+				</div>
+				<Button variant="secondary" onClick={this.handleClose}>
+					Close
+				</Button>
+			</Modal>
+		);
+	}
+
 	render () {
 		return (
 			<>
-				<Modal className="restaurantPopup" show={this.state.show} onHide={this.handleClose}>
-						{/* <Modal.Header>[Restaurant Name]</Modal.Header> */}
-						<div className="restaurantGallery">
-							<a className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</a>
-							<a className="next" onClick={() => this.plusSlides(1)}>&#10095;</a>
-							() => {this.slideshow()}
-						</div>
-						<Button variant="secondary" onClick={this.handleClose}>
-							Close
-						</Button>
-				</Modal>
+				{this.restaurantModal()}
 
-				<div>
-					<div className="restaurant" onClick={this.handleShow}>
-						<div className="restaurant_photo">
-							[Photo here]
-						</div>
-						<p className="restaurantHeader">[Restaurant Name Here]</p>
-						<p className="restaurantInfo">[Closing Time] [Category] [Avg Price] [Distane]</p>
-						<p className="restaurantInfo">[Table list]</p>
-						<div className="restaurantIcons">
-							[Icons]
-						</div>
-					</div>
-				</div>
+				{this.restaurantCard()}
 			</>
 		);
 	}
