@@ -2,25 +2,43 @@ import React from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import "./map.css";
 
+import Geocode from "react-geocode";
+
+	Geocode.setApiKey("AIzaSyBqKkPlvSSEelPGg4IPqL_2TWyEdYDQeL0");
+
+	Geocode.fromAddress("Eiffel Tower").then(
+		response => {
+			const { lat, lng } = response.results[0].geometry.location;
+			console.log(lat, lng);
+		},
+		error => {
+			console.error(error);
+		}
+	);
+
+// map function to sort array of restraunt objects, to add to each of them coordinates and distance from user... then to sort and return new array.
+
 export class MapContainer extends React.Component {
-	constructor() {
-		super();
+//	constructor() {
+//		super();
 	//	this.state = {
 	//		updated: true
 	//	}
-	}
+//	}
+
+
 
 	state = {
 		showingInfoWindow: false,
 		activeMarker: {},
-		selectedPlace: {},
+		selectedPlace: {}
 	};
 
-	componentWillReceiveProps() {
-		this.setState({
-			updated: !(this.state.updated)
-		});
-	}
+//	componentWillReceiveProps() {
+//		this.setState({
+//			updated: !(this.state.updated)
+//		});
+//	};
 
 
   onMarkerClick = (props, marker, e) =>
@@ -39,15 +57,9 @@ export class MapContainer extends React.Component {
     }
   };
 
-
-	icon = {
-		url: "/path/to/custom_icon.png",
-		anchor: {},
-		scaledsize: {}
-	}
 	icon = {
 		url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-	}
+	};
 
 	render() {
 		return (
