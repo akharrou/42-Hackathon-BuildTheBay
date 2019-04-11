@@ -68,13 +68,37 @@ class App extends Component {
 		}
 	}
 	
-	handle_search = (e) =>
+	handle_search = (value) =>
 	{
-		console.log("in the function");
-		this.setState({
-			search: e.target.value
-		})
-		setTimeout(() => console.log(this.state.search), 100);
+		if (value !== "")
+		{
+			this.setState({
+				search: value.toLowerCase()
+			}, () => {
+				this.setState({
+					restaurants: {
+						restaurants: this.state.restaurants.restaurants,
+						filtered: this.state.restaurants.restaurants.filter(res => res.Name.toLowerCase().indexOf(this.state.search) != -1),
+						loaded: true
+					}
+				 })
+			})
+		}
+		else
+		{
+			this.setState({
+				search: value
+			}, () => {
+				this.setState({
+					restaurants: {
+						restaurants: this.state.restaurants.restaurants,
+						filtered: this.state.restaurants.restaurants,
+						loaded: true
+					}
+				 })
+			})
+		}
+		console.log(this.state.search);
 	}
 
 	set_category = (e) =>
