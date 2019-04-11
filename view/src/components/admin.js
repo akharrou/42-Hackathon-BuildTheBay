@@ -20,7 +20,7 @@ class Admin extends React.Component {
         return (
 			<>
         	    <SideBar change_page={this.change_page}/>
-				<Adminpage />
+			{this.state.view === 'edit' && <Adminpage />}
 			</>
         )
     }

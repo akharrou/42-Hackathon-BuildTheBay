@@ -3,8 +3,10 @@
 // ===============================================================================
 
 /* Private Constants */
-const PORT         = process.env.PORT;
-const LOCALHOST    = process.env.LOCALIP;
+//const PORT         = process.env.PORT;
+//const LOCALHOST    = process.env.LOCALIP;
+const PORT         = 8000;
+const LOCALHOST    = 'localhost';
 
 const DB_USER      = '42';
 const DB_PWD       = '42';
@@ -29,6 +31,13 @@ mongoose.connection;
 // Initialize App Server
 var app = express();
 
+//Allow CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 /* App Server Configurations */
 app.set('port', PORT);
 
@@ -37,6 +46,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use( '/api',   apiRouter   );
 app.use( '/admin', adminRouter );
+
 
 // ===============================================================================
 

@@ -49,6 +49,7 @@ router.get('/restaurant/:id', (req, res) => {
 router.get('/categories', (req, res) => {
 
 	var categories = [];
+	let data = {};
 
 	/* Get All Categories */
 	Restaurant.getRestaurants((err, results) => {
@@ -70,7 +71,8 @@ router.get('/categories', (req, res) => {
 				categories.push(results[i]['Category']);
 		}
 		// console.log(categories);
-		res.json(categories);
+		data.categories = categories;
+		res.json(data);
 	});
 });
 

@@ -3,10 +3,31 @@ import "./filter.css";
 import CategoryFilter from "./category_filter";
 
 class Filter extends React.Component {
-	render() {
-		// const logged_in = this.props.logged_in;
-		// const user = this.user;
+	constructor() {
+		super();
+		this.state = {
+			categories: null,
+			categories_loaded: false
+		}
+		this.get_categories = this.get_categories.bind(this);
+	}
+	
+		get_categories = () => {
+			fetch('http://localhost:8000/api/categories')
+			.then(res => res.json())
+			.then(data => {
+				this.setState({
+					categories: data.categories,
+					categories_loaded: true
+				})
+			});
+		}
 
+	componentDidMount() {
+		this.get_categories();
+	}
+
+	render() {
 		return (
 		<div className="filter">
 			<div className="title">
@@ -19,24 +40,10 @@ class Filter extends React.Component {
             		<option>20 miles</option>
         		</select>
 				<select className="field">
-					<option>Category</option>
-            		<option>American</option>
-            		<option>Bakery</option>
-            		<option>Chinese</option>
-            		<option>Coffee & Bubble Tea</option>
-					<option>Fast Food</option>
-					<option>Grocery Markets</option>
-					<option>Ice Cream & Desserts</option>
-					<option>Indian</option>
-					<option>International & Wine Bar</option>
-					<option>Island</option>
-					<option>Japanese</option>
-					<option>Korean</option>
-					<option>Mexican</option>
-					<option>Pizza</option>
-					<option>Kids & Families</option>
-					<option>Thai</option>
-					<option>Vietnamese</option>
+					<option>All Categories</option>
+					{this.state.categories_loaded && this.state.categories.map(category => (
+						<option key={category} onClick={this.props.set_category}>{category}</option>
+					))}
         		</select>
 				<select className="field">
 					<option>Rating</option>
