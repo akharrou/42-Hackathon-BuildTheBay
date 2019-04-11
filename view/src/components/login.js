@@ -47,8 +47,8 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" onChange={this.pass_listen}/>
                             </div>
                         </div>
-                            <button type="submit" className="btn btn-black">Login</button>
-                            <button type="submit" className="btn btn-secondary">Register</button>
+                            <button type="submit" className="btn btn-black">Register</button>
+                            <button type="submit" className="btn btn-secondary">Login</button>
                         </form>
                     </div>
                 </div>
