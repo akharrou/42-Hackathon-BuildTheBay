@@ -5,8 +5,8 @@ var app = require('../app');
 var http = require('http');
 
 /* Set Port */
-var PORT = process.env.PORT;
-var LOCALHOST = process.env.LOCALIP;
+var PORT = "3000";
+var LOCALHOST = "localhost";
 app.set('port', PORT);
 
 /* Create & Start the Server */
