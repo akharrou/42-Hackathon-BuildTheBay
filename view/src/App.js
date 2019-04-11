@@ -3,6 +3,7 @@ import './App.css';
 import Login from './components/login.js';
 import LandingPage from './components/main.js';
 import Admin from './components/admin.js'
+import Suadmin from './components/suadmin.js'
 import { BrowserRouter, Route } from 'react-router-dom';
 import Geocode from "react-geocode";
 Geocode.setApiKey("AIzaSyBqKkPlvSSEelPGg4IPqL_2TWyEdYDQeL0");
@@ -217,6 +218,7 @@ class App extends Component {
 		/> }
 		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
 		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
+		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} />}
     </BrowserRouter>
 	</div>
 	);
