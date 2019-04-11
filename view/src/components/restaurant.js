@@ -60,7 +60,7 @@ class RestaurantItem extends React.Component {
 			<div>
 				<div className="restaurant" onClick={this.handleShow}>
 					<div className="restaurant_photo">
-						[Photo here]
+						<img className="restaurant_image" src={this.props.mainPhoto}></img>
 					</div>
 					<p className="restaurantHeader">{this.props.name}</p>
 					<p className="restaurantInfo">Type: {this.props.category} | Price: {this.props.price} | [??Distane??]</p>
@@ -86,6 +86,12 @@ class RestaurantItem extends React.Component {
 					<span className="next" onClick={() => this.plusSlides(1)}>&#10095;</span>
 					{this.slideshow()}
 				</div>
+				<Modal.Body>
+					<p className="restaurantModalInfo">Type: {this.props.category} </p>
+					<p className="restaurantModalBody">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</Modal.Body>
 				<Button variant="secondary" onClick={this.handleClose}>
 					Close
 				</Button>
