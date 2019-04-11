@@ -1,6 +1,7 @@
 body {
     font-family: 'Source Sans Pro', sans-serif;
 }
+
 .logbody {
     margin: auto;
 }
@@ -17,6 +18,7 @@ h1 {
 }
 
 .sidenav {
+    max-width: 410px;
     height: 100%;
     background-color: #1d2c3f;
     overflow-x: hidden;
@@ -56,9 +58,10 @@ h1 {
     }
 
     .login-form{
-        margin-top: 120%;
+        margin-top: 650px;
         margin-right: 0;
         width: 200%;
+        max-width: 1200px;
         background-color: #c2b37c;
         border-radius: 5px;
         padding: 10%;
