@@ -99,7 +99,16 @@ class App extends Component {
 	return (
 	<div className="App">
   <BrowserRouter>
-		{this.state.restaurants.loaded && <Route path="/home" render={(props) => <LandingPage coords={this.state.coords} user={this.state.user} get_coords={this.get_coords} set_category={this.set_category} category={this.state.category} restaurants={this.state.restaurants}/>} /> }
+		{this.state.restaurants.loaded && <Route path="/home" render={(props) => 
+			<LandingPage 
+				coords			={this.state.coords} 
+				user			={this.state.user} 
+				get_coords		={this.get_coords} 
+				set_category	={this.set_category} 
+				category		={this.state.category} 
+				restaurants		={this.state.restaurants}
+			/>} 
+		/> }
 		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
 		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
     </BrowserRouter>

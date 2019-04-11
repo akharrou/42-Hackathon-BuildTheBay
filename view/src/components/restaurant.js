@@ -1,5 +1,6 @@
 import React from "react";
 import "./restaurant.css";
+import "./mediaIcons.css";
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -65,7 +66,10 @@ class RestaurantItem extends React.Component {
 					<p className="restaurantInfo">Type: {this.props.category} | Price: {this.props.price} | [??Distane??]</p>
 					<p className="restaurantInfo">[Table list]</p>
 					<div className="restaurantIcons">
-						[Icons]
+						<a href="#" className="fa fa-twitter"></a>
+						<a href="#" className="fa fa-facebook"></a>
+						<a href="#" className="fa fa-pinterest"></a>
+						<a href="#" className="fa fa-snapchat-ghost"></a>
 					</div>
 				</div>
 			</div>
@@ -76,11 +80,11 @@ class RestaurantItem extends React.Component {
 		return (
 
 			<Modal className="restaurantPopup" show={this.state.show} onHide={this.handleClose}>
-				<Modal.Header>[Restaurant Name]</Modal.Header>
+				<Modal.Header className="modalHeader">{this.props.name}</Modal.Header>
 				<div className="restaurantGallery">
 					<a className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</a>
 					<a className="next" onClick={() => this.plusSlides(1)}>&#10095;</a>
-					() => {this.slideshow()}
+					{this.slideshow()}
 				</div>
 				<Button variant="secondary" onClick={this.handleClose}>
 					Close
