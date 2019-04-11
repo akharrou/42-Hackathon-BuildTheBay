@@ -29,12 +29,10 @@ class Navibar extends React.Component {
 						<a id="txtH" href={"./home"}>Home</a>
 					</p>
 					<p className="logIcon">
-						<a href={"./login"}><img src={require('../loginicon.jpg')}/></a>
+						<a href={"./login"}><img src={require('../loginicon.png')}/></a>
 						<a id="txt" href={"./login"}>Login</a>
 					</p>
-
 				</div>
-				{this.login_button()}
 			</div>
 		);		
 	}

@@ -85,13 +85,15 @@
 }
 
 .modal-content {
+	width: 100%;
+	left: 0px;
     background-color: #fafafa;
     border: none;
 }
 
 .restaurantGallery {
-	height: 30vmax;
-	width: 40vmax;
+	width: 100%;
+	height: 37vmax;
 }
 
 .restVideo {
@@ -118,10 +120,16 @@
 }
   
 .next {
-	right: 0;
+	right: 0px;
 	border-radius: 3px 0 0 3px;
 }
 
 .prev:hover, .next:hover {
 	background-color: rgba(226, 226, 226, 0.733);
+}
+
+.modal-dialog {
+	max-width: 100%;
+	width: 80%;
+	height: 30%
 }

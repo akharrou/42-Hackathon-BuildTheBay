@@ -36,10 +36,10 @@ body {
 	padding-left: 20%;
 }
 .homeIcon img {
-	width: 180%;
+	width: 55px;
 }
 .logIcon img {
-	width: 100%;
+	width: 55px;
 }
 
 .logIcon {
@@ -50,8 +50,7 @@ body {
 	position: absolute;
 	right: 0%;
 	top: 1%;
-	width: 5%;
-	height: 10%;
+	width: 70px;
 }
 
 .field {
