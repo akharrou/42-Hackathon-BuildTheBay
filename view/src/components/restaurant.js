@@ -64,7 +64,7 @@ class RestaurantItem extends React.Component {
 					</div>
 					<p className="restaurantHeader">{this.props.name}</p>
 					<p className="restaurantInfo">Type: {this.props.category} | Price: {this.props.price} | [??Distane??]</p>
-					<p className="restaurantInfo">[Table list]</p>
+					<p className="restaurantDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					<div className="restaurantIcons">
 						<span href="#" className="fa fa-twitter"></span>
 						<span href="#" className="fa fa-facebook"></span>
