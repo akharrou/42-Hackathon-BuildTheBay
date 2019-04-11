@@ -1,4 +1,5 @@
 .restaurant {
+	border-radius: 2px;
 	margin-top: 5px;
 	margin: 1% auto;
 	height: 150px;
@@ -23,33 +24,43 @@
 }
 
 .restaurantHeader {
+	text-align: left;
+	text-indent: 7px;
+	font-weight: bold;
 	position: relative;
 	left: 150px;
-	top: -130px;
+	top: -120px;
 
-	width: 70%;
+	width: 30%;
 
-
+	border: 3px;
 	border-style: solid;
-	border-color: rgba(4, 0, 255, 0.062);
+	border-radius: 7px;
+	border-color: #3a5e8d;
 }
 
 .restaurantInfo {
 	position: relative;
+	border-bottom: 2px solid;
 	left: 150px;
-	top: -140px;
+	top: -135px;
 
 	width: 70%;
+}
 
+.restaurantDesc {
+	position: relative;
+	text-align: left;
+	left: 150px;
+	top: -148px;
 
-	border-style: solid;
-	border-color: rgba(0, 255, 179, 0.26);
+	width: 70%;
 }
 
 .restaurantIcons {
 	position: relative;
-	left: 75%;
-	top: -150px;
+	left: 80%;
+	top: -170px;
 
 	width: 20%;
 	height: 25px;
