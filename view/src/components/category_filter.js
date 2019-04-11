@@ -9,7 +9,6 @@ class CategoryFilter extends React.Component {
 					<div className="input-group" >
 						<input id="table_filter" type="text" className="form-control" aria-label="Text input with segmented button dropdown" />
 					<div className="input-group-btn" >
-					<button type="button" className="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span className="label-icon" >Category</span> <span className="caret" >&nbsp;</span></button>
 					<div className="dropdown-menu dropdown-menu-right" >
            <ul className="category_filters" >
             <li >
@@ -43,3 +42,5 @@ class CategoryFilter extends React.Component {
 }
 
  export default CategoryFilter;
+
+/*<button type="button" className="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span className="label-icon" >Category</span> <span className="caret" >&nbsp;</span></button>*/

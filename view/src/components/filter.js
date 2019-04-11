@@ -41,7 +41,7 @@ class Filter extends React.Component {
 				<select className="field">
 					<option>Rating</option>
             		<option>High to Low</option>
-					<option>low to High</option>
+					<option>Low to High</option>
         		</select>
 				<select className="field">
 					<option>Open Till</option>

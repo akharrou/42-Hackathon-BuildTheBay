@@ -57,6 +57,17 @@ body {
 
 #table_filter {
 	border-radius: 5px;
+	margin: 2%;
 }
 
+#searchBtn {
+	position: relative;
+	margin-top: 5%;
+	background-color: #293e5a!important;
+}
+
+.label-icon{
+	position: relative;
+	right: 6%;
+}
 button:focus {outline:0;}
