@@ -48,4 +48,15 @@ body {
 	width: 5%;
 	height: 10%;
 }
+
+.distance {
+	color: white;
+	background-color: #293e5a;
+	border: none; 
+}
+
+#table_filter {
+	border-radius: 5px;
+}
+
 button:focus {outline:0;}
