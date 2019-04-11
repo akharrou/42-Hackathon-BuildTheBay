@@ -19,8 +19,7 @@ router.get('/all', (req, res) => {
 	/* Get Restaurants */
 	Restaurant.getRestaurants((err, results) => {
 
-		if(err) { throw err; }
-		// res.json({verb: 'hello'})
+		if (err) { throw err; }
 		res.json(results);
 	});
 });

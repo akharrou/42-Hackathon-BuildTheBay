@@ -16,7 +16,7 @@ const restaurantSchema = mongoose.Schema({
 	    Ratings:  {   type: String,    required: false,    default: undefined   },
 	      Hours:  {   type: String,    required: true,     default: undefined   },
 	   Category:  {   type: String,    required: true,     default: undefined   },
-        Service:  {   type: String,    required: false,    default: undefined   },
+      Service:  {   type: String,    required: false,    default: undefined   },
 });
 
 const Restaurant = module.exports = mongoose.model('Restaurant', restaurantSchema);
