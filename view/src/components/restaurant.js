@@ -33,15 +33,15 @@ class RestaurantItem extends React.Component {
 	}
 
 	slideshow() {
-		if (this.state.galleyno == 0)
+		if (this.state.galleyno === 0)
 		{
 			return (
-				<iframe className="restVideo" src={this.state.galleyload[this.state.galleyno]}></iframe>
+				<iframe title="frame" className="restVideo" src={this.state.galleyload[this.state.galleyno]}></iframe>
 			);
 		}
 		else
 			return (
-				<img className="restPict" src={this.state.galleyload[this.state.galleyno]}></img>
+				<img alt="" className="restPict" src={this.state.galleyload[this.state.galleyno]}></img>
 			);
 	}
 
@@ -60,16 +60,16 @@ class RestaurantItem extends React.Component {
 			<div>
 				<div className="restaurant" onClick={this.handleShow}>
 					<div className="restaurant_photo">
-						[Photo here]
+						<img className="restaurant_image" src={this.props.mainPhoto}></img>
 					</div>
 					<p className="restaurantHeader">{this.props.name}</p>
 					<p className="restaurantInfo">Type: {this.props.category} | Price: {this.props.price} | [??Distane??]</p>
-					<p className="restaurantInfo">[Table list]</p>
+					<p className="restaurantDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					<div className="restaurantIcons">
-						<a href="#" className="fa fa-twitter"></a>
-						<a href="#" className="fa fa-facebook"></a>
-						<a href="#" className="fa fa-pinterest"></a>
-						<a href="#" className="fa fa-snapchat-ghost"></a>
+						<span href="#" className="fa fa-twitter"></span>
+						<span href="#" className="fa fa-facebook"></span>
+						<span href="#" className="fa fa-pinterest"></span>
+						<span href="#" className="fa fa-snapchat-ghost"></span>
 					</div>
 				</div>
 			</div>
@@ -82,10 +82,16 @@ class RestaurantItem extends React.Component {
 			<Modal className="restaurantPopup" show={this.state.show} onHide={this.handleClose}>
 				<Modal.Header className="modalHeader">{this.props.name}</Modal.Header>
 				<div className="restaurantGallery">
-					<a className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</a>
-					<a className="next" onClick={() => this.plusSlides(1)}>&#10095;</a>
+					<span className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</span>
+					<span className="next" onClick={() => this.plusSlides(1)}>&#10095;</span>
 					{this.slideshow()}
 				</div>
+				<Modal.Body>
+					<p className="restaurantModalInfo">Type: {this.props.category} </p>
+					<p className="restaurantModalBody">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</Modal.Body>
 				<Button variant="secondary" onClick={this.handleClose}>
 					Close
 				</Button>

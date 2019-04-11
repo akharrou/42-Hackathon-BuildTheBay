@@ -23,12 +23,14 @@ class App extends Component {
 			loaded: false
 		},
 	  category: null,
-      user: null
+      user: null,
+	  search: ""
     }
 		this.get_coords = this.get_coords.bind(this);
 		this.set_category = this.set_category.bind(this);
 		this.get_restaurants = this.get_restaurants.bind(this);
 		this.get_sortedArray = this.get_sortedArray.bind(this);
+		this.handle_search = this.handle_search.bind(this);
   }
 
 	get_restaurants = () => {
@@ -114,6 +116,39 @@ class App extends Component {
 
 	};
 
+	handle_search = (value) =>
+	{
+		if (value !== "")
+		{
+			this.setState({
+				search: value.toLowerCase()
+			}, () => {
+				this.setState({
+					restaurants: {
+						restaurants: this.state.restaurants.restaurants,
+						filtered: this.state.restaurants.restaurants.filter(res => res.Name.toLowerCase().indexOf(this.state.search) != -1),
+						loaded: true
+					}
+				 })
+			})
+		}
+		else
+		{
+			this.setState({
+				search: value
+			}, () => {
+				this.setState({
+					restaurants: {
+						restaurants: this.state.restaurants.restaurants,
+						filtered: this.state.restaurants.restaurants,
+						loaded: true
+					}
+				 })
+			})
+		}
+		console.log(this.state.search);
+	}
+
 	set_category = (e) =>
 	{
 		if (e.target.value === "All Categories")
@@ -123,7 +158,8 @@ class App extends Component {
 					restaurants: this.state.restaurants.restaurants,
 					filtered: this.state.restaurants.restaurants,
 					loaded: true
-				}
+				},
+				category: e.target.value
 			});
 		}
 		else
@@ -132,9 +168,9 @@ class App extends Component {
 					restaurants: this.state.restaurants.restaurants,
 					filtered: this.state.restaurants.restaurants.filter(res => res.Category === e.target.value),
 					loaded: true
-				}
+				},
+				category: e.target.value
 			});
-		setTimeout(() => console.log(this.state.restaurants.filtered), 100);
 	}
 	degreesToRadians = (degrees) => {
 		return degrees * Math.PI / 180;
@@ -176,6 +212,7 @@ class App extends Component {
 				set_category	={this.set_category} 
 				category		={this.state.category} 
 				restaurants		={this.state.restaurants}
+				handle_search	={this.handle_search}
 			/>} 
 		/> }
 		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}

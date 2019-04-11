@@ -32,7 +32,7 @@ class Filter extends React.Component {
 		<div className="filter">
 			<div className="title">
 				{/*<Main_dropdown />*/}
-				<CategoryFilter />
+				<CategoryFilter handle_search={this.props.handle_search}/>
 				<select className="field">
             		<option>Distance</option>
             		<option>5 miles</option>

@@ -15,7 +15,7 @@ class RestaurantList extends React.Component {
 			<div className="container-restaurants">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 			{this.props.restaurants.filtered.map(restaurant => (
-				<RestaurantItem name={restaurant.Name} category={restaurant.Category} price="$" />
+				<RestaurantItem name={restaurant.Name} category={restaurant.Category} price="$" mainPhoto="https://media-cdn.tripadvisor.com/media/photo-s/0f/1a/cc/43/sushi-misto.jpg"/>
 				))}
 			</div>
 		);
