@@ -19,7 +19,26 @@ router.get('/login', (req, res) => {
 // =============================================================================
 /* ~ POSTS Requests ~ */
 
+router.post('/login', (req, res) => {
+
+	var login   = req.body.login;
+	var passwd  = req.body.passwd;
+
+	console.log(login);
+	console.log(passwd);
+
+	if ( login   ===  process.env.ADMIN_LOGIN  &&
+		 passwd  ===  process.env.ADMIN_PWD     )
+	{
+		res.end(true);
+	} else {
+		res.end(false);
+	}
+});
+
 router.post('/add', (req, res) => {
+
+
 
 	res.end('API under construction...');
 });
@@ -32,6 +51,8 @@ router.post('/update', (req, res) => {
 });
 
 router.post('/delete', (req, res) => {
+
+/* Delete Restaurant Entry */
 
 	console.log(req.params.id);
 

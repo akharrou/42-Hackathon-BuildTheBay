@@ -7,16 +7,19 @@ const mongoose = require('mongoose');
 // Restaurant Schema
 const restaurantSchema = mongoose.Schema({
 
-	       Name:  {   type: String,    required: true,     default: undefined   },
-	    Address:  {   type: String,    required: true,     default: undefined   },
-	      Phone:  {   type: String,    required: true,     default: undefined   },
-	Description:  {   type: String,    required: true,     default: undefined   },
-	    Website:  {   type: String,    required: false,    default: undefined   },
-	      Cater:  {   type: String,    required: false,    default: undefined   },
-	    Ratings:  {   type: String,    required: false,    default: undefined   },
-	      Hours:  {   type: String,    required: true,     default: undefined   },
-	   Category:  {   type: String,    required: true,     default: undefined   },
-      Service:  {   type: String,    required: false,    default: undefined   },
+         Name:  {   type: String,    required: true,    default: null   },
+      Address:  {   type: String,    required: true,    default: null   },
+        Phone:  {   type: String,    required: true,    default: null   },
+  Description:  {   type: String,    required: true,    default: null   },
+      Website:  {   type: String,    required: true,    default: null   },
+        Cater:  {   type: String,    required: true,    default: null   },
+      Ratings:  {   type: String,    required: true,    default: null   },
+        Hours:  {   type: String,    required: true,    default: null   },
+     Category:  {   type: String,    required: true,    default: null   },
+      Service:  {   type: String,    required: true,    default: null   },
+     Distance:  {   type: Number,    required: true,    default: null   },
+          Lat:  {   type: Number,    required: true,    default: null   },
+          Lng:  {   type: Number,    required: true,    default: null   },
 });
 
 const Restaurant = module.exports = mongoose.model('Restaurant', restaurantSchema);
@@ -25,15 +28,26 @@ const Restaurant = module.exports = mongoose.model('Restaurant', restaurantSchem
 // =============================================================================
 // ~ Functions ~
 
-// Get Restaurants
+// Get All Info of All Restaurants
 module.exports.getRestaurants = (callback, limit) => {
 	Restaurant.find(callback).limit(limit);
-}
+};
 
-// Get Categories
-module.exports.getCategories = function () {
-	return (Restaurant.find({ Category: true }));
-}
+// Get All Info of One Restaurant (queried by ID)
+module.exports.getRestaurantById = (id, callback) => {
+	Restaurant.findOne({ _id: id }, callback);
+};
+
+// Get All Info of One Restaurant (queried by Restaurant Name)
+module.exports.getRestaurantByName = (name, callback) => {
+	Restaurant.findOne({ Name: name }, callback);
+};
+
+// Get Categories of All Restaurants in the Database
+module.exports.getCategories = (callback, limit) => {
+	Restaurant.find({}, { Category: 1, _id: 0 }, callback).limit(limit);
+};
+
 
 
 
