@@ -22,8 +22,8 @@ class Navibar extends React.Component {
 
 		return (
 			<div id ="navi_bar" className="navi_bar">
-				<p className="wTit">Welcome to the E-Guide</p>
 				<div className="iconBar">
+				<p className="wTit">Welcome to the E-Guide</p>
 					<p className="homeIcon">
 						<a href={"./home"}><img className="HomeIcon" src={require('../HomeIcon.png')}/></a>
 						<a id="txt" href={"./home"}>Home</a>
