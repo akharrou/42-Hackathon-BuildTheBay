@@ -3,8 +3,8 @@
     text-align: right;
 	margin: 5% 10% 0 0;
 	font-family: Georgia, 'Times New Roman', Times, serif;
-	background-color: #1d2c3f;
-	color: white;
+	background-color: #c2b37c;
+	color: #1d2c3f;
 	padding-top: 2%;
 	padding-bottom: 2%;
 	padding-right: 2%;
@@ -14,4 +14,10 @@
 	margin: 0 5% 0 5%;
 	border-radius: 5px;
 	width: 25%;
+}
+
+.btn-success {
+	background-color: #1d2c3f;
+	border: 2px solid #615b5b;
+	color: #f8df79;
 }
