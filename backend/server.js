@@ -8,7 +8,7 @@ const LOCALHOST    = process.env.LOCALIP;
 
 const DB_USER      = '42';
 const DB_PWD       = '42';
-const DB_URI       = `mongodb+srv://${DB_USER}:${DB_PWD}@42-buildthebay-project-7nufr.mongodb.net/test?retryWrites=true`;
+const DB_URI       = `mongodb+srv://${DB_USER}:${DB_PWD}@42-buildthebay-project-7nufr.mongodb.net/btb`;
 
 /* Dependencies */
 const express      = require('express');
@@ -21,7 +21,8 @@ const adminRouter  = require('./routes/admin');
 // ===============================================================================
 
 /* Connect to Mongoose */
-var conn = mongoose.createConnection(DB_URI, { useNewUrlParser: true });
+mongoose.connect(DB_URI, { useNewUrlParser: true });
+mongoose.connection;
 
 // ===============================================================================
 

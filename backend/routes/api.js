@@ -16,15 +16,13 @@ const Restaurant   = require('../models/restaurant')
 
 router.get('/all', (req, res) => {
 
-	Restaurant.getRestaurants((err, restaurants) => {
+	/* Get Restaurants */
+	Restaurant.getRestaurants((err, results) => {
 
-		if(err)
-			throw err;
-		console.log(restaurants);
-		res.json(restaurants);
+		if(err) { throw err; }
+		// res.json({verb: 'hello'})
+		res.json(results);
 	});
-
-	// res.end('API under construction...');
 });
 
 router.get('/restaurant/:id', (req, res) => {
