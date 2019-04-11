@@ -23,18 +23,18 @@ class Filter extends React.Component {
             		<option>American</option>
             		<option>Bakery</option>
             		<option>Chinese</option>
-            		<option>Coffee&Bubble Tea</option>
+            		<option>Coffee & Bubble Tea</option>
 					<option>Fast Food</option>
 					<option>Grocery Markets</option>
-					<option>Ice Cream&Desserts</option>
+					<option>Ice Cream & Desserts</option>
 					<option>Indian</option>
-					<option>International&Wine Bar</option>
+					<option>International & Wine Bar</option>
 					<option>Island</option>
 					<option>Japanese</option>
 					<option>Korean</option>
 					<option>Mexican</option>
 					<option>Pizza</option>
-					<option>Game For Kids&Families</option>
+					<option>Kids & Families</option>
 					<option>Thai</option>
 					<option>Vietnamese</option>
         		</select>
