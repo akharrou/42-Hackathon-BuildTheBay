@@ -33,7 +33,6 @@ client.connect(err => {
   client.close();
 });
 
-
 // Initialize Application Server
 // ===============================================================================
 var app = express();

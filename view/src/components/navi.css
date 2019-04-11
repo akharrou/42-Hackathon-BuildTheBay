@@ -1,28 +1,51 @@
-
+body {
+	margin: 0 auto;
+}
 .navi_bar {
 	
 	background: #1d2c3f;
 	color: white;
 	width: 100%;
 	height: 20%;
-
+	top: 2%;
 	border-bottom: solid #293e5a;
 }
 
-.naviIcon {
+
+.homeIcon {
 	border: none;
 	border-right: solid #293e5a;
-
+	
 	background: none;
 	position: absolute;
-	left: 0px;
-	top: 0px;
+
 	width: 5%;
 	height: 5%;
+	top: 1%;
+	
+}
+
+.wTit {
+	font-size: 200%;
+}
+
+#txt {
+	color: white;
 }
 
 .HomeIcon {
 	width: 100%;
 }
 
+.logIcon {
+	border: none;
+	border-right: solid #293e5a;
+
+	background: none;
+	position: absolute;
+	right: 0%;
+	top: 2%;
+	width: 5%;
+	height: 10%;
+}
 button:focus {outline:0;}
