@@ -21,5 +21,8 @@
     "nodemon": "^1.18.10",
     "react-geocode": "^0.1.2",
     "regenerator-runtime": "^0.13.2"
+  },
+  "devDependencies": {
+    "react-social-icons": "^4.1.0"
   }
 }
