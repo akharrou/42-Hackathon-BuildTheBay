@@ -21,11 +21,13 @@ class App extends Component {
 			loaded: false
 		},
 	  category: null,
-      user: null
+      user: null,
+	  search: ""
     }
 		this.get_coords = this.get_coords.bind(this);
 		this.set_category = this.set_category.bind(this);
 		this.get_restaurants = this.get_restaurants.bind(this);
+		this.handle_search = this.handle_search.bind(this);
   }
 
 	get_restaurants = () => {
@@ -66,6 +68,14 @@ class App extends Component {
 		}
 	}
 	
+	handle_search = (e) =>
+	{
+		console.log("in the function");
+		this.setState({
+			search: e.target.value
+		})
+		setTimeout(() => console.log(this.state.search), 100);
+	}
 
 	set_category = (e) =>
 	{
@@ -76,7 +86,8 @@ class App extends Component {
 					restaurants: this.state.restaurants.restaurants,
 					filtered: this.state.restaurants.restaurants,
 					loaded: true
-				}
+				},
+				category: e.target.value
 			});
 		}
 		else
@@ -85,9 +96,9 @@ class App extends Component {
 					restaurants: this.state.restaurants.restaurants,
 					filtered: this.state.restaurants.restaurants.filter(res => res.Category === e.target.value),
 					loaded: true
-				}
+				},
+				category: e.target.value
 			});
-		setTimeout(() => console.log(this.state.restaurants.filtered), 100);
 	}
 
 	componentDidMount() {
@@ -107,6 +118,7 @@ class App extends Component {
 				set_category	={this.set_category} 
 				category		={this.state.category} 
 				restaurants		={this.state.restaurants}
+				handle_search	={this.handle_search}
 			/>} 
 		/> }
 		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
