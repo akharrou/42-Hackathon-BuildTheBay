@@ -36,7 +36,11 @@ body {
 	padding-left: 20%;
 }
 .homeIcon img {
+<<<<<<< HEAD
 	width: 55px;
+=======
+	width: 200%;
+>>>>>>> 79de414464df31ed1bd6b764c99bd2ec3b1707d1
 }
 .logIcon img {
 	width: 55px;
