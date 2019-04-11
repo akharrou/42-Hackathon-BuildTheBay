@@ -1,6 +1,6 @@
 import React from "react";
 import "./filter.css";
-import CategoryFilter from "./category_filter.js";
+import CategoryFilter from "./category_filter";
 
 class Filter extends React.Component {
 	render() {
@@ -12,11 +12,44 @@ class Filter extends React.Component {
 			<div className="title">
 				{/*<Main_dropdown />*/}
 				<CategoryFilter />
-				<button type="button" className="btn btn-primary">Primary</button>
-				<span className="field">Distance</span>
-				<span className="field">Category</span>
-				<span className="field">Distance</span>
-				<span className="field">Distance</span>
+				<select className="field">
+            		<option>Distance</option>
+            		<option>5 miles</option>
+            		<option>10 miles</option>
+            		<option>20 miles</option>
+        		</select>
+				<select className="field">
+					<option>Category</option>
+            		<option>American</option>
+            		<option>Bakery</option>
+            		<option>Chinese</option>
+            		<option>Coffee & Bubble Tea</option>
+					<option>Fast Food</option>
+					<option>Grocery Markets</option>
+					<option>Ice Cream & Desserts</option>
+					<option>Indian</option>
+					<option>International & Wine Bar</option>
+					<option>Island</option>
+					<option>Japanese</option>
+					<option>Korean</option>
+					<option>Mexican</option>
+					<option>Pizza</option>
+					<option>Kids & Families</option>
+					<option>Thai</option>
+					<option>Vietnamese</option>
+        		</select>
+				<select className="field">
+					<option>Rating</option>
+            		<option>High to Low</option>
+					<option>Low to High</option>
+        		</select>
+				<select className="field">
+					<option>Open Till</option>
+					<option>Open Now</option>
+            		<option>30 mins</option>
+            		<option>1 Hour</option>
+            		<option>2 Hours</option>
+        		</select>
 			</div>
 		</div>
 		);

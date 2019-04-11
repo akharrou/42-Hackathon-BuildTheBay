@@ -23,18 +23,16 @@ class Navibar extends React.Component {
 		return (
 			<div id ="navi_bar" className="navi_bar">
 				<div className="iconBar">
-				<p className="wTit">Welcome to the E-Guide</p>
+				<p className="wTit">Welcome to Newark, CA</p>
 					<p className="homeIcon">
-						<a href={"./home"}><img className="HomeIcon" src={require('../HomeIcon.png')}/></a>
-						<a id="txt" href={"./home"}>Home</a>
+						<a href={"./home"}><img src={require('../HomeIcon.png')}/></a>
+						<a id="txtH" href={"./home"}>Home</a>
 					</p>
 					<p className="logIcon">
-						<a href={"./login"}><img className="HomeIcon" src={require('../loginicon.jpg')}/></a>
+						<a href={"./login"}><img src={require('../loginicon.png')}/></a>
 						<a id="txt" href={"./login"}>Login</a>
 					</p>
-
 				</div>
-				{this.login_button()}
 			</div>
 		);		
 	}

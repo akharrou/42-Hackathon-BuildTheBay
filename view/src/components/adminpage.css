@@ -1,0 +1,38 @@
+.label-admin {
+    display: block;
+    text-align: right;
+	margin: 40px 0px 0 0;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	background-color: #c2b37c;
+	color: #1d2c3f;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-right: 20px;
+	border-radius: 5px;
+	font-size: 120%;
+	width: 1080px;
+	height: 80px;
+	max-width: 1200px;
+}
+
+.label-admin input {
+	margin: 0 5% 0 5%;
+	border-radius: 5px;
+	width: 25%;
+}
+
+.btn-success {
+	background-color: #1d2c3f;
+	border: 2px solid #615b5b;
+	color: #f8df79;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+	background-color: #425b7c;
+	border: solid #425b7c;
+	color: #ffffff;
+}
+
+.main_sidebar {
+	padding-top: 60px; 
+}

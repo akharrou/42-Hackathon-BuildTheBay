@@ -1,5 +1,6 @@
 import React from 'react';
 import SideBar from './admin_sidebar.js';
+import Adminpage from './adminpage.js';
 
 class Admin extends React.Component {
     constructor() {
@@ -19,7 +20,7 @@ class Admin extends React.Component {
         return (
 			<>
         	    <SideBar change_page={this.change_page}/>
-				<div>hi</div>
+				<Adminpage />
 			</>
         )
     }

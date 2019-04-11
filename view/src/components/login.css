@@ -1,6 +1,7 @@
 body {
     font-family: 'Source Sans Pro', sans-serif;
 }
+
 .logbody {
     margin: auto;
 }
@@ -17,6 +18,7 @@ h1 {
 }
 
 .sidenav {
+    max-width: 410px;
     height: 100%;
     background-color: #1d2c3f;
     overflow-x: hidden;
@@ -56,13 +58,15 @@ h1 {
     }
 
     .login-form{
-        margin-top: 150%;
-        margin-left: 10%;
+        margin-top: 650px;
+        margin-right: 0;
         width: 200%;
+        max-width: 1200px;
         background-color: #c2b37c;
         border-radius: 5px;
-        padding: 10%;
+        padding: 10% 0% 10% 10%;
         color: #1d2c3f;
+        position: relative;
     }
 
     .register-form{
@@ -88,7 +92,7 @@ h1 {
     color: #fff;
     font-size: 1.3em;
     border-radius: 5px;
-    padding-right: 20;
+    margin-left: 40%;
     border: none;
 }
 .btn-secondary {
@@ -102,8 +106,9 @@ h1 {
 #ULog {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 3em;
-    text-shadow: 0 6px 6px #837649;
-    color: #1d2c3f;
+    padding-left: 40%;
+    text-shadow: 0 3px 3px #837649;
+    border-radius: 6px;
 }
 .form-title{
     padding-left: 20%;
@@ -114,6 +119,7 @@ h1 {
     padding-left: 0;
     display: flex;
     padding-bottom: 3%;
+    padding-left: 40%;
     margin: 0 auto;
 }
 
@@ -121,15 +127,30 @@ h1 {
     font-size: 120%;
     border-radius: 5px;
     padding: 0%;
+
 }
 
 .bg {
     position: absolute;
     top: 0px;
     left: 0px;
+    height: 100%;
+    width: 100%;
     z-index: -1;
 }
 
 .txt {
     font-size: 120%;
+    border-radius: 5px;
+}
+
+.homeBtn {
+    display: block;
+    position: absolute;
+    top: 1%;
+    left: -105px;
+    z-index: +9;
+}
+.homeBtn img {
+    width: 13%;
 }

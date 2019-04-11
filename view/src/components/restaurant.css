@@ -1,6 +1,6 @@
 .restaurant {
-	margin-top: 15px;
-	margin: 2% auto;
+	margin-top: 5px;
+	margin: 1% auto;
 	height: 150px;
 	width: 70%;
 	width: 60vmax;
@@ -10,6 +10,7 @@
 }
 
 .restaurant_photo {
+	top: 10px;
 	width: 115px;
 	height: 115px;
 
@@ -18,7 +19,7 @@
 	position: relative;
 
 	border-style: solid;
-	border-color: rgb(211, 186, 47);
+	border-color: rgba(211, 186, 47, 0.26);
 }
 
 .restaurantHeader {
@@ -30,7 +31,7 @@
 
 
 	border-style: solid;
-	border-color: rgb(4, 0, 255);
+	border-color: rgba(4, 0, 255, 0.062);
 }
 
 .restaurantInfo {
@@ -42,7 +43,7 @@
 
 
 	border-style: solid;
-	border-color: rgb(0, 255, 179);
+	border-color: rgba(0, 255, 179, 0.26);
 }
 
 .restaurantIcons {
@@ -55,25 +56,18 @@
 
 
 	border-style: solid;
-	border-color: rgb(140, 0, 255);
+	border-color: rgba(140, 0, 255, 0.315);
 }
 
 .container-restaurants {
 	display: block;
 }
 
-.text {
-	border-radius: 5px;
-	border-style: solid;
-	border-color: rgb(0, 255, 179);
-}
-
 .restaurantPopup {
-	outline: none;
 	position: fixed;
 	margin: 3% auto;
 
-	color: #1d2c3f;
+	color: #ffffff;
 
 	top: 100px;
 	left: 8%;
@@ -90,6 +84,54 @@
 	border-color: #ebebeb;
 }
 
-.PopupHeading {
-	font-size: 30px;
+.modal-content {
+	width: 100%;
+	left: 0px;
+    background-color: #fafafa;
+    border: none;
+}
+
+.restaurantGallery {
+	max-height: 800px;
+	max-width: 1200px;
+	width: 100%;
+	height: 37vmax;
+}
+
+.restVideo {
+	height: 90%;
+	width: 100%;
+}
+
+.restPict {
+	height: 90%;
+	width: 100%;
+}
+
+.prev, .next {
+	border-radius: 5px;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 16px;
+	margin-top: -22px;
+	font-weight: bold;
+	font-size: 18px;
+	user-select: none;
+	background-color: rgba(226, 226, 226, 0.288);
+}
+  
+.next {
+	right: 0px;
+	border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+	background-color: rgba(226, 226, 226, 0.733);
+}
+
+.modal-dialog {
+	max-width: 100%;
+	width: 80%;
+	height: 30%
 }

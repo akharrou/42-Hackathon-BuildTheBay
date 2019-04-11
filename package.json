@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "assert": "^1.4.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "^4.16.4",
@@ -14,6 +15,7 @@
     "jade": "~1.11.0",
     "javascript": "^1.0.0",
     "mongodb": "^3.2.3",
+    "mongoose": "^5.5.0",
     "morgan": "~1.9.0",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.10",
