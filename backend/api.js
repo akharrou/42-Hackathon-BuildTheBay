@@ -31,8 +31,6 @@ router.get('/categories', (req, res) => {
 	res.end('API under construction...');
 })
 
-
-
 // =============================================================================
 /* ~ POST Requests ~ */
 
@@ -49,7 +47,7 @@ router.post('/authenticate', (req, res) => {
 
 router.post('/update/:field', (req, res) => {
 
-	switch (/* :field */) {
+	switch (req.query.field) {
 
 		case 'name':
 			/* update name */
