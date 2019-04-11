@@ -7,7 +7,7 @@ class CategoryFilter extends React.Component {
 			  <div className="row searchFilter" >
 				<div className="col-sm-12" >
 					<div className="input-group" >
-						<input id="table_filter" type="text" className="form-control" aria-label="Text input with segmented button dropdown" />
+						<input id="table_filter" onChange={this.props.handle_change}type="text" className="form-control" aria-label="Text input with segmented button dropdown" />
 					<div className="input-group-btn" >
 					<div className="dropdown-menu dropdown-menu-right" >
            <ul className="category_filters" >
