@@ -42,7 +42,7 @@ router.get('/restaurant/:id', (req, res) => {
 				break;
 			}
 		}
-		res.end('Error Not Found');
+		res.json('Error Not Found');
 	});
 });
 
