@@ -25,11 +25,11 @@ class Navibar extends React.Component {
 				<div className="iconBar">
 				<p className="wTit">Welcome to Newark, CA</p>
 					<p className="homeIcon">
-						<a href={"./home"}><img src={require('../HomeIcon.png')}/></a>
+						<a href={"./home"}><img src={require('../HomeIcon.png')} alt = "" /></a>
 						<a id="txtH" href={"./home"}>Home</a>
 					</p>
 					<p className="logIcon">
-						<a href={"./login"}><img src={require('../loginicon.png')}/></a>
+						<a href={"./login"}><img src={require('../loginicon.png')} alt="" /></a>
 						<a id="txt" href={"./login"}>Login</a>
 					</p>
 				</div>

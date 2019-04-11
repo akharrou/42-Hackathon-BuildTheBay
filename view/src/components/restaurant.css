@@ -49,14 +49,10 @@
 .restaurantIcons {
 	position: relative;
 	left: 75%;
-	top: -145px;
+	top: -150px;
 
 	width: 20%;
 	height: 25px;
-
-
-	border-style: solid;
-	border-color: rgba(140, 0, 255, 0.315);
 }
 
 .container-restaurants {
@@ -67,7 +63,7 @@
 	position: fixed;
 	margin: 3% auto;
 
-	color: #ffffff;
+	color: #000000;
 
 	top: 100px;
 	left: 8%;
@@ -91,6 +87,13 @@
     border: none;
 }
 
+.modalHeader {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: bold;
+	color: #293e5a;
+	font-size: 35px;
+}
+
 .restaurantGallery {
 	max-height: 800px;
 	max-width: 1200px;
@@ -99,12 +102,13 @@
 }
 
 .restVideo {
-	height: 90%;
+	top: 150px;
+	height: 100%;
 	width: 100%;
 }
 
 .restPict {
-	height: 90%;
+	height: 100%;
 	width: 100%;
 }
 
