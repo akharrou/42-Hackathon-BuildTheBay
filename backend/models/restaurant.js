@@ -30,7 +30,10 @@ module.exports.getRestaurants = (callback, limit) => {
 	Restaurant.find(callback).limit(limit);
 }
 
-
+// Get Categories
+module.exports.getCategories = function () {
+	return (Restaurant.find({ Category: true }));
+}
 
 
 

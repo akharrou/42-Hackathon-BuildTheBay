@@ -16,24 +16,62 @@ const Restaurant   = require('../models/restaurant')
 
 router.get('/all', (req, res) => {
 
-	/* Get Restaurants */
-	Restaurant.getRestaurants((err, results) => {
+	/* Get All Info of All Restaurants */
+	Restaurant.getRestaurants((err, restaurants) => {
 
-		if (err) { throw err; }
-		res.json(results);
+		if (err)
+			throw err;
+		// console.log(restaurants);
+		res.json(restaurants);
 	});
 });
 
 router.get('/restaurant/:id', (req, res) => {
 
-	console.log(req.params.id);
+	var restaurant_ID = req.params.id;
 
-	res.end('API under construction...');
+	/* Get Info of Only the Specified Restaurant (if it exists) */
+	Restaurant.getRestaurants((err, results) => {
+
+		if (err)
+			throw err;
+		for (var i in results) {
+			if (results[i]['_id'] == restaurant_ID) {
+				// console.log(results[i])
+				res.json(results[i]);
+				break;
+			}
+		}
+		res.end('Error Not Found');
+	});
 });
 
 router.get('/categories', (req, res) => {
 
-	res.end('API under construction...');
+	var categories = [];
+
+	/* Get All Categories */
+	Restaurant.getRestaurants((err, results) => {
+
+		if (err)
+			throw err;
+		for (var i in results) {
+
+			j = 0;
+			exists = false;
+			if (results[i]['Category'] == '')
+				exists = true;
+			while (exists == false && categories.length > j) {
+				if (results[i]['Category'] == categories[j])
+					exists = true;
+				++j;
+			}
+			if (exists == false)
+				categories.push(results[i]['Category']);
+		}
+		// console.log(categories);
+		res.json(categories);
+	});
 });
 
 // =============================================================================
@@ -47,7 +85,13 @@ router.post('/authenticate', (req, res) => {
 	console.log(login);
 	console.log(passwd);
 
-	res.end('API under construction...');
+	// if (auth(login, passwd) == true) {
+	// 	res.end(true);
+	// } else {
+	// 	res.end(false);
+	// }
+
+	res.end('API under construction...')
 });
 
 router.post('/update/:field', (req, res) => {
