@@ -37,7 +37,7 @@ router.get('/restaurant/:id', (req, res) => {
 			throw err;
 		for (var i in results) {
 			if (results[i]['_id'] == restaurant_ID) {
-				// console.log(results[i])
+				// console.log(results[i]
 				res.json(results[i]);
 				break;
 			}
