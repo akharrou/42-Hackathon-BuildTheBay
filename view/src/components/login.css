@@ -58,15 +58,10 @@ h1 {
     }
 
     .login-form{
-<<<<<<< HEAD
         margin-top: 650px;
         margin-right: 0;
         width: 200%;
         max-width: 1200px;
-=======
-        margin-top: 600px;
-        width: 160%;
->>>>>>> 8a0ae40ac34a7e25433d019d223e613739a1fcb5
         background-color: #c2b37c;
         border-radius: 5px;
         padding: 10% 0% 10% 10%;
