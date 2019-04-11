@@ -5,12 +5,12 @@ var app = require('../app');
 var http = require('http');
 
 /* Set Port */
-var PORT = process.env.PORT;
-var LOCALHOST = process.env.LOCALIP;
+var PORT = "3000";
+var LOCALHOST = "localhost";
 app.set('port', PORT);
 
 /* Create & Start the Server */
 http.createServer(app).listen(PORT, () => {
 	console.log("Server Status: [LIVE]");
-	console.log(`Server running at 'http:${LOCALHOST}:${PORT}/'`);
+	console.log(`Server running at 'http://${LOCALHOST}:${PORT}/'`);
 });
