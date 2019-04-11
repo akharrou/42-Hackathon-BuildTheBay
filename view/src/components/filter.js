@@ -39,10 +39,10 @@ class Filter extends React.Component {
             		<option>10 miles</option>
             		<option>20 miles</option>
         		</select>
-				<select className="field">
+				<select onChange={this.props.set_category} value={this.props.category} className="field">
 					<option>All Categories</option>
 					{this.state.categories_loaded && this.state.categories.map(category => (
-						<option key={category} onClick={this.props.set_category}>{category}</option>
+						<option key={category}>{category}</option>
 					))}
         		</select>
 				<select className="field">

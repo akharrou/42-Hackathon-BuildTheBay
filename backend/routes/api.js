@@ -15,14 +15,15 @@ const Restaurant   = require('../models/restaurant')
 /* ~ GET Requests ~ */
 
 router.get('/all', (req, res) => {
-
+	let data = {};
 	/* Get All Info of All Restaurants */
 	Restaurant.getRestaurants((err, restaurants) => {
 
 		if (err)
 			throw err;
 		// console.log(restaurants);
-		res.json(restaurants);
+		data.restaurants = restaurants;
+		res.json(data);
 	});
 });
 

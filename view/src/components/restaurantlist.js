@@ -7,33 +7,15 @@ class RestaurantList extends React.Component {
 		super(props);
 
 		this.state = {
-			data: [
-				{name: "HappyLemon", category: "Tea Cafe", price: "$"},
-				{name: "Wok Life", category: "Chinese", price: "$"},
-				{name: "La Farfalla", category: "Bakery", price: "$"},
-				{name: "Malaikottai", category: "Indian", price: "$$"},
-				{name: "Sushi Yoshi Restaurant", category: "Japanese", price: "$$"},
-			],
 		};
-	}
-
-	createList = () => {
-		let list = []
-
-		for (let i = 0; i < this.state.data.length; i++) {
-			list.push(< RestaurantItem 
-				name={this.state.data[i].name}
-				category={this.state.data[i].category}
-				price={this.state.data[i].price}
-			/>)
-		}
-		return list;
 	}
 
 	render () {
 		return (
 			<div className="container-restaurants">
-				{this.createList()}
+			{this.props.restaurants.filtered.map(restaurant => (
+				<RestaurantItem name={restaurant.Name} category={restaurant.Category} price="$" />
+				))}
 			</div>
 		);
 	}

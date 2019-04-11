@@ -15,15 +15,34 @@ class App extends Component {
 			lng: 0,
 		  	map_loaded: false
 	  },
+		restaurants: {
+			restaurants: null,
+			filtered: null,
+			loaded: false
+		},
 	  category: null,
       user: null
     }
 		this.get_coords = this.get_coords.bind(this);
 		this.set_category = this.set_category.bind(this);
+		this.get_restaurants = this.get_restaurants.bind(this);
   }
 
+	get_restaurants = () => {
+		fetch('http://localhost:8000/api/all')
+		.then(res => res.json())
+		.then(data => {
+			this.setState({
+				restaurants: {
+					restaurants: data.restaurants,
+					filtered: data.restaurants,
+					loaded: true
+				}
+			});
+		});
+	}
 
-    get_coords = () => {
+	get_coords = () => {
 		if (navigator.geolocation)
 		{
 			navigator.geolocation.getCurrentPosition((position) => {
@@ -45,28 +64,28 @@ class App extends Component {
 				}
 			});
 		}
-		setTimeout(() => console.log(this.state), 1000)
 	}
+	
 
-	set_category = (category) =>
+	set_category = (e) =>
 	{
 		this.setState({
-			category: category
+			category: e.target.value
 		});
-		console.log("The current category is "+ category);
 	}
 
 	componentDidMount() {
 		this.get_coords();
+		this.get_restaurants();
 	}
 
   render() {
 	return (
 	<div className="App">
   <BrowserRouter>
-    <Route path="/home" render={(props) => <LandingPage coords={this.state.coords} user={this.state.user} get_coords={this.get_coords} set_category={this.set_category} />} />
-    <Route path="/login" render={(props) => <Login />} />
-    <Route path="/admin" render={(props) => <Admin />} />
+		{this.state.restaurants.loaded && <Route path="/home" render={(props) => <LandingPage coords={this.state.coords} user={this.state.user} get_coords={this.get_coords} set_category={this.set_category} category={this.state.category} restaurants={this.state.restaurants}/>} /> }
+		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
+		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
     </BrowserRouter>
 	</div>
 	);
