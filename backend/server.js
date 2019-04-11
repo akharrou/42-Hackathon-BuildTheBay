@@ -3,12 +3,25 @@
 // ===============================================================================
 
 /* Private Constants */
-const PORT       = process.env.PORT;
-const LOCALHOST  = process.env.LOCALIP;
+const PORT         = process.env.PORT;
+const LOCALHOST    = process.env.LOCALIP;
+
+const DB_USER      = '42';
+const DB_PWD       = '42';
+const DB_URI       = `mongodb+srv://${DB_USER}:${DB_PWD}@42-buildthebay-project-7nufr.mongodb.net/test?retryWrites=true`;
 
 /* Dependencies */
-const express    = require('express');
-const apiRouter  = require('./api');
+const express      = require('express');
+const mongoose     = require('mongoose');
+
+/* Routers */
+const apiRouter    = require('./routes/api');
+const adminRouter  = require('./routes/admin');
+
+// ===============================================================================
+
+/* Connect to Mongoose */
+var conn = mongoose.createConnection(DB_URI, { useNewUrlParser: true });
 
 // ===============================================================================
 
@@ -20,7 +33,9 @@ app.set('port', PORT);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/api', apiRouter);
+
+app.use( '/api',   apiRouter   );
+app.use( '/admin', adminRouter );
 
 // ===============================================================================
 

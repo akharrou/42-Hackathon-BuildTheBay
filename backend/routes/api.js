@@ -1,53 +1,63 @@
 
+/* API ROUTER */
 // =============================================================================
 
-/* Private Constants */
-const DB_USER  = '42';
-const DB_PWD   = '42';
-
 /* Dependencies */
-const express  = require('express')
+const express      = require('express')
 
-/* Connection to Database */
-const URI      = `mongodb+srv://${DB_USER}:${DB_PWD}@42-buildthebay-project-7nufr.mongodb.net/test?retryWrites=true`;
-const DB       = require('mongoose').connect(URI, { useNewUrlParser: true });
+/* Creating API Router */
+const router       = express.Router();
 
-/* Create API Router */
-const router   = express.Router();
-
+/* Models */
+const Restaurant   = require('../models/restaurant')
 
 // =============================================================================
 /* ~ GET Requests ~ */
 
 router.get('/all', (req, res) => {
-	res.end('API under construction...');
-})
 
-router.get('/restaurant', (req, res) => {
+	Restaurant.getRestaurants((err, restaurants) => {
+
+		if(err)
+			throw err;
+		console.log(restaurants);
+		res.json(restaurants);
+	});
+
+	// res.end('API under construction...');
+});
+
+router.get('/restaurant/:id', (req, res) => {
+
+	console.log(req.params.id);
+
 	res.end('API under construction...');
-})
+});
 
 router.get('/categories', (req, res) => {
+
 	res.end('API under construction...');
-})
+});
 
 // =============================================================================
 /* ~ POST Requests ~ */
 
 router.post('/authenticate', (req, res) => {
 
-	var login   = req.params.login;
-	var passwd  = req.params.passwd;
+	var login   = req.body.login;
+	var passwd  = req.body.passwd;
 
 	console.log(login);
 	console.log(passwd);
 
 	res.end('API under construction...');
-})
+});
 
 router.post('/update/:field', (req, res) => {
 
-	switch (req.query.field) {
+	console.log(req.params.field);
+
+	switch (req.params.field) {
 
 		case 'name':
 			/* update name */
@@ -87,7 +97,7 @@ router.post('/update/:field', (req, res) => {
 	}
 
 	res.end('API under construction...')
-})
+});
 
 // =============================================================================
 
