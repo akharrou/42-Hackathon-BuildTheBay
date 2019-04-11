@@ -1,6 +1,6 @@
 import React from "react";
 import "./filter.css";
-import CategoryFilter from "./category_filter.js";
+import DistanceFilter from "./distance_filter.js";
 
 class Filter extends React.Component {
 	render() {
@@ -11,12 +11,7 @@ class Filter extends React.Component {
 		<div className="filter">
 			<div className="title">
 				{/*<Main_dropdown />*/}
-				<CategoryFilter />
-				<button type="button" className="btn btn-primary">Primary</button>
-				<span className="field">Distance</span>
-				<span className="field">Category</span>
-				<span className="field">Distance</span>
-				<span className="field">Distance</span>
+				<DistanceFilter />
 			</div>
 		</div>
 		);
