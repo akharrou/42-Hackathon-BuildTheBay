@@ -69,9 +69,25 @@ class App extends Component {
 
 	set_category = (e) =>
 	{
-		this.setState({
-			category: e.target.value
-		});
+		if (e.target.value === "All Categories")
+		{
+			this.setState({
+				restaurants: {
+					restaurants: this.state.restaurants.restaurants,
+					filtered: this.state.restaurants.restaurants,
+					loaded: true
+				}
+			});
+		}
+		else
+			this.setState({
+				restaurants: {
+					restaurants: this.state.restaurants.restaurants,
+					filtered: this.state.restaurants.restaurants.filter(res => res.Category === e.target.value),
+					loaded: true
+				}
+			});
+		setTimeout(() => console.log(this.state.restaurants.filtered), 100);
 	}
 
 	componentDidMount() {
