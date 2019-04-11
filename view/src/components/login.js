@@ -28,6 +28,10 @@ class Login extends React.Component {
             <img className="bg" src={require('../loginbg.png')} alt=""/>
             <div className="sidenav">
                 <div className="login-main-text">
+                    <p className="homeIcon">
+					    <a href={"./home"}><img className="homePic" src={require('../HomeIcon.png')}/></a>
+					    <a id="txt" href={"./home"}>Home</a>
+			        </p>
                     <h1>Welcome to<br /> Newark</h1>
                     <p>You are a login away from a delicious meal</p>
                 </div>
@@ -47,8 +51,8 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" onChange={this.pass_listen}/>
                             </div>
                         </div>
-                            <button type="submit" className="btn btn-black">Login</button>
-                            <button type="submit" className="btn btn-secondary">Register</button>
+                            <button type="submit" className="btn btn-black">Register</button>
+                            <button type="submit" className="btn btn-secondary">Login</button>
                         </form>
                     </div>
                 </div>
