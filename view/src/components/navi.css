@@ -36,7 +36,7 @@ body {
 	padding-left: 20%;
 }
 .homeIcon img {
-	width: 220%;
+	width: 180%;
 }
 .logIcon img {
 	width: 100%;
@@ -49,7 +49,7 @@ body {
 	background: none;
 	position: absolute;
 	right: 0%;
-	top: 2%;
+	top: 1%;
 	width: 5%;
 	height: 10%;
 }
@@ -57,17 +57,20 @@ body {
 .field {
 	color: white;
 	background-color: #293e5a;
-	border: none; 
+	border: none;
+	font-size: 60%;
 }
 
 #table_filter {
+	font-size: 80%;
 	border-radius: 5px;
 	margin: 2%;
 }
 
 #searchBtn {
+	font-size: 70%;
 	position: relative;
-	margin-top: 5%;
+	margin-top: 15%;
 	background-color: #293e5a!important;
 }
 
