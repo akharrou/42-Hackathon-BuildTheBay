@@ -96,15 +96,15 @@ class Adminpage extends React.Component {
     				<input onChange={(e) => this.store_field(e)} type="text" name="Service" />
 					<button type="button" onClick={() => this.update_field('Service')} className="btn btn-success">Update</button>
   				</label>
-<label className="label-admin">
+				<label className="label-admin">
 				    Import photo:
     				<input onChange={(e) => this.store_field(e)} type="text" name="Photo" />
-					<button type="button" onClick={() => this.media('Photo')} className="btn btn-success">Update</button>
+					<button type="button" onClick={() => this.update_field('Photo')} className="btn btn-success">Update</button>
   				</label>
 				  <label className="label-admin">
 				    Import video:
     				<input onChange={(e) => this.store_field(e)} type="text" name="Video" />
-					<button type="button" onClick={() => this.media('Video')} className="btn btn-success">Update</button>
+					<button type="button" onClick={() => this.update_field('Video')} className="btn btn-success">Update</button>
   				</label>
 			</form>
 		)

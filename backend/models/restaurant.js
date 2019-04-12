@@ -7,30 +7,32 @@ const mongoose = require('mongoose');
 // Restaurant Schema
 const restaurantSchema = mongoose.Schema({
 
-         Name:  {   type: String,    required: true,    default: null   },
-        Email:  {   type: String,    required: true,    default: null   },
-       Passwd:  {   type: String,    required: true,    default: null   },
+          _id:  {   type: mongoose.Schema.Types.ObjectId, required: true  },
 
-      Address:  {   type: String,    required: true,    default: null   },
-        Phone:  {   type: String,    required: true,    default: null   },
-  Description:  {   type: String,    required: true,    default: null   },
-      Website:  {   type: String,    required: true,    default: null   },
-        Cater:  {   type: String,    required: true,    default: null   },
-      Ratings:  {   type: Number,    required: true,    default: null   },
-        Hours:  {   type: String,    required: true,    default: null   },
-     Category:  {   type: String,    required: true,    default: null   },
-      Service:  {   type: String,    required: true,    default: null   },
-        Media:  {   type: Array,     required: false,   default: null   },
+         Name:  {   type: String,    required: true,    default: ''     },
+        Email:  {   type: String,    required: true,    default: ''     },
+       Passwd:  {   type: String,    required: true,    default: ''     },
 
-     Distance:  {   type: Number,    required: true,    default: null   },
-          Lat:  {   type: Number,    required: true,    default: null   },
-          Lng:  {   type: Number,    required: true,    default: null   },
+      Address:  {   type: String,    required: false,   default: ''     },
+        Phone:  {   type: String,    required: false,   default: ''     },
+  Description:  {   type: String,    required: false,   default: ''     },
+      Website:  {   type: String,    required: false,   default: ''     },
+        Cater:  {   type: String,    required: false,   default: ''     },
+      Ratings:  {   type: Number,    required: false,   default: 0      },
+        Hours:  {   type: String,    required: false,   default: ''     },
+     Category:  {   type: String,    required: false,   default: ''     },
+      Service:  {   type: String,    required: false,   default: ''     },
+        Media:  {   type: Array,     required: false,   default: []     },
+
+     Distance:  {   type: Number,    required: false,   default: 0      },
+          Lat:  {   type: Number,    required: false,   default: 0      },
+          Lng:  {   type: Number,    required: false,   default: 0      },
 });
 
 const Restaurant = module.exports = mongoose.model('Restaurant', restaurantSchema);
 
 // =============================================================================
-// ~ Functions ~
+// ~ READ Functions ~
 
 // Get All Info of All Restaurants
 module.exports.getRestaurants = (callback, limit) => {
@@ -56,30 +58,28 @@ module.exports.getRestaurantByEmail = (email, callback) => {
 module.exports.getCategories = (callback, limit) => {
 	Restaurant.find({}, { Category: 1, _id: 0 }, callback).limit(limit);
 };
-
+// { Name: "Kevin's Restaurant",
+//   Email: 'kevindevin.bites@gmail.com',
+//   Passwd: 'kevindevin' }
 
 
 // =============================================================================
-// ~ CRUD Functions ~
+// ~ ADD/UPDATE/DELETE Functions ~
 
 // Add Restaurant
-module.exports.addRestaurant = (name, email, passwd, callback) => {
-  Restaurant.create({ Name: name, Email: email, Passwd: passwd }, callback);
+module.exports.addRestaurant = (newRestaurant, callback) => {
+  console.log(newRestaurant);
+  Restaurant.create(newRestaurant, callback);
 };
 
 // Update Restaurant
-module.exports.updateRestaurant = (name, field, options, callback) => {
+module.exports.updateRestaurant = (restaurantName, field, value, options, callback) => {
 
-	var fields = {
-		name: restaurants.name,
-		name: restaurants.name,
-		name: restaurants.name,
-		name: restaurants.name,
-		name: restaurants.name,
-		name: restaurants.name
-  }
+  // var fieldsToUpdate = {
 
-	Restaurant.findOneAndUpdate({ Name: name }, fields, options, callback);
+  // }
+
+	// Restaurant.findOneAndUpdate({ Name: restaurantName }, { field: value }, options, callback);
 }
 
 // Delete Restaurant
@@ -92,12 +92,19 @@ module.exports.removeRestaurant = (name, callback) => {
 // =============================================================================
 // ~ Mongo Commands ~
 
-// /* DELETE A FIELD FOR ALL DOCUMENTS OF A COLLECTION */
-// db.restaurants.update({}, {$unset: { "FIELD": 1 }} , {multi: true})
+/*
 
-// /* RENAME A FIELD FOR ALL DOCUMENTS OF A COLLECTION */
-// db.restaurants.updateMany({}, { $rename: { "FIELD": "NEW_FIELD" }})
+  —> DELETE A FIELD FOR ALL DOCUMENTS OF A COLLECTION
 
-// /* SETS A FIELD FOR ALL DOCUMENTS OF A COLLECTION; IF NOT EXISTANT THAN CREATES FIELD (can specify a default)*/
-// db.restaurants.updateMany({}, { $set: { "FIELD": "" }})
-// db.restaurants.update({}, {$set : { "FIELD": null }}, {upsert:false, multi:true})
+      $> db.restaurants.update({}, {$unset: { "FIELD": 1 }} , {multi: true})
+
+  —> RENAME A FIELD FOR ALL DOCUMENTS OF A COLLECTION
+
+      $> db.restaurants.updateMany({}, { $rename: { "FIELD": "NEW_FIELD" }})
+
+  —> SETS A FIELD FOR ALL DOCUMENTS OF A COLLECTION; IF NOT EXISTANT THEN CREATES FIELD (can specify a default
+
+      $> db.restaurants.updateMany({}, { $set: { "FIELD": "" }})
+      $> db.restaurants.update({}, {$set : { "FIELD": null }}, {upsert:false, multi:true})
+
+*/

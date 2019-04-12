@@ -4,6 +4,7 @@ import Login from './components/login.js';
 import LandingPage from './components/main.js';
 import Admin from './components/admin.js'
 import Suadmin from './components/suadmin.js'
+import Sulogin from './components/SuperLogin.js'
 import { BrowserRouter, Route } from 'react-router-dom';
 import Geocode from "react-geocode";
 Geocode.setApiKey("AIzaSyBqKkPlvSSEelPGg4IPqL_2TWyEdYDQeL0");
@@ -74,23 +75,23 @@ class App extends Component {
 
 	get_sortedArray = ()  => {
 		const restaurants = this.state.restaurants.filtered;
-		for(let i = 0; i < restaurants.length; i++)
-		{
-			Geocode.fromAddress(restaurants[i].Address).then(
-				response => {
-					const current_lat = this.state.coords.lat;
-					const current_lng = this.state.coords.lng;
-					const { lat, lng } = response.results[0].geometry.location;
-					restaurants[i]['lat'] = lat;
-					restaurants[i]['lng'] = lng;
-					var dist = this.distance(current_lat, current_lng, lat, lng);
-					restaurants[i]['distance'] = dist;
-				},
-				error => {
-					console.error(error);
-				}
-			)
-		}
+			for(let i = 0; i < restaurants.length; i++)
+			{
+				Geocode.fromAddress(restaurants[i].Address).then(
+					response => {
+						const current_lat = this.state.coords.lat;
+						const current_lng = this.state.coords.lng;
+						const { lat, lng } = response.results[0].geometry.location;
+						restaurants[i]['lat'] = lat;
+						restaurants[i]['lng'] = lng;
+						var dist = this.distance(current_lat, current_lng, lat, lng);
+						restaurants[i]['distance'] = dist;
+					},
+					error => {
+						console.error(error);
+					}
+				)
+			}
 		setTimeout(() => {
 			restaurants.sort(function(a, b) {
 				if (!a.distance || a.distance > b.distance)
@@ -216,7 +217,9 @@ class App extends Component {
 				handle_search	={this.handle_search}
 			/>}
 		/> }
+
 		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
+		{this.state.restaurants.loaded && <Route path="/SuperLogin" render={(props) => <Sulogin />} />}
 		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
 		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} />}
     </BrowserRouter>

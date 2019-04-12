@@ -51,7 +51,7 @@ class RestaurantItem extends React.Component {
 
 	slideshow() {
 		console.log(this.props.gallery[this.state.galleyno].type);
-		if (this.props.gallery[this.state.galleyno].type == "Video")
+		if (this.props.gallery[this.state.galleyno].type === "Video")
 		{
 			return (
 				<iframe title="frame" className="restVideo" src={this.props.gallery[this.state.galleyno].link}></iframe>
@@ -85,10 +85,10 @@ class RestaurantItem extends React.Component {
 					<p className="restaurantInfo">Type: {this.props.category} | Price: {this.props.price} | Distance: {parseFloat(this.props.distance).toPrecision(2)}</p>
 					<p className="restaurantDesc">Description: {this.props.describ.substring(0, 130)}</p>
 					<div className="restaurantIcons">
-						<a href="https://twitter.com/?lang=en" className="fa fa-twitter" target="_blank"></a>
-						<a href="https://www.facebook.com/" className="fa fa-facebook" target="_blank"></a>
-						<a href="https://www.pinterest.com/" className="fa fa-pinterest" target="_blank"></a>
-						<a href="https://www.snapchat.com/" className="fa fa-snapchat-ghost" target="_blank"></a>
+						<a href="https://twitter.com/?lang=en" className="fa fa-twitter" target="_blank" rel="noopener noreferrer"></a>
+						<a href="https://www.facebook.com/" className="fa fa-facebook" target="_blank" rel="noopener noreferrer"></a>
+						<a href="https://www.pinterest.com/" className="fa fa-pinterest" target="_blank" rel="noopener noreferrer"></a>
+						<a href="https://www.snapchat.com/" className="fa fa-snapchat-ghost" target="_blank" rel="noopener noreferrer"></a>
 					</div>
 				</div>
 			</div>

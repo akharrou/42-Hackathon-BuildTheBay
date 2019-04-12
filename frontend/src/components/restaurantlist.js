@@ -7,9 +7,6 @@ class RestaurantList extends React.Component {
 		super(props);
 
 		var obj;
-		var obj2;
-		var obj3;
-		var obj4;
 
 		this.state = {
 			Media: [
@@ -26,8 +23,8 @@ class RestaurantList extends React.Component {
 			<div className="container-restaurants">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 			{this.props.restaurants.filtered.map(restaurant => (
-				<RestaurantItem 
-					name={restaurant.Name} 
+				<RestaurantItem
+					name={restaurant.Name}
 					category={restaurant.Category}
 					distance={restaurant.distance}
 					describ={restaurant.Description}

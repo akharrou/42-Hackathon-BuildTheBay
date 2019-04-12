@@ -98,11 +98,11 @@ router.post('/authenticate', (req, res) => {
 	console.log(login);
 	console.log(passwd);
 
-	// if (auth(login, passwd) == true) {
-	// 	res.end(true);
-	// } else {
-	// 	res.end(false);
-	// }
+	if (auth(login, passwd) == true) {
+		res.end(true);
+	} else {
+		res.end(false);
+	}
 
 	res.end('API under construction...')
 });

@@ -3,49 +3,44 @@
 // =============================================================================
 
 /* Dependencies */
-const express  = require('express')
+const express      = require('express');
+const mongoose     = require('mongoose');
+const sha256       = require('sha256');
 
 /* Creating ADMIN Router */
-const router   = express.Router();
+const router       = express.Router();
+
+/* Models */
+const Restaurant   = require('../models/restaurant')
 
 // =============================================================================
 /* ~ POSTS Requests ~ */
 
 router.post('/login', (req, res) => {
 
-	var login   = req.body.login;
-	var passwd  = req.body.passwd;
-
-	console.log(login);
-	console.log(passwd);
-
-	if ( login   ===  process.env.ADMIN_LOGIN  &&
-		 passwd  ===  process.env.ADMIN_PWD     )
+	if ( req.body.Login   ==  process.env.ADMIN_LOGIN  &&
+		 req.body.Passwd  ==  process.env.ADMIN_PWD     )
 	{
-		res.end(true);
+		console.log('true')
+		res.json({ response: 'true' });
 	} else {
-		res.end(false);
+		console.log('false')
+		res.json({ response: 'false' });
 	}
 });
 
 router.post('/add', (req, res) => {
 
-	var name    = req.body.Name;
-	var email   = req.body.Email;
-	var passwd  = req.body.Passwd;
+	const newRestaurant = new Restaurant({
+		_id: new mongoose.Types.ObjectId(),
+		Name: req.body.Name,
+		Email: req.body.Email,
+		Passwd: sha256(req.body.Passwd)
+	});
 
-	console.log(name);
-	console.log(email);
-	console.log(passwd);
-
-	Restaurant.addRestaurant(name, email, passwd, (err, result) => {
-
-		if (err) {
-			console.log('Adding Operation Failed');
-		} else {
-			console.log('Adding Operation Succesful');
-			console.log(result);
-		}
+	newRestaurant.save()
+	.then(result => {
+		console.log(result);
 	});
 });
 
@@ -110,8 +105,12 @@ router.post('/update/:field', (req, res) => {
 			fieldToUpdate = req.body.Service;
 			break;
 
-		case 'Media':
-			fieldToUpdate = req.body.Media;
+		case 'Photo':
+			fieldToUpdate = req.body.Photo;
+			break;
+
+		case 'Video':
+			fieldToUpdate = req.body.Video;
 			break;
 
 		default:
