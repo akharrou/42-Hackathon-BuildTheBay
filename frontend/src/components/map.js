@@ -29,7 +29,6 @@ export class MapContainer extends React.Component {
 		this.onMouseoverMarker = this.onMouseoverMarker.bind(this);
 		this.handleShow = this.handleShow.bind(this);
 		this.handleClose = this.handleClose.bind(this);
-		this.handleShow();
 	}
 
 	restaurantModal() {
@@ -147,6 +146,7 @@ this.state.galleyno = this.state.galleyno + num;
 					google={this.props.google}
 					onClick={this.onMapClicked}
 					zoom={16}
+<<<<<<< HEAD
 					initialCenter={{ lat: this.props.lat, lng: this.props.lng}}>
 					{this.props.restaurants.filtered.map(
 						restaurant => (
@@ -158,7 +158,7 @@ this.state.galleyno = this.state.galleyno + num;
 									url: this.icon.url
 								}} />
 					))}
-					<InfoWindow onClick={this.handleShow}
+					<InfoWindow onClick={this.onMarkerClick}
 						marker={this.state.activeMarker}
 						visible={this.state.showingInfoWindow}>
 							<div>

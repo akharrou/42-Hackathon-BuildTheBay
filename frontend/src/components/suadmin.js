@@ -10,12 +10,13 @@ class Suadmin extends React.Component {
         }
 		this.change_page = this.change_page.bind(this);
     }
-    
+
 	change_page = (page) => {
         this.setState({
             view: page
 		})
-	}
+    }
+
     render() {
         return (
             <>

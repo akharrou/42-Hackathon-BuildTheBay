@@ -3,116 +3,102 @@
 // =============================================================================
 
 /* Dependencies */
-const express  = require('express')
+const express      = require('express');
+const mongoose     = require('mongoose');
+const sha256       = require('sha256');
 
 /* Creating ADMIN Router */
-const router   = express.Router();
+const router       = express.Router();
+
+/* Models */
+const Restaurant   = require('../models/restaurant')
 
 // =============================================================================
 /* ~ POSTS Requests ~ */
 
 router.post('/login', (req, res) => {
 
-	var login   = req.body.login;
-	var passwd  = req.body.passwd;
-
-	console.log(login);
-	console.log(passwd);
-
-	if ( login   ===  process.env.ADMIN_LOGIN  &&
-		 passwd  ===  process.env.ADMIN_PWD     )
+	if ( req.body.Login   ==  process.env.ADMIN_LOGIN  &&
+		 req.body.Passwd  ==  process.env.ADMIN_PWD     )
 	{
-		res.end(true);
+
+		/* Case: User Authentic */
+		res.json({ response: 'true' });
+
 	} else {
-		res.end(false);
+
+		/* Case: User Not Authentic */
+		res.json({ response: 'false' });
 	}
 });
 
 router.post('/add', (req, res) => {
 
-	// Name
-	// Address
-	// Phone
-	// Description
-	// Website
-	// Cater
-	// Ratings
-	// Hours
-	// Category
-	// Service
-	// Distance
-	// Lat
-	// Lng
+	var restaurantEmail = req.body.Email;
 
-	var login   = req.body.login;
-	var passwd  = req.body.passwd;
+	Restaurant.getRestaurantByEmail(restaurantEmail, (err, result) => {
 
-	console.log(login);
-	console.log(passwd);
+		/* Case: Error (1) */
+		if (err) {
+			res.json({ response: 'Error: Add Operation Failed (1)' });
+		}
 
-	res.end('API under construction...');
+		/* Case: User Already Exists */
+		else if (result != undefined) {
+			res.json({ response: 'User already exists' });
+		}
+
+		/* Case: Possible to Create User */
+		else {
+			const newRestaurant = new Restaurant({
+				_id: new mongoose.Types.ObjectId(),
+				Name: req.body.Name,
+				Email: req.body.Email,
+				Passwd: sha256(req.body.Passwd)
+			});
+
+			try {
+				newRestaurant.save()
+				.then(result => {
+					console.log(result);
+				});
+			}
+
+			/* Case: Error (2) : Adding User */
+			catch (err) {
+				res.json({ response: 'Error: Add Operation Failed (2)' });
+			}
+
+			/* Case: Successful Add Opteration */
+			res.json({ response : 'Add Succesful' })
+		}
+	});
 });
 
 router.post('/delete', (req, res) => {
 
-/* Delete Restaurant Entry */
+	Restaurant.removeRestaurant(req.body.Name, (err, result) => {
 
-	console.log(req.params.id);
+		/* Case: Error */
+		if (err) {
+			res.json({ response: 'Error: Delete Operation Failed (1)' });
+		}
 
-	res.end('API under construction...');
+		/* Case: User Doesn't Exist */
+		else if (result.deletedCount == 0) {
+			res.json({ response: 'User does not exist' });
+		}
+
+		/* Case: Successful Delete Opteration */
+		else {
+			res.json({ response: 'Delete Successful' });
+		}
+	});
 });
 
 router.post('/update/:field', (req, res) => {
 
-	console.log(req.params.field);
-
-	switch (req.params.field) {
-
-		case 'Name':
-			console.log(req.body.Name);
-			/* update name */
-			break;
-
-		case 'Address':
-			console.log(req.body.Address);
-			/* update address */
-			break;
-
-		case 'Website':
-			console.log(req.body.Website);
-			/* update website */
-			break;
-
-		case 'Description':
-			console.log(req.body.Description);
-			/* update description */
-			break;
-
-		case 'Hours':
-			console.log(req.body.Hours);
-			/* update hours */
-			break;
-
-		case 'Phone':
-			console.log(req.body.Phone);
-			/* update phone */
-			break;
-
-		case 'Photos':
-			console.log(req.body.Photos);
-			/* update photos */
-			break;
-
-		case 'Cater':
-			console.log(req.body.Cater);
-			/* update cater */
-			break;
-
-		case 'Service':
-			console.log(req.body.Service);
-			/* update service */
-			break;
-	}
+	console.log(`${req.params.field}`);
 
 	res.end('API under construction...')
 });

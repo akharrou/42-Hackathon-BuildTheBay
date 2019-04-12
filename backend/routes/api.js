@@ -3,13 +3,14 @@
 // =============================================================================
 
 /* Dependencies */
-const express      = require('express')
+const express      = require('express');
+const sha256       = require('sha256');
 
 /* Creating API Router */
 const router       = express.Router();
 
 /* Models */
-const Restaurant   = require('../models/restaurant')
+const Restaurant   = require('../models/restaurant');
 
 // =============================================================================
 /* ~ GET Requests ~ */
@@ -90,67 +91,40 @@ router.get('/categories', (req, res) => {
 // =============================================================================
 /* ~ POST Requests ~ */
 
-router.post('/authenticate', (req, res) => {
+router.post('/login', (req, res) => {
 
-	var login   = req.body.login;
-	var passwd  = req.body.passwd;
+	Restaurant.getRestaurantByEmail(req.body.Email, (err, result) => {
 
-	console.log(login);
-	console.log(passwd);
+		/* Case: Error (1) */
+		if (err) {
+			res.json({ response: 'Error: Authentication Operation Failed (1)' });
+		}
 
+		/* Case: User Doesn't Exist */
+		else if (result == undefined) {
+			res.json({ response: 'false' });
+		}
 
+		/* Case: User Exists */
+		else {
 
-	// if (auth(login, passwd) == true) {
-	// 	res.end(true);
-	// } else {
-	// 	res.end(false);
-	// }
+			if (req.body.Email == result.Email && sha256(req.body.Passwd) == result.Passwd) {
 
-	res.end('API under construction...')
+				/* Case: Authentic User */
+				res.json({ response : 'true' })
+
+			} else {
+
+				/* Case: Not Authentic User */
+				res.json({ response : 'false' })
+			}
+		}
+	});
 });
 
 router.post('/update/:field', (req, res) => {
 
 	console.log(req.params.field);
-
-	switch (req.params.field) {
-
-		case 'name':
-			/* update name */
-			break;
-
-		case 'address':
-			/* update address */
-			break;
-
-		case 'website':
-			/* update website */
-			break;
-
-		case 'description':
-			/* update description */
-			break;
-
-		case 'hours':
-			/* update hours */
-			break;
-
-		case 'phone':
-			/* update phone */
-			break;
-
-		case 'photos':
-			/* update photos */
-			break;
-
-		case 'cater':
-			/* update cater */
-			break;
-
-		case 'service':
-			/* update service */
-			break;
-	}
 
 	res.end('API under construction...')
 });
