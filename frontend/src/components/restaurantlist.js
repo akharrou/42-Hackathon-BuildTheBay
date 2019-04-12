@@ -17,18 +17,6 @@ class RestaurantList extends React.Component {
 					link: "http://cdn.cnn.com/cnnnext/dam/assets/170109140619-seafood-mousse-tease-super-tease.jpg",
 					type: "Photo"
 				},
-				obj2 = {
-					link: "https://www.youtube.com/embed/4bhKFemU6ns",
-					type: "Video"
-				},
-				obj3 = {
-					link: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/12/19/18/sush0istock-gkrphoto.jpg",
-					type: "Photo"
-				},
-				obj4 = {
-					link: "https://www.youtube.com/embed/v3QFMHy8-rA",
-					type: "Video"
-				}
 			],
 		};
 	}

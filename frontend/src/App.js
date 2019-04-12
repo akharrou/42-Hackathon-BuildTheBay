@@ -205,7 +205,7 @@ class App extends Component {
 	return (
 	<div className="App">
   <BrowserRouter>
-		{this.state.restaurants.loaded && <Route path="/" render={(props) =>
+		{this.state.restaurants.loaded && <Route path="/home" render={(props) =>
 			<LandingPage
 				coords				={this.state.coords}
 				user					={this.state.user}
