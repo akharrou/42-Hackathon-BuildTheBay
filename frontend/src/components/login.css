@@ -99,6 +99,9 @@ h1 {
     background-color: #1d2c3f !important;
     color: #fff;
     font-size: 1.3em;
+    position: absolute;
+    right: 190px;
+    bottom: 50px;
     border-radius: 5px;
     border: none;
 }
