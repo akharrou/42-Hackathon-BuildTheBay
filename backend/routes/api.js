@@ -51,7 +51,7 @@ router.get('/restaurant/name=:name', (req, res) => {
 	Restaurant.getRestaurantByName(restaurantName, (err, result) => {
 
 		if (err || result == undefined) {
-			res.end('Error Not Found');
+			res.end('Error: Not Found');
 			return ;
 		}
 		res.json({ restaurant: result });
@@ -124,22 +124,16 @@ router.post('/login', (req, res) => {
 
 router.post('/update/:email/:field', (req, res) => {
 
-	console.log(`/api/update/:${req.params.email}/:${req.params.field}`);
 
 	Restaurant.updateRestaurant(req, (err, result) => {
 
-		console.log('hey')
-
 		/* Case: Error (1) */
 		if (err) {
-			console.log(err)
 			res.json({ response: 'Error: Update Operation Failed (1)' });
 		}
 
 		/* Case: Update Successful */
 		else {
-			console.log(result);
-			console.log('Update Operation Successful');
 			res.json({ response: 'Update Operation Successful' });
 		}
 	});
