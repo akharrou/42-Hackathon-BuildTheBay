@@ -58,9 +58,7 @@ module.exports.getRestaurantByEmail = (email, callback) => {
 module.exports.getCategories = (callback, limit) => {
 	Restaurant.find({}, { Category: 1, _id: 0 }, callback).limit(limit);
 };
-// { Name: "Kevin's Restaurant",
-//   Email: 'kevindevin.bites@gmail.com',
-//   Passwd: 'kevindevin' }
+
 
 
 // =============================================================================

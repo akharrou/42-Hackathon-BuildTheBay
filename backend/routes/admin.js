@@ -21,26 +21,46 @@ router.post('/login', (req, res) => {
 	if ( req.body.Login   ==  process.env.ADMIN_LOGIN  &&
 		 req.body.Passwd  ==  process.env.ADMIN_PWD     )
 	{
-		console.log('true')
 		res.json({ response: 'true' });
 	} else {
-		console.log('false')
 		res.json({ response: 'false' });
 	}
 });
 
 router.post('/add', (req, res) => {
 
-	const newRestaurant = new Restaurant({
-		_id: new mongoose.Types.ObjectId(),
-		Name: req.body.Name,
-		Email: req.body.Email,
-		Passwd: sha256(req.body.Passwd)
-	});
+	var restaurantEmail = req.body.Email;
 
-	newRestaurant.save()
-	.then(result => {
-		console.log(result);
+	Restaurant.getRestaurantByEmail(restaurantEmail, (err, result) => {
+
+		/* Case: Error */
+		if (err) {
+			res.json({ response: 'Error: Add Operation Failed (1)' });
+		}
+
+		/* Case: User Already Exists */
+		else if (result != undefined) {
+			res.json({ response: 'User already exists' });
+		}
+
+		/* Case: Possible to Create User */
+		else {
+			const newRestaurant = new Restaurant({
+				_id: new mongoose.Types.ObjectId(),
+				Name: req.body.Name,
+				Email: req.body.Email,
+				Passwd: sha256(req.body.Passwd)
+			});
+
+			try {
+				newRestaurant.save()
+				.then(result => {
+					console.log(result);
+				});
+			} catch (err) {
+				res.json({ response: 'Error: Add Operation Failed (2)' });
+			}
+		}
 	});
 });
 
@@ -51,10 +71,10 @@ router.post('/delete', (req, res) => {
 	Restaurant.removeRestaurant(req.body.Name, (err) => {
 
 		if (err) {
-			console.log('Deletion Operation Failed');
+			console.log('Error: Delete Operation Failed (1)');
 			res.end('Deletion Operation Failed');
 		} else {
-			console.log('Deletion Operation Successful');
+			console.log('Delete Operation Successful');
 		}
 	});
 });

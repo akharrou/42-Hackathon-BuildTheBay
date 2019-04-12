@@ -90,7 +90,7 @@ router.get('/categories', (req, res) => {
 // =============================================================================
 /* ~ POST Requests ~ */
 
-router.post('/authenticate', (req, res) => {
+router.post('/login', (req, res) => {
 
 	var login   = req.body.login;
 	var passwd  = req.body.passwd;
