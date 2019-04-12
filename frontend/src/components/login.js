@@ -30,9 +30,9 @@ class Login extends React.Component {
         return (
         <div className="logbody">
               <p className="homeBtn">
-					<a href={"./home"}><img alt="" src={require('../HomeIcon.png')}/></a>
+					<a href={"./"}><img alt="" src={require('../HomeIcon.png')}/></a>
                     <br></br>
-					<a id="txt" href={"./home"}>Home</a>
+					<a id="txt" href={"./"}>Home</a>
 			    </p>
             <img className="bg" src={require('../loginbg.png')} alt=""/>
             <div className="sidenav">
