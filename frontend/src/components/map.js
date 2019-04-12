@@ -4,25 +4,20 @@ import "./map.css";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import "./restaurant.css";
+import "./mediaIcons.css";
 
 export class MapContainer extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-		props: {},
+			props: {},
 		showingInfoWindow: false,
 		activeMarker: {},
 		selectedPlace: {},
 		jkcool: false,
 		show: false,
 		galleyno: 0,
-		galley: [true, false, false],
-		galleyload: [
-			"https://www.youtube.com/embed/_4H-E7xZwyU",
-			"https://media-cdn.tripadvisor.com/media/photo-s/0f/1a/cc/43/sushi-misto.jpg",
-			"https://assets3.thrillist.com/v1/image/1559020/size/tmg-slideshow_l.jpg",
-		]
 	};
 		this.onMarkerClick = this.onMarkerClick.bind(this);
 		this.onMapClicked = this.onMapClicked.bind(this);
@@ -38,9 +33,9 @@ export class MapContainer extends React.Component {
 			<Modal className="restaurantPopup" show={this.state.show} onHide={this.handleClose}>
 				<Modal.Header className="modalHeader">{props.name}</Modal.Header>
 				<div className="restaurantGallery">
-					<span className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</span>
-					<span className="next" onClick={() => this.plusSlides(1)}>&#10095;</span>
-					{this.slideshow()}
+					<span className="prev" onClick={() => this.plusSlides(-1, props)}>&#10094;</span>
+					<span className="next" onClick={() => this.plusSlides(1, props)}>&#10095;</span>
+					{this.slideshow(props)}
 				</div>
 				<Modal.Body>
 					<p className="restaurantModalInfo">Type: {props.category} </p>
@@ -63,24 +58,27 @@ export class MapContainer extends React.Component {
 		this.setState({ show: true });
 	}
 
-	slideshow() {
-		if (this.state.galleyno === 0)
+	slideshow(props) {
+		if (!props.gallery || props.gallery[0] === undefined)
+				return (<img alt="" className="restPict" src="https://twolovesstudio.com/wp-content/uploads/2017/05/99-Best-Food-Photography-Tips-5-1.jpg"></img>);
+
+		if (props.gallery[this.state.galleyno].type === "Video")
 		{
 			return (
-				<iframe title="frame" className="restVideo" src={this.state.galleyload[this.state.galleyno]}></iframe>
+				<iframe title="frame" className="restVideo" src={props.gallery[this.state.galleyno].link}></iframe>
 			);
 		}
 		else
 			return (
-				<img alt="" className="restPict" src={this.state.galleyload[this.state.galleyno]}></img>
+				<img alt="" className="restPict" src={props.gallery[this.state.galleyno].link}></img>
 			);
 	}
 
-	plusSlides(num) {
-this.state.galleyno = this.state.galleyno + num;
+	plusSlides(num, props) {
+		this.state.galleyno = this.state.galleyno + num;
 		if (this.state.galleyno < 0)
-			this.setState({galleyno: this.state.galleyload.length - 1});
-		else if (this.state.galleyno >= this.state.galleyload.length)
+			this.setState({galleyno: props.gallery.length - 1});
+		else if (this.state.galleyno >= props.gallery.length)
 			this.setState({galleyno: 0});
 		else
 			this.setState({galleyno: this.state.galleyno});
@@ -94,7 +92,7 @@ this.state.galleyno = this.state.galleyno + num;
 			activeMarker: null
 		  });
 		}
-		this.setState({props: {name: props.name, category: props.category}});
+		this.setState({props: {name: props.name, category: props.category, gallery: props.gallery}});
 		this.handleShow();
 	}
 
@@ -139,6 +137,13 @@ this.state.galleyno = this.state.galleyno + num;
 		}, 1000);
 	}
 
+	get_link(restaurant) {
+		if (restaurant.Media[0] === undefined)
+			return ("https://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.616.462.suffix/1382541357316.jpeg");
+		else
+			return (restaurant.Media[0].link);
+	}
+
 	render() {
 		return (
 			<>
@@ -150,10 +155,11 @@ this.state.galleyno = this.state.galleyno + num;
 					initialCenter={{ lat: this.props.lat, lng: this.props.lng}}>
 					{this.props.restaurants.filtered.map((restaurant) => (
 							<Marker onClick={this.onMarkerClick} onMouseover={this.onMouseoverMarker} onMouseout={this.onMouseoutEvent}
-								title={restaurant.Name}
 								name={restaurant.Name}
 								category={restaurant.Category}
 								position={{lat: restaurant.lat, lng: restaurant.lng}}
+								gallery={restaurant.Media}
+								mainPhoto={this.get_link(restaurant)}
 								icon={{
 									url: this.icon.url
 								}} />
