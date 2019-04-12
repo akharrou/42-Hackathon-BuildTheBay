@@ -24,7 +24,7 @@ router.get('/all', (req, res) => {
 			return ;
 		}
 		// console.log(restaurants);
-		res.json(results);
+		res.json(new Object(results));
 	});
 });
 
@@ -40,7 +40,7 @@ router.get('/restaurant/_id=:_id', (req, res) => {
 			return ;
 		}
 		// console.log(result);
-		res.json(result);
+		res.json(new Object(result));
 	});
 });
 
@@ -56,7 +56,7 @@ router.get('/restaurant/name=:name', (req, res) => {
 			return ;
 		}
 		// console.log(result);
-		res.json(result);
+		res.json(new Object(result));
 	});
 });
 
@@ -87,7 +87,7 @@ router.get('/categories', (req, res) => {
 				categories.push(results[i]['Category']);
 		}
 		// console.log(categories);
-		res.json(categories);
+		res.json(new Object(categories));
 	});
 });
 
@@ -101,6 +101,8 @@ router.post('/authenticate', (req, res) => {
 
 	console.log(login);
 	console.log(passwd);
+
+
 
 	// if (auth(login, passwd) == true) {
 	// 	res.end(true);

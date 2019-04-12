@@ -9,14 +9,6 @@ const express  = require('express')
 const router   = express.Router();
 
 // =============================================================================
-/* ~ GET Requests ~ */
-
-router.get('/login', (req, res) => {
-
-	res.end('API under construction...');
-});
-
-// =============================================================================
 /* ~ POSTS Requests ~ */
 
 router.post('/login', (req, res) => {
