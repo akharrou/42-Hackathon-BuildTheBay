@@ -206,11 +206,11 @@ class App extends Component {
   <BrowserRouter>
 		{this.state.restaurants.loaded && <Route path="/home" render={(props) => 
 			<LandingPage 
-				coords			={this.state.coords} 
-				user			={this.state.user} 
+				coords				={this.state.coords} 
+				user					={this.state.user} 
 				get_coords		={this.get_coords} 
 				set_category	={this.set_category} 
-				category		={this.state.category} 
+				category			={this.state.category} 
 				restaurants		={this.state.restaurants}
 				handle_search	={this.handle_search}
 			/>} 

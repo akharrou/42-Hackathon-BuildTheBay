@@ -1,35 +1,32 @@
 .fa {
-  padding: 2px;
-  font-size: 10px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 5px;
-  border-radius: 30%;
+	padding: 2px;
+	font-size: 10px;
+	text-align: center;
+	text-decoration: none;
+	margin: 5px 5px;
+	border-radius: 30%;
 }
 
 .fa-facebook {
-    border: 1px;
-    border-style: solid;
-    border-color: #293e5a;
-    width: 20px;
-    background: #3B5998;
-    color: white;
+	border: 1px;
+	border-style: solid;
+	border-color: #293e5a;
+	width: 20px;
+	background: #3B5998;
+	color: white;
 }
 
 .fa-twitter {
-    border: 1px;
-    border-style: solid;
-    border-color: #293e5a;
-  background: #55ACEE;
-  color: white;
-}
+	background: #55ACEE;
+	color: white;
+  }
 
 .fa-instagram {
     border: 1px;
     border-style: solid;
     border-color: #293e5a;
-  background: #125688;
-  color: white;
+	background: #125688;
+	color: white;
 }
 
 .fa-pinterest {
@@ -53,22 +50,22 @@
     border: 1px;
     border-style: solid;
     border-color: #293e5a;
-  background: #2c4762;
-  color: white;
+	background: #2c4762;
+	color: white;
 }
 
 .fa-flickr {
     border: 1px;
     border-style: solid;
     border-color: #293e5a;
-  background: #f40083;
-  color: white;
+	background: #f40083;
+	color: white;
 }
 
 .fa-reddit {
     border: 1px;
     border-style: solid;
     border-color: #293e5a;
-  background: #ff5700;
-  color: white;
+	background: #ff5700;
+	color: white;
 }
