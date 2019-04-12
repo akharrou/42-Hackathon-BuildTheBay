@@ -15,12 +15,6 @@ class RestaurantItem extends React.Component {
 		this.state = {
 			show: false,
 			galleyno: 0,
-			galley: [true, false, false],
-			galleyload: [
-				"https://www.youtube.com/embed/bEI17WyiREc",
-				"https://media-cdn.tripadvisor.com/media/photo-s/0f/1a/cc/43/sushi-misto.jpg",
-				"https://assets3.thrillist.com/v1/image/1559020/size/tmg-slideshow_l.jpg",
-			]
 		};
 	}
 
@@ -56,23 +50,24 @@ class RestaurantItem extends React.Component {
 	}
 
 	slideshow() {
-		if (this.state.galleyno === 0)
+		console.log(this.props.gallery[this.state.galleyno].type);
+		if (this.props.gallery[this.state.galleyno].type == "Video")
 		{
 			return (
-				<iframe title="frame" className="restVideo" src={this.state.galleyload[this.state.galleyno]}></iframe>
+				<iframe title="frame" className="restVideo" src={this.props.gallery[this.state.galleyno].link}></iframe>
 			);
 		}
 		else
 			return (
-				<img alt="" className="restPict" src={this.state.galleyload[this.state.galleyno]}></img>
+				<img alt="" className="restPict" src={this.props.gallery[this.state.galleyno].link}></img>
 			);
 	}
 
 	plusSlides(num) {
 		this.state.galleyno = this.state.galleyno + num;
 		if (this.state.galleyno < 0)
-			this.setState({galleyno: this.state.galleyload.length - 1});
-		else if (this.state.galleyno >= this.state.galleyload.length)
+			this.setState({galleyno: this.props.gallery.length - 1});
+		else if (this.state.galleyno >= this.props.gallery.length)
 			this.setState({galleyno: 0});
 		else
 			this.setState({galleyno: this.state.galleyno});

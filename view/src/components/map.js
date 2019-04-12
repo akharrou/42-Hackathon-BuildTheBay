@@ -26,7 +26,6 @@ export class MapContainer extends React.Component {
 		this.onMapClicked = this.onMapClicked.bind(this);
 		this.handleShow = this.handleShow.bind(this);
 		this.handleClose = this.handleClose.bind(this);
-		this.handleShow();
 	}
 
 	restaurantModal() {
@@ -112,56 +111,37 @@ this.state.galleyno = this.state.galleyno + num;
 					google={this.props.google}
 					onClick={this.onMapClicked}
 					zoom={16}
-					initialCenter={{ lat: this.props.lat, lng: this.props.lng}}>
-					{this.props.restaurants.filtered.map(
-						restaurant => (
-							<Marker onClick={this.onMarkerClick}
-								title={restaurant.Name}
-								name={restaurant.Name}
-								position={{lat: restaurant.lat, lng: restaurant.lng}}
-								icon={{
-									url: this.icon.url
-								}} />
-					))}
-					<Marker onClick={this.onMarkerClick}
-						title={'The marker`s title will appear as a tooltip.'}
-						name={'SOMA'}
-						position={{lat: 37.778519, lng: -122.405640}}
-						icon={{
-							url: this.icon.url,
-							anchor: this.icon.anchor,
-							scaledSize: this.icon.scaledSize
-						}}
-					/>
-					<Marker onClick={this.onMarkerClick}
-						title={'The marker`s title will appear as a tooltip.'}
-						name={'Dolores park'}
-						position={{lat: 37.759703, lng: -122.428093}}
-						icon={{
-							url: this.icon.url,
-							anchor: this.icon.anchor,
-							scaledSize: this.icon.scaledSize
-						}}
-					/>
-					<Marker onClick={this.onMarkerClick}
-						title={'The marker`s title will appear as a tooltip.'}
-						name={'Your position'}
-						position={{lat: 37.762391, lng: -122.439192}}
-						icon={{
-							url: this.icon.url,
-							anchor: this.icon.anchor,
-							scaledSize: this.icon.scaledSize
-						}}
-					/>
-					<InfoWindow onClick={this.handleShow}
-						marker={this.state.activeMarker}
-						visible={this.state.showingInfoWindow}>
-							<div>
-								<p>{this.state.selectedPlace.name}</p>
-								<p>{this.state.selectedPlace.info}</p>
-								<button>More Info</button>
-							</div>
-					</InfoWindow>
+					initialCenter={{ lat: this.props.lat, lng: this.props.lng}}
+				>
+
+
+				{this.props.restaurants.filtered.map(
+					restaurant => (
+						<Marker 
+							onClick={this.onMarkerClick}
+							title={restaurant.Name}
+							name={restaurant.Name}
+							position={{lat: restaurant.lat, lng: restaurant.lng}}
+							icon={{
+								url: this.icon.url
+							}} 
+						/>
+					)
+				)}
+
+
+				<InfoWindow
+					className="InfoWindow"
+					marker={this.state.activeMarker}
+					visible={this.state.showingInfoWindow}>
+						<div>
+							<p>{this.state.selectedPlace.name}</p>
+							<p>{this.state.selectedPlace.info}</p>
+							<button onClick={this.props.showHand}>More Info</button>
+						</div>
+				</InfoWindow>
+
+
 				</Map>
 
 			</div>

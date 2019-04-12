@@ -6,7 +6,30 @@ class RestaurantList extends React.Component {
 	constructor (props) {
 		super(props);
 
+		var obj;
+		var obj2;
+		var obj3;
+		var obj4;
+
 		this.state = {
+			Media: [
+				obj = {
+					link: "http://cdn.cnn.com/cnnnext/dam/assets/170109140619-seafood-mousse-tease-super-tease.jpg",
+					type: "Photo"
+				},
+				obj2 = {
+					link: "https://www.youtube.com/embed/4bhKFemU6ns",
+					type: "Video"
+				},
+				obj3 = {
+					link: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/12/19/18/sush0istock-gkrphoto.jpg",
+					type: "Photo"
+				},
+				obj4 = {
+					link: "https://www.youtube.com/embed/v3QFMHy8-rA",
+					type: "Video"
+				}
+			],
 		};
 	}
 
@@ -15,10 +38,12 @@ class RestaurantList extends React.Component {
 			<div className="container-restaurants">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 			{this.props.restaurants.filtered.map(restaurant => (
-				<RestaurantItem name={restaurant.Name} 
+				<RestaurantItem 
+					name={restaurant.Name} 
 					category={restaurant.Category}
 					distance={restaurant.distance}
 					describ={restaurant.Description}
+					gallery={this.state.Media}
 					price="$"
 					mainPhoto="https://media-cdn.tripadvisor.com/media/photo-s/0f/1a/cc/43/sushi-misto.jpg"/>
 				))}
