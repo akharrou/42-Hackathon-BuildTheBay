@@ -98,9 +98,24 @@ router.post('/delete', (req, res) => {
 
 router.post('/update/:field', (req, res) => {
 
-	console.log(`${req.params.field}`);
+	console.log('/api/update/:field')
 
-	res.end('API under construction...')
+	var updateOptions = { upsert: false, multi: false };
+
+	Restaurant.updateRestaurant(req, updateOptions, (err, result) => {
+
+		/* Case: Error (1) */
+		if (err) {
+			res.json({ response: 'Error: Update Operation Failed (1)' });
+		}
+
+		/* Case: Update Successful */
+		else {
+			console.log(result);
+			console.log('Update Operation Successful');
+			res.json({ response: 'Update Operation Successful' });
+		}
+	});
 });
 
 // =============================================================================

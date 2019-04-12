@@ -85,12 +85,16 @@ module.exports.updateRestaurant = (req, options, callback) => {
 			fieldToUpdate = { Address: req.body.Address };
 			break;
 
+		case 'Description':
+			fieldToUpdate = { Description: req.body.Description };
+			break;
+
 		case 'Website':
 			fieldToUpdate = { Website: req.body.Website };
 			break;
 
-		case 'Description':
-			fieldToUpdate = { Description: req.body.Description };
+		case 'Cater':
+			fieldToUpdate = { Cater: req.body.Cater };
 			break;
 
 		case 'Hours':
@@ -99,14 +103,6 @@ module.exports.updateRestaurant = (req, options, callback) => {
 
 		case 'Phone':
 			fieldToUpdate = { Phone: req.body.Phone };
-			break;
-
-		case 'Photos':
-			fieldToUpdate = { Photos: req.body.Photos };
-			break;
-
-		case 'Cater':
-			fieldToUpdate = { Cater: req.body.Cater };
 			break;
 
 		case 'Category':
@@ -118,11 +114,11 @@ module.exports.updateRestaurant = (req, options, callback) => {
 			break;
 
 		case 'Photo':
-			fieldToUpdate = { Photo: req.body.Photo };
+			fieldToUpdate = { Media: req.body.Photo };
 			break;
 
 		case 'Video':
-			fieldToUpdate = { Video: req.body.Video };
+			fieldToUpdate = { Media: req.body.Video };
 			break;
 
 		default:
@@ -133,7 +129,7 @@ module.exports.updateRestaurant = (req, options, callback) => {
 	console.log(query);
 	console.log(fieldToUpdate);
 
-	Restaurant.findOneAndUpdate(query, fieldToUpdate, options, callback);
+	// Restaurant.findOneAndUpdate(query, fieldToUpdate, options, callback);
 }
 
 // Delete Restaurant

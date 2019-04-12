@@ -102,7 +102,7 @@ router.post('/login', (req, res) => {
 
 		/* Case: User Doesn't Exist */
 		else if (result == undefined) {
-			res.json({ response: 'false' });
+				res.json({ response: 'false' });
 		}
 
 		/* Case: User Exists */
@@ -111,7 +111,7 @@ router.post('/login', (req, res) => {
 			if (req.body.Email == result.Email && sha256(req.body.Passwd) == result.Passwd) {
 
 				/* Case: Authentic User */
-				res.json({ response : 'true' })
+				res.json({ response : result })
 
 			} else {
 
@@ -124,9 +124,38 @@ router.post('/login', (req, res) => {
 
 router.post('/update/:field', (req, res) => {
 
-	console.log(req.params.field);
+	console.log('/api/update/:field')
 
-	res.end('API under construction...')
+	console.log(`Field : ${req.params.field}`);
+
+	console.log(`Name : ${req.body.Name}`);
+	console.log(`Address : ${req.body.Address}`);
+	console.log(`Website : ${req.body.Website}`);
+	console.log(`Description : ${req.body.Description}`);
+	console.log(`Hours : ${req.body.Hours}`);
+	console.log(`Phone : ${req.body.Phone}`);
+	console.log(`Cater : ${req.body.Cater}`);
+	console.log(`Category : ${req.body.Category}`);
+	console.log(`Service : ${req.body.Service}`);
+	console.log(`Photo : ${req.body.Photo}`);
+	console.log(`Video : ${req.body.Video}`);
+
+	// var updateOptions = { upsert: false, multi: false };
+
+	// Restaurant.updateRestaurant(req, updateOptions, (err, result) => {
+
+	// 	/* Case: Error (1) */
+	// 	if (err) {
+	// 		res.json({ response: 'Error: Update Operation Failed (1)' });
+	// 	}
+
+	// 	/* Case: Update Successful */
+	// 	else {
+	// 		console.log(result);
+	// 		console.log('Update Operation Successful');
+	// 		res.json({ response: 'Update Operation Successful' });
+	// 	}
+	// });
 });
 
 // =============================================================================
