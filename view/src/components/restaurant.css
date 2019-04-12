@@ -1,4 +1,5 @@
 .restaurant {
+	border-radius: 2px;
 	margin-top: 5px;
 	margin: 1% auto;
 	height: 150px;
@@ -18,45 +19,84 @@
 
 	position: relative;
 
+	border: 5px;
+	border-radius: 3px;
 	border-style: solid;
-	border-color: rgba(211, 186, 47, 0.26);
+	border-color: #1d2c3f;
+}
+
+.restaurant_image {
+	left: -1px;
+	top: -1px;
+	width: 115px;
+	height: 115px;
+
+	position: relative;
+
+	border-style: solid;
+	border-radius: 3px;
+	border-color: #4373b3;
+}
+
+.restaurantModalInfo {
+	text-align: left;
+	text-indent: 7px;
+	font-weight: bold;
+	position: relative;
+
+	border: 2px;
+	border-style: solid;
+	border-radius: 7px;
+	border-color: #3a5e8d;
+}
+
+.restaurantModalBody {
+	top: -20px;
+	padding: 40px;
+	position: relative;
 }
 
 .restaurantHeader {
+	text-align: left;
+	text-indent: 7px;
+	font-weight: bold;
 	position: relative;
 	left: 150px;
-	top: -130px;
+	top: -120px;
 
-	width: 70%;
+	width: 30%;
 
-
+	border: 3px;
 	border-style: solid;
-	border-color: rgba(4, 0, 255, 0.062);
+	border-radius: 7px;
+	border-color: #3a5e8d;
 }
 
 .restaurantInfo {
 	position: relative;
+	border-bottom: 2px solid;
 	left: 150px;
-	top: -140px;
+	top: -135px;
 
 	width: 70%;
+}
 
+.restaurantDesc {
+	position: relative;
+	text-align: left;
+	left: 150px;
+	top: -148px;
 
-	border-style: solid;
-	border-color: rgba(0, 255, 179, 0.26);
+	width: 70%;
 }
 
 .restaurantIcons {
 	position: relative;
-	left: 75%;
-	top: -145px;
+	left: 80%;
+	top: -170px;
 
 	width: 20%;
 	height: 25px;
-
-
-	border-style: solid;
-	border-color: rgba(140, 0, 255, 0.315);
 }
 
 .container-restaurants {
@@ -67,14 +107,14 @@
 	position: fixed;
 	margin: 3% auto;
 
-	color: #ffffff;
+	color: #000000;
 
 	top: 100px;
 	left: 8%;
 
 	background: #fafafa;
 
-	height: 70%;
+	height: 80%;
 	width: 80%;
 
 	padding: 10px;
@@ -91,6 +131,13 @@
     border: none;
 }
 
+.modalHeader {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: bold;
+	color: #293e5a;
+	font-size: 35px;
+}
+
 .restaurantGallery {
 	max-height: 800px;
 	max-width: 1200px;
@@ -99,19 +146,20 @@
 }
 
 .restVideo {
-	height: 90%;
+	top: 150px;
+	height: 100%;
 	width: 100%;
 }
 
 .restPict {
-	height: 90%;
+	height: 100%;
 	width: 100%;
 }
 
 .prev, .next {
 	border-radius: 5px;
 	position: absolute;
-	top: 50%;
+	top: 35%;
 	width: auto;
 	padding: 16px;
 	margin-top: -22px;

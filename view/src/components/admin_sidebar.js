@@ -6,7 +6,7 @@ const SideBar = (props) => {
         return (
             <div className="wrapper">
             <p className="homeBtn">
-					<a href={"./home"}><img src={require('../HomeIcon.png')}/></a>
+					<a href={"./home"}><img alt="" src={require('../HomeIcon.png')}/></a>
                     <br></br>
 					<a id="txt" href={"./home"}>Home</a>
 			    </p>

@@ -5,23 +5,14 @@ import "./map.css";
 export class MapContainer extends React.Component {
 	constructor() {
 		super();
-	//	this.state = {
-	//		updated: true
-	//	}
-	}
-
-	state = {
+		this.state = {
 		showingInfoWindow: false,
 		activeMarker: {},
-		selectedPlace: {},
+		selectedPlace: {}
 	};
-
-	componentWillReceiveProps() {
-		this.setState({
-			updated: !(this.state.updated)
-		});
+		this.onMarkerClick = this.onMarkerClick.bind(this);
+		this.onMapClicked = this.onMapClicked.bind(this);
 	}
-
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -39,12 +30,6 @@ export class MapContainer extends React.Component {
     }
   };
 
-
-	icon = {
-		url: "/path/to/custom_icon.png",
-		anchor: {},
-		scaledsize: {}
-	}
 	icon = {
 		url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
 	}
@@ -55,8 +40,18 @@ export class MapContainer extends React.Component {
 				<Map
 					google={this.props.google}
 					onClick={this.onMapClicked}
-					zoom={13}
+					zoom={16}
 					initialCenter={{ lat: this.props.lat, lng: this.props.lng}}>
+					{this.props.restaurants.filtered.map(
+						restaurant => (
+							<Marker onClick={this.onMarkerClick}
+								title={restaurant.Name}
+								name={restaurant.Name}
+								position={{lat: restaurant.lat, lng: restaurant.lng}}
+								icon={{
+									url: this.icon.url
+								}} />
+					))}
 					<Marker onClick={this.onMarkerClick}
 						title={'The marker`s title will appear as a tooltip.'}
 						name={'SOMA'}

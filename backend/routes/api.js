@@ -15,7 +15,7 @@ const Restaurant   = require('../models/restaurant')
 /* ~ GET Requests ~ */
 
 router.get('/all', (req, res) => {
-
+	let data = {};
 	/* Get All Info of All Restaurants */
 	Restaurant.getRestaurants((err, results) => {
 
@@ -24,8 +24,16 @@ router.get('/all', (req, res) => {
 			return ;
 		}
 
+<<<<<<< HEAD
 		// console.log(results);
 		res.json(results);
+=======
+		if (err)
+			throw err;
+		// console.log(restaurants);
+		data.restaurants = restaurants;
+		res.json(data);
+>>>>>>> c45c415ef052a0a4723d4e76bc74cbc04b8b6ed7
 	});
 });
 
@@ -53,6 +61,7 @@ router.get('/restaurant/name=:name', (req, res) => {
 	/* Get Info of Specified Restaurant (queried by Name if it exists) */
 	Restaurant.getRestaurantByName(restaurantName, (err, result) => {
 
+<<<<<<< HEAD
 		if (err || result == undefined) {
 			res.end('Error Not Found');
 			return ;
@@ -63,6 +72,10 @@ router.get('/restaurant/name=:name', (req, res) => {
 });
 
 router.get('/categories', (req, res) => {
+=======
+	var categories = [];
+	let data = {};
+>>>>>>> c45c415ef052a0a4723d4e76bc74cbc04b8b6ed7
 
 	/* Get All Categories */
 	Restaurant.getCategories((err, results) => {
@@ -89,7 +102,8 @@ router.get('/categories', (req, res) => {
 				categories.push(results[i]['Category']);
 		}
 		// console.log(categories);
-		res.json(categories);
+		data.categories = categories;
+		res.json(data);
 	});
 });
 
