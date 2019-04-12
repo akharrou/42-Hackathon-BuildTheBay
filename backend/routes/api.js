@@ -15,48 +15,60 @@ const Restaurant   = require('../models/restaurant')
 /* ~ GET Requests ~ */
 
 router.get('/all', (req, res) => {
-	let data = {};
-	/* Get All Info of All Restaurants */
-	Restaurant.getRestaurants((err, restaurants) => {
 
-		if (err)
-			throw err;
-		// console.log(restaurants);
-		data.restaurants = restaurants;
-		res.json(data);
+	/* Get All Info of All Restaurants */
+	Restaurant.getRestaurants((err, results) => {
+
+		if (err || results == undefined) {
+			res.end('Error None Found');
+			return ;
+		}
+		res.json({ restaurants: results });
 	});
 });
 
-router.get('/restaurant/:id', (req, res) => {
+router.get('/restaurant/_id=:_id', (req, res) => {
 
-	var restaurant_ID = req.params.id;
+	var restaurant_ID = req.params._id;
 
-	/* Get Info of Only the Specified Restaurant (if it exists) */
-	Restaurant.getRestaurants((err, results) => {
+	/* Get Info of Specified Restaurant (queried by ID if it exists) */
+	Restaurant.getRestaurantById(restaurant_ID, (err, result) => {
 
-		if (err)
-			throw err;
-		for (var i in results) {
-			if (results[i]['_id'] == restaurant_ID) {
-				// console.log(results[i]);
-				res.json(results[i]);
-				break;
-			}
+		if (err || result == undefined) {
+			res.end('Error Not Found');
+			return ;
 		}
-		res.json('Error Not Found');
+		res.json({ restaurant: result });
+	});
+});
+
+router.get('/restaurant/name=:name', (req, res) => {
+
+	var restaurantName = req.params.name;
+
+	/* Get Info of Specified Restaurant (queried by Name if it exists) */
+	Restaurant.getRestaurantByName(restaurantName, (err, result) => {
+
+		if (err || result == undefined) {
+			res.end('Error Not Found');
+			return ;
+		}
+		res.json({ restaurant: result });
 	});
 });
 
 router.get('/categories', (req, res) => {
 
-	var categories = [];
-	let data = {};
-
 	/* Get All Categories */
-	Restaurant.getRestaurants((err, results) => {
+	Restaurant.getCategories((err, results) => {
 
-		if (err)
-			throw err;
+		if (err || results == undefined) {
+			res.end('Error None Found');
+			return ;
+		}
+
+		var categories = [];
+
 		for (var i in results) {
 
 			j = 0;
@@ -71,9 +83,7 @@ router.get('/categories', (req, res) => {
 			if (exists == false)
 				categories.push(results[i]['Category']);
 		}
-		// console.log(categories);
-		data.categories = categories;
-		res.json(data);
+		res.json({ categories: categories });
 	});
 });
 
@@ -87,6 +97,8 @@ router.post('/authenticate', (req, res) => {
 
 	console.log(login);
 	console.log(passwd);
+
+
 
 	// if (auth(login, passwd) == true) {
 	// 	res.end(true);
