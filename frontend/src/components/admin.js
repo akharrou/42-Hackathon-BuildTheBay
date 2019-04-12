@@ -6,18 +6,16 @@ class Admin extends React.Component {
     constructor() {
         super();
         this.state = {
-            view: 'edit',
             user: null,
             logged_in: false
         }
-		this.change_page = this.change_page.bind(this);
+		this.logout = this.logout.bind(this);
     }
 
-	change_page = (page) => {
-		this.setState({
-			view: page
-		})
-    }
+	logout = () => {
+		localStorage.removeItem('user');
+		window.location = 'http://localhost:3000/login';
+	}
 
     componentDidMount() {
 		if (localStorage.hasOwnProperty('user')) {
@@ -33,8 +31,8 @@ class Admin extends React.Component {
         return (
             // {this.state.logged_in &&
 			<>
-        	    <SideBar change_page={this.change_page}/>
 				{this.state.logged_in === true && <Adminpage user={this.state.user}/>}
+				{this.state.logged_in === true && <SideBar logout={this.logout}/>}
 			</>
         )
     }

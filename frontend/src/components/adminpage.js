@@ -14,16 +14,41 @@ class Adminpage extends React.Component {
 			'Hours': "",
 			'Service': "",
 			'Photo': "",
-			'Video': ""
+			'Video': "",
+			'user_data': null
 		}
 		this.update_field = this.update_field.bind(this);
 		this.media = this.media.bind(this);
+		this.set_user = this.set_user.bind(this);
 	}
 
 	store_field = (e, field) => {
         this.setState({
             [e.target.name]: e.target.value
         });
+	}
+	
+	set_user = () => {
+		fetch('http://localhost:8000/api/all')
+		.then(res => res.json())
+		.then(data => {
+			var restaurants = data.restaurants;
+			if (restaurants.filter(res => res.Email === this.state.user_data.Email).length > 0)
+			{
+				this.setState({
+					user_data: restaurants.filter(res => res.Email === this.state.user_data.Email)[0]
+				});
+			}
+//			else
+//			{
+//				this.setState({
+//					user_data: restaurants.filter(res => res.Name === this.state.user_data.Name)[0]
+//				});
+//			}
+		//	this.setState({
+		//		user_data: data.restaurants.filter(res => res.Email === this.state.user_data.Email)[0]
+		//	});
+		});
 	}
 
 	update_field = (field) => {
@@ -33,7 +58,6 @@ class Adminpage extends React.Component {
 			'Email': user_data.Email
 		}
 		let url = `http://localhost:8000/api/update/${user_data.Email}/${field}`
-		console.log(url);
 		fetch(url, {
 		    method: 'POST',
 			headers: {
@@ -47,7 +71,6 @@ class Adminpage extends React.Component {
 	media = (field) => {
 		let user_data = JSON.parse(this.props.user);
 		let url = `http://localhost:8000/api/update/${user_data.Email}/${field}`
-		console.log(url);
 		let obj = {
 			link: this.state[field],
 			type: field
@@ -60,6 +83,17 @@ class Adminpage extends React.Component {
   			},
     		body: JSON.stringify(obj)
 		});
+	}
+
+	componentDidMount() {
+		console.log(this.props);
+		let user = JSON.parse(this.props.user)
+		this.setState({
+			user_data: user
+		});
+		setTimeout(() => console.log(this.state.user_data), 1000);
+		setTimeout (() => this.set_user(), 1500);
+		setTimeout(() => console.log(this.state.user_data), 2000);
 	}
 
 	render(){
@@ -120,7 +154,6 @@ class Adminpage extends React.Component {
     				<input onChange={(e) => this.store_field(e)} placeholder="Full or Limited" type="text" name="Service" />
 					<button type="button" onClick={() => this.update_field('Service')} className="btn btn-success">Edit</button>
   				</label>
-				<button type="submit" onClick={() => this.update_field()} className="btn btn-secondary">Logout</button>
 			</form>
 		)
 	}
