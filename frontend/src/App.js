@@ -64,13 +64,17 @@ class App extends Component {
     		body: JSON.stringify(obj)
 		}).then((res) => res.json)
 			.then((data) => {
+				if (data == false)
+					return (false);
 				this.setState({
 					user: data
 				})
 			});
 		localStorage.setItem("user", JSON.stringify(this.state.user));
-		if (localStorage.hasOwnProperty('user'))
-			console.log("yup");
+		
+//		if (localStorage.hasOwnProperty('user'))
+//			console.log("yup");
+		window.location('http://localhost:3000/admin');
 	}
 
 	get_coords = () => {
