@@ -14,21 +14,23 @@ class Login extends React.Component {
         this.setState({
             login: e.target.value
         });
+        console.log(this.state.login);
     }
 
     pass_listen = (e) => {
         this.setState({
             pass: e.target.value
         });
+        console.log(this.state.pass);
 	}
 
     render() {
         return (
         <div className="logbody">
               <p className="homeBtn">
-					<a href={"./"}><img alt="" src={require('../HomeIcon.png')}/></a>
+					<a href={"./home"}><img alt="" src={require('../HomeIcon.png')}/></a>
                     <br></br>
-					<a id="txt" href={"./"}>Home</a>
+					<a id="txt" href={"./home"}>Home</a>
 			    </p>
             <img className="bg" src={require('../loginbg.png')} alt=""/>
             <div className="sidenav">
@@ -52,7 +54,8 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" onChange={this.pass_listen}/>
                             </div>
                         </div>
-                            <span onClick={this.props.login} className="btn btn-secondary">Login</span>
+                            <button type="submit" className="btn btn-black">Register</button>
+                            <button type="submit" className="btn btn-secondary">Login</button>
                         </form>
                     </div>
                 </div>

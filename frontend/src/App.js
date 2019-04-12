@@ -4,7 +4,6 @@ import Login from './components/login.js';
 import LandingPage from './components/main.js';
 import Admin from './components/admin.js'
 import Suadmin from './components/suadmin.js'
-import Sulogin from './components/SuperLogin.js'
 import { BrowserRouter, Route } from 'react-router-dom';
 import Geocode from "react-geocode";
 Geocode.setApiKey("AIzaSyBqKkPlvSSEelPGg4IPqL_2TWyEdYDQeL0");
@@ -33,7 +32,6 @@ class App extends Component {
 		this.get_restaurants = this.get_restaurants.bind(this);
 		this.get_sortedArray = this.get_sortedArray.bind(this);
 		this.handle_search = this.handle_search.bind(this);
-		this.login = this.login.bind(this);
   }
 
 	get_restaurants = () => {
@@ -48,34 +46,6 @@ class App extends Component {
 				}
 			});
 		});
-	}
-
-	login = () => {
-		let obj = {
-			login: this.state.login,
-			passwd: this.state.pass
-		}
-		let url = `http://localhost:8000/api/authenticate`;
-		fetch(url, {
-		    method: 'POST',
-			headers: {
-   				 'Accept': 'application/json',
-    			'Content-Type': 'application/json'
-  			},
-    		body: JSON.stringify(obj)
-		}).then((res) => res.json)
-			.then((data) => {
-				if (data == false)
-					return (false);
-				this.setState({
-					user: data
-				})
-			});
-		localStorage.setItem("user", JSON.stringify(this.state.user));
-		
-//		if (localStorage.hasOwnProperty('user'))
-//			console.log("yup");
-		window.location('http://localhost:3000/admin');
 	}
 
 	get_coords = () => {
@@ -235,7 +205,7 @@ class App extends Component {
 	return (
 	<div className="App">
   <BrowserRouter>
-		{this.state.restaurants.loaded && <Route exact path="/" render={(props) =>
+		{this.state.restaurants.loaded && <Route path="/" render={(props) =>
 			<LandingPage
 				coords				={this.state.coords}
 				user					={this.state.user}
@@ -246,8 +216,7 @@ class App extends Component {
 				handle_search	={this.handle_search}
 			/>}
 		/> }
-		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login login={this.login} />} />}
-		{this.state.restaurants.loaded && <Route path="/SuperLogin" render={(props) => <Sulogin />} />}
+		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
 		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
 		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} />}
     </BrowserRouter>

@@ -25,8 +25,8 @@ class Navibar extends React.Component {
 				<div className="iconBar">
 				<p className="wTit">Welcome to Newark, CA</p>
 					<p className="homeIcon">
-						<a href={"./"}><img src={require('../HomeIcon.png')} alt = "" /></a>
-						<a id="txtH" href={"./"}>Home</a>
+						<a href={"./home"}><img src={require('../HomeIcon.png')} alt = "" /></a>
+						<a id="txtH" href={"./home"}>Home</a>
 					</p>
 					<p className="logIcon">
 						<a href={"./login"}><img src={require('../loginicon.png')} alt="" /></a>
