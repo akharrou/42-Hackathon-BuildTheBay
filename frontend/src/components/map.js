@@ -146,7 +146,6 @@ this.state.galleyno = this.state.galleyno + num;
 					google={this.props.google}
 					onClick={this.onMapClicked}
 					zoom={16}
-<<<<<<< HEAD
 					initialCenter={{ lat: this.props.lat, lng: this.props.lng}}>
 					{this.props.restaurants.filtered.map(
 						restaurant => (
