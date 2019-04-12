@@ -27,7 +27,7 @@ class Adminpage extends React.Component {
 	}
 	render(){
 		return (
-			<form>
+			<form className="adminBody">
  			 	<label className="label-admin">
 				    Restaurant Name:
     				<input onChange={(e) => this.store_field(e)} type="text" name="name" />

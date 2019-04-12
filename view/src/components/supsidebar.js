@@ -12,8 +12,7 @@ const Supsidebar = (props) => {
 			    </p>
             <aside className="main_sidebar">
                 <ul>
-                    <li onClick={() => props.change_page('editUser')}>Edit Login Information</li>
-                    <li onClick={() => props.change_page('editStore')}>Edit Store Information</li>
+                    <li className="side-select-sup" onClick={() => props.change_page('editUser')}>Add/Delete User:</li>
                 </ul>
             </aside>
             

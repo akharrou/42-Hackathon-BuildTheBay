@@ -27,32 +27,23 @@ class Supedituser extends React.Component {
 	}
 	render(){
 		return (
+			<div className="supBody">
 			<form>
-                <label className="label-admin">
-				    Add/Modify USER:
-    				<input onChange={(e) => this.store_field(e)} type="text" name="name" />
-  				</label>
- 			 	<label className="label-admin">
+ 			 	<label className="label-adm-input">
 				    Name:
     				<input onChange={(e) => this.store_field(e)} type="text" name="name" />
-					<button type="button" onClick={() => this.update_field('name')} className="btn btn-success">Update</button>
   				</label>
- 			 	<label className="label-admin">
-				    Login: 
-    				<input onChange={(e) => this.store_field(e)} type="text" name="category" />
-					<button type="button" onClick={() => this.update_field('category')} className="btn btn-success">Update</button>
+ 			 	<label className="label-adm-input">
+				    E-mail:
+    				<input onChange={(e) => this.store_field(e)} type="text" name="website" />
   				</label>
  			 	<label className="label-admin">
 				    Password:
     				<input onChange={(e) => this.store_field(e)} type="text" name="address" />
-					<button type="button" onClick={() => this.update_field('address')} className="btn btn-success">Update</button>
-  				</label>
- 			 	<label className="label-admin">
-				    E-mail:
-    				<input onChange={(e) => this.store_field(e)} type="text" name="website" />
-					<button type="button" onClick={() => this.update_field('website')} className="btn btn-success">Update</button>
+					<button type="button" onClick={() => this.update_field('address')} className="btn btn-success">Commit</button>
   				</label>
 			</form>
+			</div>
 		)
 	}
 }

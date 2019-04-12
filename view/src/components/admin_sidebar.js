@@ -12,8 +12,7 @@ const SideBar = (props) => {
 			    </p>
             <aside className="main_sidebar">
                 <ul>
-                    <li onClick={() => props.change_page('edit')}>Edit information</li>
-                    <li onClick={() => props.change_page('comment')}>Comments</li>
+                    <li className="side-select" onClick={() => props.change_page('edit')}>Edit information:</li>
                 </ul>
             </aside>
         </div> 
