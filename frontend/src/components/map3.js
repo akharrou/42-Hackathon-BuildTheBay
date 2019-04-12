@@ -73,9 +73,7 @@ import Geocode from "react-geocode";
 			Geocode.fromAddress(restraunt.address).then(
 				response => {
 					const { lat, lng } = response.results[0].geometry.location;
-					console.log('coordinates: ' + lat, lng);
 					const dist = distance(current_lat, current_lng, lat, lng);
-					console.log('distance: ' + dist);
 					Object.assign(restraunt, {dist});
 					return restraunt;
 				},

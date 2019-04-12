@@ -24,7 +24,6 @@ class Admin extends React.Component {
 				logged_in: true
 			});
 		}
-		setTimeout(() => console.log(this.state), 1000);
     }
 
     render() {

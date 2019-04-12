@@ -36,7 +36,6 @@ class Login extends React.Component {
             this.setState({
                 user: data.response
             });
-            setTimeout(() => console.log(this.state), 3000);
             if (this.state.user !== "false")
             {
                 localStorage.setItem("user", JSON.stringify(this.state.user));

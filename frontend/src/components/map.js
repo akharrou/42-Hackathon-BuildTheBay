@@ -59,7 +59,6 @@ export class MapContainer extends React.Component {
 	}
 
 	handleShow() {
-		console.log("Testing");
 		this.setState({ show: true });
 	}
 
