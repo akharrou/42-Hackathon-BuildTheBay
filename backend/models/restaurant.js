@@ -24,7 +24,6 @@ const restaurantSchema = mongoose.Schema({
 
 const Restaurant = module.exports = mongoose.model('Restaurant', restaurantSchema);
 
-
 // =============================================================================
 // ~ Functions ~
 
@@ -43,20 +42,20 @@ module.exports.getRestaurantByName = (name, callback) => {
 	Restaurant.findOne({ Name: name }, callback);
 };
 
+// Get All Info of One Restaurant (queried by Restaurant Email (i.e login))
+module.exports.getRestaurantByEmail = (email, callback) => {
+	Restaurant.findOne({ Email: email }, callback);
+};
+
 // Get Categories of All Restaurants in the Database
 module.exports.getCategories = (callback, limit) => {
 	Restaurant.find({}, { Category: 1, _id: 0 }, callback).limit(limit);
 };
 
-
-
-
-/* NOT IMPLEMENTED YET */
-
-// // Add Restaurant
-// module.exports.addRestaurant = (restaurant, callback) => {
-// 	Restaurant.create(restaurant, callback);
-// }
+// Add Restaurant
+module.exports.addRestaurant = (restaurant, callback) => {
+	Restaurant.create(restaurant, callback);
+}
 
 // // Update Restaurant
 // module.exports.updateRestaurant = (id, restaurant, options, callback) => {
@@ -68,8 +67,7 @@ module.exports.getCategories = (callback, limit) => {
 // 	Restaurant.findOneAndUpdate(query, update, options, callback);
 // }
 
-// // Delete Restaurant
-// module.exports.removeRestaurant = (id, callback) => {
-// 	var query = {_id: id};
-// 	Restaurant.remove(query, callback);
-// }
+// Delete Restaurant
+module.exports.removeRestaurant = (id, callback) => {
+	Restaurant.remove({_id: id}, callback);
+}
