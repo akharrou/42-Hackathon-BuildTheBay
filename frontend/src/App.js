@@ -215,10 +215,10 @@ class App extends Component {
 				restaurants		={this.state.restaurants}
 				handle_search	={this.handle_search}
 			/>}
-		/ exact> }
-		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} exact/>}
-		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} exact/>}
-		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} exact/>}
+		/ > }
+		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
+		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
+		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} />}
     </BrowserRouter>
 	</div>
 	);
