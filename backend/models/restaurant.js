@@ -20,11 +20,11 @@ const restaurantSchema = mongoose.Schema({
         Hours:  {   type: String,    required: true,    default: null   },
      Category:  {   type: String,    required: true,    default: null   },
       Service:  {   type: String,    required: true,    default: null   },
+        Media:  {   type: Array,     required: false,   default: null   },
 
      Distance:  {   type: Number,    required: true,    default: null   },
           Lat:  {   type: Number,    required: true,    default: null   },
           Lng:  {   type: Number,    required: true,    default: null   },
-        Media:  {   type: Array,     required: false,   default: null   },
 });
 
 const Restaurant = module.exports = mongoose.model('Restaurant', restaurantSchema);
@@ -63,23 +63,28 @@ module.exports.getCategories = (callback, limit) => {
 // ~ CRUD Functions ~
 
 // Add Restaurant
-module.exports.addRestaurant = (login, passwd, callback) => {
-	Restaurant.create(restaurant, callback);
-}
+module.exports.addRestaurant = (name, email, passwd, callback) => {
+  Restaurant.create({ Name: name, Email: email, Passwd: passwd }, callback);
+};
 
 // Update Restaurant
-module.exports.updateRestaurant = (id, restaurant, options, callback) => {
+module.exports.updateRestaurant = (name, field, options, callback) => {
 
-	var query = {_id: id};
-	var update = {
-		name: restaurant.name
-	}
-	Restaurant.findOneAndUpdate(query, update, options, callback);
+	var fields = {
+		name: restaurants.name,
+		name: restaurants.name,
+		name: restaurants.name,
+		name: restaurants.name,
+		name: restaurants.name,
+		name: restaurants.name
+  }
+
+	Restaurant.findOneAndUpdate({ Name: name }, fields, options, callback);
 }
 
 // Delete Restaurant
-module.exports.removeRestaurant = (id, callback) => {
-	Restaurant.remove({_id: id}, callback);
+module.exports.removeRestaurant = (name, callback) => {
+	Restaurant.remove({ Name: name }, callback);
 }
 
 

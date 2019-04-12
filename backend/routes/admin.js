@@ -28,86 +28,98 @@ router.post('/login', (req, res) => {
 	}
 });
 
-router.post('/create', (req, res) => {
+router.post('/add', (req, res) => {
 
-	var login   = req.body.login;
-	var passwd  = req.body.passwd;
+	var name    = req.body.Name;
+	var email   = req.body.Email;
+	var passwd  = req.body.Passwd;
 
-	console.log(login);
+	console.log(name);
+	console.log(email);
 	console.log(passwd);
 
-	res.end('API under construction...');
+	Restaurant.addRestaurant(name, email, passwd, (err, result) => {
+
+		if (err) {
+			console.log('Adding Operation Failed');
+		} else {
+			console.log('Adding Operation Succesful');
+			console.log(result);
+		}
+	});
 });
 
 router.post('/delete', (req, res) => {
 
 	console.log(req.body.Name);
 
-	res.end('API under construction...');
+	Restaurant.removeRestaurant(req.body.Name, (err) => {
+
+		if (err) {
+			console.log('Deletion Operation Failed');
+			res.end('Deletion Operation Failed');
+		} else {
+			console.log('Deletion Operation Successful');
+		}
+	});
 });
 
 router.post('/update/:field', (req, res) => {
 
-	console.log(req.params.field);
+	var fieldToUpdate = "";
 
 	switch (req.params.field) {
 
 		case 'Name':
-			console.log(req.body.Name);
-			/* update name */
+			fieldToUpdate = req.body.Name;
 			break;
 
 		case 'Address':
-			console.log(req.body.Address);
-			/* update address */
+			fieldToUpdate = req.body.Address;
 			break;
 
 		case 'Website':
-			console.log(req.body.Website);
-			/* update website */
+			fieldToUpdate = req.body.Website;
 			break;
 
 		case 'Description':
-			console.log(req.body.Description);
-			/* update description */
+			fieldToUpdate = req.body.Description;
 			break;
 
 		case 'Hours':
-			console.log(req.body.Hours);
-			/* update hours */
+			fieldToUpdate = req.body.Hours;
 			break;
 
 		case 'Phone':
-			console.log(req.body.Phone);
-			/* update phone */
+			fieldToUpdate = req.body.Phone;
 			break;
 
 		case 'Photos':
-			console.log(req.body.Photos);
-			/* update photos */
+			fieldToUpdate = req.body.Photos;
 			break;
 
 		case 'Cater':
-			console.log(req.body.Cater);
-			/* update cater */
+			fieldToUpdate = req.body.Cater;
 			break;
 
 		case 'Category':
-			console.log(req.body.Category);
-			/* update cater */
+			fieldToUpdate = req.body.Category;
 			break;
 
 		case 'Service':
-			console.log(req.body.Service);
-			/* update service */
+			fieldToUpdate = req.body.Service;
 			break;
 
 		case 'Media':
-			console.log(req.body.Media);
-			/* update service */
+			fieldToUpdate = req.body.Media;
 			break;
 
+		default:
+			fieldToUpdate = undefined;
+			break;
 	}
+
+	console.log(`${req.params.field} : ${fieldToUpdate}`);
 
 	res.end('API under construction...')
 });
