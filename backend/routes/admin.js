@@ -96,13 +96,11 @@ router.post('/delete', (req, res) => {
 	});
 });
 
-router.post('/update/:field', (req, res) => {
+router.post('/update/:email/:field', (req, res) => {
 
-	console.log('/api/update/:field')
+	console.log(`/api/update/:${req.params.email}/:${req.params.field}`);
 
-	var updateOptions = { upsert: false, multi: false };
-
-	Restaurant.updateRestaurant(req, updateOptions, (err, result) => {
+	Restaurant.updateRestaurant(req, (err, result) => {
 
 		/* Case: Error (1) */
 		if (err) {

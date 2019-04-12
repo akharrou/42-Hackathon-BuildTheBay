@@ -6,7 +6,9 @@ class Admin extends React.Component {
     constructor() {
         super();
         this.state = {
-            view: 'edit'
+            view: 'edit',
+            user: null,
+            logged_in: false
         }
 		this.change_page = this.change_page.bind(this);
     }
@@ -15,12 +17,24 @@ class Admin extends React.Component {
 		this.setState({
 			view: page
 		})
-	}
+    }
+
+    componentDidMount() {
+		if (localStorage.hasOwnProperty('user')) {
+			this.setState({
+				user: localStorage.getItem('user'),
+				logged_in: true
+			});
+		}
+		setTimeout(() => console.log(this.state), 1000);
+    }
+
     render() {
         return (
+            // {this.state.logged_in &&
 			<>
         	    <SideBar change_page={this.change_page}/>
-			{this.state.view === 'edit' && <Adminpage />}
+				{this.state.logged_in === true && <Adminpage user={this.state.user}/>}
 			</>
         )
     }

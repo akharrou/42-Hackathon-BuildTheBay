@@ -50,6 +50,11 @@ class RestaurantItem extends React.Component {
 	}
 
 	slideshow() {
+		if (this.props.gallery[0] === undefined)
+			return (<img alt="" className="restPict" src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.616.462.suffix/1382541357316.jpeg"></img>);
+		if (this.props.category == "Japanese")
+			return (<img alt="" className="restPict" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/12/19/18/sush0istock-gkrphoto.jpg"></img>);
+
 		console.log(this.props.gallery[this.state.galleyno].type);
 		if (this.props.gallery[this.state.galleyno].type === "Video")
 		{
@@ -73,6 +78,12 @@ class RestaurantItem extends React.Component {
 			this.setState({galleyno: this.state.galleyno});
 	}
 
+	get_main() {
+		if (this.props.gallery[0] === undefined)
+			return (<img alt="" className="restPict" src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.616.462.suffix/1382541357316.jpeg"></img>);
+		if (this.props.category == "Japanese")
+			return (<img alt="" className="restPict" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/12/19/18/sush0istock-gkrphoto.jpg"></img>);
+	}
 
 	restaurantCard() {
 		return (

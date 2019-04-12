@@ -122,40 +122,27 @@ router.post('/login', (req, res) => {
 	});
 });
 
-router.post('/update/:field', (req, res) => {
+router.post('/update/:email/:field', (req, res) => {
 
-	console.log('/api/update/:field')
+	console.log(`/api/update/:${req.params.email}/:${req.params.field}`);
 
-	console.log(`Field : ${req.params.field}`);
+	Restaurant.updateRestaurant(req, (err, result) => {
 
-	console.log(`Name : ${req.body.Name}`);
-	console.log(`Address : ${req.body.Address}`);
-	console.log(`Website : ${req.body.Website}`);
-	console.log(`Description : ${req.body.Description}`);
-	console.log(`Hours : ${req.body.Hours}`);
-	console.log(`Phone : ${req.body.Phone}`);
-	console.log(`Cater : ${req.body.Cater}`);
-	console.log(`Category : ${req.body.Category}`);
-	console.log(`Service : ${req.body.Service}`);
-	console.log(`Photo : ${req.body.Photo}`);
-	console.log(`Video : ${req.body.Video}`);
+		console.log('hey')
 
-	// var updateOptions = { upsert: false, multi: false };
+		/* Case: Error (1) */
+		if (err) {
+			console.log(err)
+			res.json({ response: 'Error: Update Operation Failed (1)' });
+		}
 
-	// Restaurant.updateRestaurant(req, updateOptions, (err, result) => {
-
-	// 	/* Case: Error (1) */
-	// 	if (err) {
-	// 		res.json({ response: 'Error: Update Operation Failed (1)' });
-	// 	}
-
-	// 	/* Case: Update Successful */
-	// 	else {
-	// 		console.log(result);
-	// 		console.log('Update Operation Successful');
-	// 		res.json({ response: 'Update Operation Successful' });
-	// 	}
-	// });
+		/* Case: Update Successful */
+		else {
+			console.log(result);
+			console.log('Update Operation Successful');
+			res.json({ response: 'Update Operation Successful' });
+		}
+	});
 });
 
 // =============================================================================

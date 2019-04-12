@@ -15,7 +15,6 @@ class Login extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-		console.log(this.state);
 	}
 
     update_field = (field) => {
@@ -35,14 +34,17 @@ class Login extends React.Component {
         .then(res => res.json())
         .then(data => {
             this.setState({
-                res: data.response
+                user: data.response
             });
-            if (this.state.res === "true")
+            setTimeout(() => console.log(this.state), 3000);
+            if (this.state.user !== "false")
+            {
+                localStorage.setItem("user", JSON.stringify(this.state.user));
                 window.location = "./admin";
-            // else
-            //     window.location = "./login";
+            }
+             else
+                 alert("Invalid credentials");
         });
-        console.log(JSON.stringify(obj));
 	}
 
     render() {

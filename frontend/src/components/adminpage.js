@@ -28,10 +28,13 @@ class Adminpage extends React.Component {
 	}
 
 	update_field = (field) => {
+		let user_data = JSON.parse(this.props.user);
 		let obj = {
-			[field]: this.state[field]
+			[field]: this.state[field],
+			'Email': user_data.Email
 		}
-		let url = `http://localhost:8000/api/update/${field}`
+		let url = `http://localhost:8000/api/update/${user_data.Email}/${field}`
+		console.log(url);
 		fetch(url, {
 		    method: 'POST',
 			headers: {
@@ -48,7 +51,7 @@ class Adminpage extends React.Component {
 			type: field
 		}
 		//This url is not the right one.
-		/*let url = `http://localhost:8000/api/update/${field}`
+		/*let url = `http://localhost:8000/api/update/${this.props.user.Name}/${field}`
 		fetch(url, {
 		    method: 'POST',
 			headers: {
@@ -71,6 +74,11 @@ class Adminpage extends React.Component {
 				    Address:
     				<input onChange={(e) => this.store_field(e)} placeholder="Enter Address" type="text" name="Address" />
 					<button type="button" onClick={() => this.update_field('Address')} className="btn btn-success">Edit</button>
+  				</label>
+				  <label className="label-admin">
+				    Phone:
+    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Phone" type="text" name="Phone" />
+					<button type="button" onClick={() => this.update_field('Phone')} className="btn btn-success">Edit</button>
   				</label>
  			 	<label className="label-admin">
 				    Description:
@@ -112,6 +120,7 @@ class Adminpage extends React.Component {
     				<input onChange={(e) => this.store_field(e)} placeholder="Full or Limited" type="text" name="Service" />
 					<button type="button" onClick={() => this.update_field('Service')} className="btn btn-success">Edit</button>
   				</label>
+				<button type="submit" onClick={() => this.update_field()} className="btn btn-secondary">Logout</button>
 			</form>
 		)
 	}
