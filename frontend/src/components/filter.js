@@ -33,8 +33,9 @@ class Filter extends React.Component {
 			<div className="title">
 				{/*<Main_dropdown />*/}
 				<CategoryFilter handle_search={this.props.handle_search}/>
-				<select className="field">
+				<select onChange={this.props.set_distance} value={this.props.distance} className="field">
             		<option>Distance</option>
+            		<option>Near By</option>
             		<option>5 miles</option>
             		<option>10 miles</option>
             		<option>20 miles</option>
@@ -45,7 +46,7 @@ class Filter extends React.Component {
 						<option key={category}>{category}</option>
 					))}
         		</select>
-				<select className="field">
+				<select onChange={this.props.set_ratings} value={this.props.ratings} className="field">
 					<option>Rating</option>
             		<option>High to Low</option>
 					<option>Low to High</option>

@@ -10,7 +10,6 @@ export class MapContainer extends React.Component {
 		super(props);
 
 		this.state = {
-		props: {},
 		showingInfoWindow: false,
 		activeMarker: {},
 		selectedPlace: {},
@@ -32,18 +31,18 @@ export class MapContainer extends React.Component {
 		this.handleClose = this.handleClose.bind(this);
 	}
 
-	restaurantModal(props) {
+	restaurantModal() {
 		return (
 
 			<Modal className="restaurantPopup" show={this.state.show} onHide={this.handleClose}>
-				<Modal.Header className="modalHeader">{props.name}</Modal.Header>
+				<Modal.Header className="modalHeader">{this.props.name}</Modal.Header>
 				<div className="restaurantGallery">
 					<span className="prev" onClick={() => this.plusSlides(-1)}>&#10094;</span>
 					<span className="next" onClick={() => this.plusSlides(1)}>&#10095;</span>
 					{this.slideshow()}
 				</div>
 				<Modal.Body>
-					<p className="restaurantModalInfo">Type: {props.category} </p>
+					<p className="restaurantModalInfo">Type: {this.props.category} </p>
 					<p className="restaurantModalBody">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 					</p>
@@ -60,6 +59,7 @@ export class MapContainer extends React.Component {
 	}
 
 	handleShow() {
+		console.log("Testing");
 		this.setState({ show: true });
 	}
 
@@ -94,7 +94,6 @@ this.state.galleyno = this.state.galleyno + num;
 			activeMarker: null
 		  });
 		}
-		this.setState({props: {name: props.name, category: props.category}});
 		this.handleShow();
 	}
 
@@ -169,7 +168,7 @@ this.state.galleyno = this.state.galleyno + num;
 				</Map>
 
 			</div>
-				{this.restaurantModal(this.state.props)}
+				{this.restaurantModal(this.state)}
 			</>
 		);
 	}

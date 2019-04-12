@@ -14,7 +14,7 @@ class RestaurantItem extends React.Component {
 
 		this.state = {
 			show: false,
-			galleyno: 0,
+			galleyno: 0
 		};
 	}
 

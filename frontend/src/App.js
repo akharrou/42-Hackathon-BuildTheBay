@@ -26,10 +26,14 @@ class App extends Component {
 		},
 	  category: null,
       user: null,
-	  search: ""
+	  search: "",
+		distance: 100,
+		ratings: null
     }
 		this.get_coords = this.get_coords.bind(this);
 		this.set_category = this.set_category.bind(this);
+		this.set_ratings = this.set_ratings.bind(this);
+		this.set_distance = this.set_distance.bind(this);
 		this.get_restaurants = this.get_restaurants.bind(this);
 		this.get_sortedArray = this.get_sortedArray.bind(this);
 		this.handle_search = this.handle_search.bind(this);
@@ -153,6 +157,64 @@ class App extends Component {
 
 	set_category = (e) =>
 	{
+		if (e.target.value === "All Categories" || this.state.restaurants.filtered.filter(res => res.Category === e.target.value).length == 0)
+		{
+			this.setState({
+				restaurants: {
+					restaurants: this.state.restaurants.restaurants,
+					filtered: this.state.restaurants.restaurants,
+					loaded: true
+				},
+				category: e.target.value
+			});
+		}
+		else
+			this.setState({
+				restaurants: {
+					restaurants: this.state.restaurants.restaurants,
+					filtered: this.state.restaurants.filtered.filter(res => res.Category === e.target.value),
+					loaded: true
+				},
+				category: e.target.value
+			});
+	}
+
+
+	set_distance = (e) =>
+	{
+		var dist = 100;
+		if (e.target.value === "Near By")
+			dist = 1;
+		else if (e.target.value === "5 miles")
+			dist = 5;
+		else if (e.target.value === "10 miles")
+			dist = 10;
+		else if (e.target.value === "20 miles")
+			dist = 20;
+		console.log(this.state.restaurants.filtered.length);
+		if (!this.state.restaurants.filtered.filter(res => res.distance < dist).length)
+		{
+			console.log("INSIDE");
+			this.setState({
+				restaurants: {
+					restaurants: this.state.restaurants.restaurants,
+					filtered: this.state.restaurants.restaurants,
+					loaded: true
+				}
+			});
+		}
+		this.setState({ 
+			restaurants: {
+				restaurants: this.state.restaurants.restaurants,
+				filtered: this.state.restaurants.filtered.filter(res => res.distance < dist),
+				loaded: true
+			}
+		});
+	}
+
+
+	set_ratings = (e) =>
+	{
 		if (e.target.value === "All Categories")
 		{
 			this.setState({
@@ -174,6 +236,7 @@ class App extends Component {
 				category: e.target.value
 			});
 	}
+
 	degreesToRadians = (degrees) => {
 		return degrees * Math.PI / 180;
 	}
@@ -212,6 +275,8 @@ class App extends Component {
 				user					={this.state.user}
 				get_coords		={this.get_coords}
 				set_category	={this.set_category}
+				set_distance	={this.set_distance}
+				set_ratings		={this.set_ratings}
 				category			={this.state.category}
 				restaurants		={this.state.restaurants}
 				handle_search	={this.handle_search}
