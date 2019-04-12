@@ -92,10 +92,21 @@ router.post('/update/:field', (req, res) => {
 			/* update cater */
 			break;
 
+		case 'Category':
+			console.log(req.body.Category);
+			/* update cater */
+			break;
+
 		case 'Service':
 			console.log(req.body.Service);
 			/* update service */
 			break;
+
+		case 'Media':
+			console.log(req.body.Media);
+			/* update service */
+			break;
+
 	}
 
 	res.end('API under construction...')

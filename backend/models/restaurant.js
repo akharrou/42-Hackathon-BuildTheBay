@@ -9,6 +9,8 @@ const restaurantSchema = mongoose.Schema({
 
          Name:  {   type: String,    required: true,    default: null   },
         Email:  {   type: String,    required: true,    default: null   },
+       Passwd:  {   type: String,    required: true,    default: null   },
+
       Address:  {   type: String,    required: true,    default: null   },
         Phone:  {   type: String,    required: true,    default: null   },
   Description:  {   type: String,    required: true,    default: null   },
@@ -18,9 +20,11 @@ const restaurantSchema = mongoose.Schema({
         Hours:  {   type: String,    required: true,    default: null   },
      Category:  {   type: String,    required: true,    default: null   },
       Service:  {   type: String,    required: true,    default: null   },
+
      Distance:  {   type: Number,    required: true,    default: null   },
           Lat:  {   type: Number,    required: true,    default: null   },
           Lng:  {   type: Number,    required: true,    default: null   },
+        Media:  {   type: Array,     required: false,   default: null   },
 });
 
 const Restaurant = module.exports = mongoose.model('Restaurant', restaurantSchema);
@@ -59,7 +63,7 @@ module.exports.getCategories = (callback, limit) => {
 // ~ CRUD Functions ~
 
 // Add Restaurant
-module.exports.addRestaurant = (restaurant, callback) => {
+module.exports.addRestaurant = (login, passwd, callback) => {
 	Restaurant.create(restaurant, callback);
 }
 
