@@ -28,7 +28,7 @@ class Adminpage extends React.Component {
 		let obj = {
 			[field]: this.state[field]
 		}
-		let url = `localhost:8000/api/update/${field}`
+		let url = `localhost:8000/admin/update/${field}`
 		fetch(url, {
 		    method: 'POST',
 			headers: {
@@ -48,7 +48,7 @@ class Adminpage extends React.Component {
 					<button type="button" onClick={() => this.update_field('Name')} className="btn btn-success">Update</button>
   				</label>
  			 	<label className="label-admin">
-				    Category: 
+				    Category:
     				<input onChange={(e) => this.store_field(e)} type="text" name="Category" />
 					<button type="button" onClick={() => this.update_field('Category')} className="btn btn-success">Update</button>
   				</label>
