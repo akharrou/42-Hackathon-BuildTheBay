@@ -14,15 +14,17 @@ class Login extends React.Component {
         this.setState({
             login: e.target.value
         });
-        console.log(this.state.login);
     }
 
     pass_listen = (e) => {
         this.setState({
             pass: e.target.value
         });
-        console.log(this.state.pass);
 	}
+
+	update_field = (field) => {
+	}
+
 
     render() {
         return (
@@ -54,8 +56,7 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" onChange={this.pass_listen}/>
                             </div>
                         </div>
-                            <button type="submit" className="btn btn-black">Register</button>
-                            <button type="submit" className="btn btn-secondary">Login</button>
+                            <span onClick={this.login} className="btn btn-secondary">Login</span>
                         </form>
                     </div>
                 </div>
