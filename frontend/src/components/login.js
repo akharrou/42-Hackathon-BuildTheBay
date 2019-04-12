@@ -22,10 +22,6 @@ class Login extends React.Component {
         });
 	}
 
-	update_field = (field) => {
-	}
-
-
     render() {
         return (
         <div className="logbody">
@@ -56,7 +52,7 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" onChange={this.pass_listen}/>
                             </div>
                         </div>
-                            <span onClick={this.login} className="btn btn-secondary">Login</span>
+                            <span onClick={this.props.login} className="btn btn-secondary">Login</span>
                         </form>
                     </div>
                 </div>

@@ -69,6 +69,8 @@ class App extends Component {
 				})
 			});
 		localStorage.setItem("user", JSON.stringify(this.state.user));
+		if (localStorage.hasOwnProperty('user'))
+			console.log("yup");
 	}
 
 	get_coords = () => {
@@ -239,7 +241,7 @@ class App extends Component {
 				handle_search	={this.handle_search}
 			/>}
 		/  > }
-		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
+		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login login={this.login} />} />}
 		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
 		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} />}
     </BrowserRouter>
