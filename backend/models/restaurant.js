@@ -115,19 +115,19 @@ module.exports.updateRestaurant = (req, callback) => {
 			break;
 
 		case 'Photo':
-			update = { $push: { Media: req.body.Photo }};
+			var newPhoto = new Object({ type: "Photo", link: req.body.Photo })
+			update = { $push: { Media: newPhoto }};
 			break;
 
 		case 'Video':
-			update = { $push: { Media: req.body.Video }};
+			var newVideo = new Object({ type: "Video", link: req.body.Video })
+			update = { $push: { Media: newVideo }};
 			break;
 
 		default:
 			update = undefined;
 			break;
 	}
-
-	// console.log(`Restaurant.findOneAndUpdate(${query}, ${update}, ${options}, ...)`);
 
 	if (update)
 		Restaurant.findOneAndUpdate(query, update, options, callback);
@@ -159,8 +159,3 @@ module.exports.removeRestaurant = (name, callback) => {
       $> db.restaurants.update({}, {$set : { "FIELD": null }}, {upsert:false, multi:true})
 
 */
-
-
-// chris's store
-// chris@gmail.com
-// chris

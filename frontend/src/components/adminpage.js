@@ -24,7 +24,6 @@ class Adminpage extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-		console.log(this.state);
 	}
 
 	update_field = (field) => {
@@ -46,12 +45,13 @@ class Adminpage extends React.Component {
 	}
 
 	media = (field) => {
+		let user_data = JSON.parse(this.props.user);
+		let url = `http://localhost:8000/api/update/${user_data.Email}/${field}`
+		console.log(url);
 		let obj = {
 			link: this.state[field],
 			type: field
 		}
-		//This url is not the right one.
-		/*let url = `http://localhost:8000/api/update/${this.props.user.Name}/${field}`
 		fetch(url, {
 		    method: 'POST',
 			headers: {
@@ -59,7 +59,7 @@ class Adminpage extends React.Component {
     			'Content-Type': 'application/json'
   			},
     		body: JSON.stringify(obj)
-		});*/
+		});
 	}
 
 	render(){
