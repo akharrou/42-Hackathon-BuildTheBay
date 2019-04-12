@@ -13,6 +13,7 @@ export class MapContainer extends React.Component {
 		showingInfoWindow: false,
 		activeMarker: {},
 		selectedPlace: {},
+		jkcool: false,
 		show: false,
 		galleyno: 0,
 		galley: [true, false, false],
@@ -24,6 +25,8 @@ export class MapContainer extends React.Component {
 	};
 		this.onMarkerClick = this.onMarkerClick.bind(this);
 		this.onMapClicked = this.onMapClicked.bind(this);
+		this.onMouseoutEvent = this.onMouseoutEvent.bind(this);
+		this.onMouseoverMarker = this.onMouseoverMarker.bind(this);
 		this.handleShow = this.handleShow.bind(this);
 		this.handleClose = this.handleClose.bind(this);
 		this.handleShow();
@@ -84,24 +87,56 @@ this.state.galleyno = this.state.galleyno + num;
 			this.setState({galleyno: this.state.galleyno});
 	}
 
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
+  onMarkerClick = function(props, marker, e)
+	{
+		if (this.state.showingInfoWindow) {
+			this.setState({
+			showingInfoWindow: false,
+			activeMarker: null
+		  });
+		}
+		this.handleShow();
+	}
 
-  onMapClicked = (props) => {
+	onMouseoverMarker = (props, marker, e) =>
+	{
+		if (!this.state.showingInfoWindow)
+		{
+			this.setState({
+			  	selectedPlace: props,
+			  	activeMarker: marker,
+			  	showingInfoWindow: true,
+			});
+		}
+	}
+
+  onMapClicked = function(props) {
     if (this.state.showingInfoWindow) {
+      	this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  }
+
+	onMouseoutEvent = function(props) {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null
-      })
-    }
-  };
+      });
+  }
+
 
 	icon = {
 		url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+	}
+
+	componentDidMount() {
+		setTimeout(() => {
+			this.setState({
+				jkcool: true
+			})
+		}, 500);
 	}
 
 	render() {
@@ -115,7 +150,7 @@ this.state.galleyno = this.state.galleyno + num;
 					initialCenter={{ lat: this.props.lat, lng: this.props.lng}}>
 					{this.props.restaurants.filtered.map(
 						restaurant => (
-							<Marker onClick={this.onMarkerClick}
+							<Marker onClick={this.onMarkerClick} onMouseover={this.onMouseoverMarker} onMouseout={this.onMouseoutEvent}
 								title={restaurant.Name}
 								name={restaurant.Name}
 								position={{lat: restaurant.lat, lng: restaurant.lng}}
@@ -123,43 +158,11 @@ this.state.galleyno = this.state.galleyno + num;
 									url: this.icon.url
 								}} />
 					))}
-					<Marker onClick={this.onMarkerClick}
-						title={'The marker`s title will appear as a tooltip.'}
-						name={'SOMA'}
-						position={{lat: 37.778519, lng: -122.405640}}
-						icon={{
-							url: this.icon.url,
-							anchor: this.icon.anchor,
-							scaledSize: this.icon.scaledSize
-						}}
-					/>
-					<Marker onClick={this.onMarkerClick}
-						title={'The marker`s title will appear as a tooltip.'}
-						name={'Dolores park'}
-						position={{lat: 37.759703, lng: -122.428093}}
-						icon={{
-							url: this.icon.url,
-							anchor: this.icon.anchor,
-							scaledSize: this.icon.scaledSize
-						}}
-					/>
-					<Marker onClick={this.onMarkerClick}
-						title={'The marker`s title will appear as a tooltip.'}
-						name={'Your position'}
-						position={{lat: 37.762391, lng: -122.439192}}
-						icon={{
-							url: this.icon.url,
-							anchor: this.icon.anchor,
-							scaledSize: this.icon.scaledSize
-						}}
-					/>
 					<InfoWindow onClick={this.handleShow}
 						marker={this.state.activeMarker}
 						visible={this.state.showingInfoWindow}>
 							<div>
-								<p>{this.state.selectedPlace.name}</p>
-								<p>{this.state.selectedPlace.info}</p>
-								<button>More Info</button>
+								<h5>{this.state.selectedPlace.name}</h5>
 							</div>
 					</InfoWindow>
 				</Map>
