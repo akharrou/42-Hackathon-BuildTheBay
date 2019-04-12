@@ -105,7 +105,7 @@ class App extends Component {
 		const restaurants = this.state.restaurants.filtered;
 		for(let i = 0; i < restaurants.length; i++)
 		{
-			Geocode.fromAddress(restaurants[i].Address_complete).then(
+			Geocode.fromAddress(restaurants[i].Address).then(
 				response => {
 					const current_lat = this.state.coords.lat;
 					const current_lng = this.state.coords.lng;
@@ -244,7 +244,7 @@ class App extends Component {
 				restaurants		={this.state.restaurants}
 				handle_search	={this.handle_search}
 			/>}
-		/  > }
+		/> }
 		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login login={this.login} />} />}
 		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
 		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} />}
