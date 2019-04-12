@@ -2,8 +2,8 @@ import React from 'react';
 import './adminpage.css';
 
 class Adminpage extends React.Component {
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state = {
 			'Name': "",
 			'Category': "",
@@ -15,7 +15,7 @@ class Adminpage extends React.Component {
 			'Service': "",
 			'Photo': "",
 			'Video': "",
-			'user_data': null
+			'user_data': JSON.parse(this.props.user)
 		}
 		this.update_field = this.update_field.bind(this);
 		this.media = this.media.bind(this);
@@ -37,18 +37,9 @@ class Adminpage extends React.Component {
 			{
 				this.setState({
 					user_data: restaurants.filter(res => res.Email === this.state.user_data.Email)[0]
-				});
+				}, () => localStorage.setItem("user", JSON.stringify(this.state.user_data)));
 			}
-//			else
-//			{
-//				this.setState({
-//					user_data: restaurants.filter(res => res.Name === this.state.user_data.Name)[0]
-//				});
-//			}
-		//	this.setState({
-		//		user_data: data.restaurants.filter(res => res.Email === this.state.user_data.Email)[0]
-		//	});
-		});
+			});
 	}
 
 	update_field = (field) => {
@@ -66,6 +57,8 @@ class Adminpage extends React.Component {
   			},
     		body: JSON.stringify(obj)
 		});
+		this.set_user();
+		alert(`${field} updated!`);
 	}
 
 	media = (field) => {
@@ -83,17 +76,8 @@ class Adminpage extends React.Component {
   			},
     		body: JSON.stringify(obj)
 		});
-	}
-
-	componentDidMount() {
-		console.log(this.props);
-		let user = JSON.parse(this.props.user)
-		this.setState({
-			user_data: user
-		});
-		setTimeout(() => console.log(this.state.user_data), 1000);
-		setTimeout (() => this.set_user(), 1500);
-		setTimeout(() => console.log(this.state.user_data), 2000);
+		this.set_user();
+		alert(`${field} imported!`);
 	}
 
 	render(){
@@ -101,32 +85,32 @@ class Adminpage extends React.Component {
 			<form className="adminBody">
  			 	<label className="label-admin">
 				    Restaurant Name:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Name" type="text" name="Name" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Name} type="text" name="Name" />
 					<button type="button" onClick={() => this.update_field('Name')} className="btn btn-success">Edit</button>
   				</label>
  			 	<label className="label-admin">
 				    Address:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Address" type="text" name="Address" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Address} type="text" name="Address" />
 					<button type="button" onClick={() => this.update_field('Address')} className="btn btn-success">Edit</button>
   				</label>
 				  <label className="label-admin">
 				    Phone:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Phone" type="text" name="Phone" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Phone} type="text" name="Phone" />
 					<button type="button" onClick={() => this.update_field('Phone')} className="btn btn-success">Edit</button>
   				</label>
  			 	<label className="label-admin">
 				    Description:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Description" type="text" name="Description" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Description} type="text" name="Description" />
 					<button type="button" onClick={() => this.update_field('Description')} className="btn btn-success">Edit</button>
   				</label>
  			 	<label className="label-admin">
 				    Category:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Category" type="text" name="Category" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Category} type="text" name="Category" />
 					<button type="button" onClick={() => this.update_field('Category')} className="btn btn-success">Edit</button>
   				</label>
  			 	<label className="label-admin">
 				    Hours:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Hours" type="text" name="Hours" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Hours} type="text" name="Hours" />
 					<button type="button" onClick={() => this.update_field('Hours')} className="btn btn-success">Edit</button>
   				</label>
 				<label className="label-admin">
@@ -141,17 +125,17 @@ class Adminpage extends React.Component {
   				</label>
  			 	<label className="label-admin">
 				    Website:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Website" type="text" name="Website" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Website} type="text" name="Website" />
 					<button type="button" onClick={() => this.update_field('Website')} className="btn btn-success">Edit</button>
   				</label>
  			 	<label className="label-admin">
 				    Cater:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Cater or Not" type="text" name="Cater" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Cater} type="text" name="Cater" />
 					<button type="button" onClick={() => this.update_field('Cater')} className="btn btn-success">Edit</button>
   				</label>
  			 	<label className="label-admin">
 					Service:
-    				<input onChange={(e) => this.store_field(e)} placeholder="Full or Limited" type="text" name="Service" />
+    				<input onChange={(e) => this.store_field(e)} placeholder={this.state.user_data.Service} type="text" name="Service" />
 					<button type="button" onClick={() => this.update_field('Service')} className="btn btn-success">Edit</button>
   				</label>
 			</form>

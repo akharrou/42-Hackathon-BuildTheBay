@@ -15,7 +15,6 @@ class Sulogin extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-		console.log(this.state);
 	}
 
     update_field = (field) => {
@@ -34,7 +33,6 @@ class Sulogin extends React.Component {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data.response);
             this.setState({
                 res: data.response
             });

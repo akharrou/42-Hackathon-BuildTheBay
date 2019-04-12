@@ -54,7 +54,6 @@ class RestaurantItem extends React.Component {
 			return (<img alt="" className="restPict" src="https://twolovesstudio.com/wp-content/uploads/2017/05/99-Best-Food-Photography-Tips-5-1.jpg"></img>);
 
 
-		console.log(this.props.gallery[this.state.galleyno].type);
 		if (this.props.gallery[this.state.galleyno].type === "Video")
 		{
 			return (

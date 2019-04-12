@@ -46,7 +46,6 @@ class Supedituser extends React.Component {
 			if (this.state.Response === "User already exists")
 				alert("User already exists");
 		});
-		console.log(JSON.stringify(obj));
 	}
 
 	del_field = () => {
@@ -70,7 +69,6 @@ class Supedituser extends React.Component {
 			if (this.state.Response === "User does not exist")
 				alert("User does not exist");
 		});
-		console.log(JSON.stringify(obj));
 	}
 
 	render(){
