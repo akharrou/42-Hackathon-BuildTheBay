@@ -62,7 +62,7 @@ router.post('/delete', (req, res) => {
 	res.end('API under construction...');
 });
 
-router.post('/update', (req, res) => {
+router.post('/update/:field', (req, res) => {
 
 	console.log(req.body.object);
 
