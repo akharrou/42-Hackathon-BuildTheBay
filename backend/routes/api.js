@@ -104,6 +104,7 @@ router.post('/update/:field', (req, res) => {
 	switch (req.params.field) {
 
 		case 'name':
+			console.log(req.params.name);
 			/* update name */
 			break;
 
