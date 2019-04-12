@@ -12,11 +12,14 @@ const SideBar = (props) => {
 			    </p>
             <aside className="main_sidebar">
                 <ul>
-                    <li className="side-select" onClick={() => props.change_page('edit')}>Edit information:</li>
+                    <li className="side-select" >Edit information:</li>
+					<li>
+            			<button type="submit" onClick={props.logout} className="btn btn-secondary">Logout</button>
+					</li>
                 </ul>
             </aside>
         </div> 
         )
     }
 
-    export default SideBar;
+export default SideBar;

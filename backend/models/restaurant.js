@@ -70,66 +70,67 @@ module.exports.addRestaurant = (newRestaurant, callback) => {
 };
 
 // Update Restaurant
-module.exports.updateRestaurant = (req, options, callback) => {
+module.exports.updateRestaurant = (req, callback) => {
 
-	var query = { Name: req.body.Name };
-	var fieldToUpdate = {};
+	var query    = { Email: req.params.email };
+	var options  = { upsert: false, multi: false };
+	var update   = {};
 
 	switch (req.params.field) {
 
 		case 'Name':
-			fieldToUpdate = { Name: req.body.Name };
+			update = { $set: { Name: req.body.Name }};
 			break;
 
 		case 'Address':
-			fieldToUpdate = { Address: req.body.Address };
+			update = { $set: { Address: req.body.Address }};
 			break;
 
 		case 'Description':
-			fieldToUpdate = { Description: req.body.Description };
+			update = { $set: { Description: req.body.Description }};
 			break;
 
 		case 'Website':
-			fieldToUpdate = { Website: req.body.Website };
+			update = { $set: { Website: req.body.Website }};
 			break;
 
 		case 'Cater':
-			fieldToUpdate = { Cater: req.body.Cater };
+			update = { $set: { Cater: req.body.Cater }};
 			break;
 
 		case 'Hours':
-			fieldToUpdate = { Hours: req.body.Hours };
+			update = { $set: { Hours: req.body.Hours }};
 			break;
 
 		case 'Phone':
-			fieldToUpdate = { Phone: req.body.Phone };
+			update = { $set: { Phone: req.body.Phone }};
 			break;
 
 		case 'Category':
-			fieldToUpdate = { Category: req.body.Category };
+			update = { $set: { Category: req.body.Category }};
 			break;
 
 		case 'Service':
-			fieldToUpdate = { Service: req.body.Service };
+			update = { $set: { Service: req.body.Service }};
 			break;
 
 		case 'Photo':
-			fieldToUpdate = { Media: req.body.Photo };
+			var newPhoto = new Object({ type: "Photo", link: req.body.Photo })
+			update = { $push: { Media: newPhoto }};
 			break;
 
 		case 'Video':
-			fieldToUpdate = { Media: req.body.Video };
+			var newVideo = new Object({ type: "Video", link: req.body.Video })
+			update = { $push: { Media: newVideo }};
 			break;
 
 		default:
-			fieldToUpdate = undefined;
+			update = undefined;
 			break;
 	}
 
-	console.log(query);
-	console.log(fieldToUpdate);
-
-	// Restaurant.findOneAndUpdate(query, fieldToUpdate, options, callback);
+	if (update)
+		Restaurant.findOneAndUpdate(query, update, options, callback);
 }
 
 // Delete Restaurant

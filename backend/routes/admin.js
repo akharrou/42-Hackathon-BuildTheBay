@@ -70,7 +70,7 @@ router.post('/add', (req, res) => {
 			}
 
 			/* Case: Successful Add Opteration */
-			res.json({ response : 'Add Succesful' })
+			res.json({ response : 'Add Operation Succesful' })
 		}
 	});
 });
@@ -91,18 +91,14 @@ router.post('/delete', (req, res) => {
 
 		/* Case: Successful Delete Opteration */
 		else {
-			res.json({ response: 'Delete Successful' });
+			res.json({ response: 'Delete Operation Successful' });
 		}
 	});
 });
 
-router.post('/update/:field', (req, res) => {
+router.post('/update/:email/:field', (req, res) => {
 
-	console.log('/api/update/:field')
-
-	var updateOptions = { upsert: false, multi: false };
-
-	Restaurant.updateRestaurant(req, updateOptions, (err, result) => {
+	Restaurant.updateRestaurant(req, (err, result) => {
 
 		/* Case: Error (1) */
 		if (err) {
@@ -111,8 +107,6 @@ router.post('/update/:field', (req, res) => {
 
 		/* Case: Update Successful */
 		else {
-			console.log(result);
-			console.log('Update Operation Successful');
 			res.json({ response: 'Update Operation Successful' });
 		}
 	});

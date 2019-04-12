@@ -1,6 +1,5 @@
 import React from "react";
 import './navi.css';
-//import Popup from 'react-popup';
 
 class Navibar extends React.Component {
 	constructor(){
@@ -16,10 +15,6 @@ class Navibar extends React.Component {
 			return "I am an just a user";
 	}
 	render(props) {
-		// const logged_in = this.props.logged_in;
-		// const user = this.user;
-
-
 		return (
 			<div id ="navi_bar" className="navi_bar">
 				<div className="iconBar">
@@ -34,7 +29,7 @@ class Navibar extends React.Component {
 					</p>
 				</div>
 			</div>
-		);		
+		);
 	}
 }
 

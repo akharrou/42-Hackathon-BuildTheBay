@@ -14,24 +14,50 @@ class Adminpage extends React.Component {
 			'Hours': "",
 			'Service': "",
 			'Photo': "",
-			'Video': ""
+			'Video': "",
+			'user_data': null
 		}
 		this.update_field = this.update_field.bind(this);
 		this.media = this.media.bind(this);
+		this.set_user = this.set_user.bind(this);
 	}
 
 	store_field = (e, field) => {
         this.setState({
             [e.target.name]: e.target.value
         });
-		console.log(this.state);
+	}
+	
+	set_user = () => {
+		fetch('http://localhost:8000/api/all')
+		.then(res => res.json())
+		.then(data => {
+			var restaurants = data.restaurants;
+			if (restaurants.filter(res => res.Email === this.state.user_data.Email).length > 0)
+			{
+				this.setState({
+					user_data: restaurants.filter(res => res.Email === this.state.user_data.Email)[0]
+				});
+			}
+//			else
+//			{
+//				this.setState({
+//					user_data: restaurants.filter(res => res.Name === this.state.user_data.Name)[0]
+//				});
+//			}
+		//	this.setState({
+		//		user_data: data.restaurants.filter(res => res.Email === this.state.user_data.Email)[0]
+		//	});
+		});
 	}
 
 	update_field = (field) => {
+		let user_data = JSON.parse(this.props.user);
 		let obj = {
-			[field]: this.state[field]
+			[field]: this.state[field],
+			'Email': user_data.Email
 		}
-		let url = `http://localhost:8000/api/update/${field}`
+		let url = `http://localhost:8000/api/update/${user_data.Email}/${field}`
 		fetch(url, {
 		    method: 'POST',
 			headers: {
@@ -43,12 +69,12 @@ class Adminpage extends React.Component {
 	}
 
 	media = (field) => {
+		let user_data = JSON.parse(this.props.user);
+		let url = `http://localhost:8000/api/update/${user_data.Email}/${field}`
 		let obj = {
 			link: this.state[field],
 			type: field
 		}
-		//This url is not the right one.
-		/*let url = `http://localhost:8000/api/update/${field}`
 		fetch(url, {
 		    method: 'POST',
 			headers: {
@@ -56,7 +82,18 @@ class Adminpage extends React.Component {
     			'Content-Type': 'application/json'
   			},
     		body: JSON.stringify(obj)
-		});*/
+		});
+	}
+
+	componentDidMount() {
+		console.log(this.props);
+		let user = JSON.parse(this.props.user)
+		this.setState({
+			user_data: user
+		});
+		setTimeout(() => console.log(this.state.user_data), 1000);
+		setTimeout (() => this.set_user(), 1500);
+		setTimeout(() => console.log(this.state.user_data), 2000);
 	}
 
 	render(){
@@ -71,6 +108,11 @@ class Adminpage extends React.Component {
 				    Address:
     				<input onChange={(e) => this.store_field(e)} placeholder="Enter Address" type="text" name="Address" />
 					<button type="button" onClick={() => this.update_field('Address')} className="btn btn-success">Edit</button>
+  				</label>
+				  <label className="label-admin">
+				    Phone:
+    				<input onChange={(e) => this.store_field(e)} placeholder="Enter Phone" type="text" name="Phone" />
+					<button type="button" onClick={() => this.update_field('Phone')} className="btn btn-success">Edit</button>
   				</label>
  			 	<label className="label-admin">
 				    Description:
