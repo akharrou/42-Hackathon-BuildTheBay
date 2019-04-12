@@ -14,12 +14,14 @@ class Login extends React.Component {
         this.setState({
             login: e.target.value
         });
+        console.log(this.state.login);
     }
 
     pass_listen = (e) => {
         this.setState({
             pass: e.target.value
         });
+        console.log(this.state.pass);
 	}
 
     render() {

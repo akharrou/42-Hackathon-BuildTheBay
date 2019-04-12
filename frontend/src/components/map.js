@@ -75,7 +75,7 @@ export class MapContainer extends React.Component {
 	}
 
 	plusSlides(num) {
-		this.state.galleyno = this.state.galleyno + num;
+this.state.galleyno = this.state.galleyno + num;
 		if (this.state.galleyno < 0)
 			this.setState({galleyno: this.state.galleyload.length - 1});
 		else if (this.state.galleyno >= this.state.galleyload.length)

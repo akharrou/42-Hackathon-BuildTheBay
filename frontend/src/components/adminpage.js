@@ -11,9 +11,12 @@ class Adminpage extends React.Component {
 			'Website': "",
 			'Cater': "",
 			'Hours': "",
-			'Service': ""
+			'Service': "",
+			'Photo': "",
+			'Video': ""
 		}
 		this.update_field = this.update_field.bind(this);
+		this.media = this.media.bind(this);
 	}
 
 	store_field = (e, field) => {
@@ -36,6 +39,23 @@ class Adminpage extends React.Component {
   			},
     		body: JSON.stringify(obj)
 		});
+	}
+
+	media = (field) => {
+		let obj = {
+			link: this.state[field],
+			type: field
+		}
+		//This url is not the right one.
+		/*let url = `http://localhost:8000/admin/update/${field}`
+		fetch(url, {
+		    method: 'POST',
+			headers: {
+   				 'Accept': 'application/json',
+    			'Content-Type': 'application/json'
+  			},
+    		body: JSON.stringify(obj)
+		});*/
 	}
 
 	render(){
@@ -75,6 +95,16 @@ class Adminpage extends React.Component {
 				    Full or limited Service:
     				<input onChange={(e) => this.store_field(e)} type="text" name="Service" />
 					<button type="button" onClick={() => this.update_field('Service')} className="btn btn-success">Update</button>
+  				</label>
+<label className="label-admin">
+				    Import photo:
+    				<input onChange={(e) => this.store_field(e)} type="text" name="Photo" />
+					<button type="button" onClick={() => this.media('Photo')} className="btn btn-success">Update</button>
+  				</label>
+				  <label className="label-admin">
+				    Import video:
+    				<input onChange={(e) => this.store_field(e)} type="text" name="Video" />
+					<button type="button" onClick={() => this.media('Video')} className="btn btn-success">Update</button>
   				</label>
 			</form>
 		)

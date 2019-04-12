@@ -127,7 +127,7 @@ class App extends Component {
 				this.setState({
 					restaurants: {
 						restaurants: this.state.restaurants.restaurants,
-						filtered: this.state.restaurants.restaurants.filter(res => res.Name.toLowerCase().indexOf(this.state.search) != -1),
+						filtered: this.state.restaurants.restaurants.filter(res => res.Name.toLowerCase().indexOf(this.state.search) !== -1),
 						loaded: true
 					}
 				 })
@@ -205,30 +205,20 @@ class App extends Component {
 	return (
 	<div className="App">
   <BrowserRouter>
-<<<<<<< HEAD
-		{this.state.restaurants.loaded && <Route path="/home" render={(props) => 
-			<LandingPage 
-				coords				={this.state.coords} 
-				user					={this.state.user} 
-				get_coords		={this.get_coords} 
-				set_category	={this.set_category} 
-				category			={this.state.category} 
-=======
-		{this.state.restaurants.loaded && <Route path="/home" render={(props) =>
+		{this.state.restaurants.loaded && <Route path="/" render={(props) =>
 			<LandingPage
-				coords			={this.state.coords}
-				user			={this.state.user}
+				coords				={this.state.coords}
+				user					={this.state.user}
 				get_coords		={this.get_coords}
 				set_category	={this.set_category}
-				category		={this.state.category}
->>>>>>> 708fddf34fca3900d69d70ebeb7528109a82c83d
+				category			={this.state.category}
 				restaurants		={this.state.restaurants}
 				handle_search	={this.handle_search}
 			/>}
-		/> }
-		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} />}
-		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} />}
-		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} />}
+		/ exact> }
+		{this.state.restaurants.loaded && <Route path="/login" render={(props) => <Login />} exact/>}
+		{this.state.restaurants.loaded && <Route path="/admin" render={(props) => <Admin />} exact/>}
+		{this.state.restaurants.loaded && <Route path="/suadmin" render={(props) => <Suadmin />} exact/>}
     </BrowserRouter>
 	</div>
 	);

@@ -17,7 +17,7 @@ class RestaurantItem extends React.Component {
 			galleyno: 0,
 			galley: [true, false, false],
 			galleyload: [
-				"https://www.youtube.com/embed/_4H-E7xZwyU",
+				"https://www.youtube.com/embed/bEI17WyiREc",
 				"https://media-cdn.tripadvisor.com/media/photo-s/0f/1a/cc/43/sushi-misto.jpg",
 				"https://assets3.thrillist.com/v1/image/1559020/size/tmg-slideshow_l.jpg",
 			]
@@ -80,7 +80,6 @@ class RestaurantItem extends React.Component {
 
 
 	restaurantCard() {
-		console.log(parseFloat(this.props.distance).toPrecision(2));
 		return (
 			<div>
 				<div className="restaurant" onClick={this.handleShow}>

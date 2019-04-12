@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "backend": "node ./backend/server.js",
+    "frontend": "node ./frontend/app.js",
     "start": "node ./bin/www"
   },
   "dependencies": {
