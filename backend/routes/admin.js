@@ -98,64 +98,7 @@ router.post('/delete', (req, res) => {
 
 router.post('/update/:field', (req, res) => {
 
-	var fieldToUpdate = "";
-
-	switch (req.params.field) {
-
-		case 'Name':
-			fieldToUpdate = req.body.Name;
-			break;
-
-		case 'Address':
-			fieldToUpdate = req.body.Address;
-			break;
-
-		case 'Website':
-			fieldToUpdate = req.body.Website;
-			break;
-
-		case 'Description':
-			fieldToUpdate = req.body.Description;
-			break;
-
-		case 'Hours':
-			fieldToUpdate = req.body.Hours;
-			break;
-
-		case 'Phone':
-			fieldToUpdate = req.body.Phone;
-			break;
-
-		case 'Photos':
-			fieldToUpdate = req.body.Photos;
-			break;
-
-		case 'Cater':
-			fieldToUpdate = req.body.Cater;
-			break;
-
-		case 'Category':
-			fieldToUpdate = req.body.Category;
-			break;
-
-		case 'Service':
-			fieldToUpdate = req.body.Service;
-			break;
-
-		case 'Photo':
-			fieldToUpdate = req.body.Photo;
-			break;
-
-		case 'Video':
-			fieldToUpdate = req.body.Video;
-			break;
-
-		default:
-			fieldToUpdate = undefined;
-			break;
-	}
-
-	console.log(`${req.params.field} : ${fieldToUpdate}`);
+	console.log(`${req.params.field}`);
 
 	res.end('API under construction...')
 });

@@ -70,29 +70,76 @@ module.exports.addRestaurant = (newRestaurant, callback) => {
 };
 
 // Update Restaurant
-module.exports.updateRestaurant = (restaurantName, field, value, options, callback) => {
+module.exports.updateRestaurant = (req, options, callback) => {
 
-  // var fieldsToUpdate = {
+	var query = { Name: req.body.Name };
+	var fieldToUpdate = {};
 
-  // }
+	switch (req.params.field) {
 
-	// Restaurant.findOneAndUpdate({ Name: restaurantName }, { field: value }, options, callback);
+		case 'Name':
+			fieldToUpdate = { Name: req.body.Name };
+			break;
+
+		case 'Address':
+			fieldToUpdate = { Address: req.body.Address };
+			break;
+
+		case 'Website':
+			fieldToUpdate = { Website: req.body.Website };
+			break;
+
+		case 'Description':
+			fieldToUpdate = { Description: req.body.Description };
+			break;
+
+		case 'Hours':
+			fieldToUpdate = { Hours: req.body.Hours };
+			break;
+
+		case 'Phone':
+			fieldToUpdate = { Phone: req.body.Phone };
+			break;
+
+		case 'Photos':
+			fieldToUpdate = { Photos: req.body.Photos };
+			break;
+
+		case 'Cater':
+			fieldToUpdate = { Cater: req.body.Cater };
+			break;
+
+		case 'Category':
+			fieldToUpdate = { Category: req.body.Category };
+			break;
+
+		case 'Service':
+			fieldToUpdate = { Service: req.body.Service };
+			break;
+
+		case 'Photo':
+			fieldToUpdate = { Photo: req.body.Photo };
+			break;
+
+		case 'Video':
+			fieldToUpdate = { Video: req.body.Video };
+			break;
+
+		default:
+			fieldToUpdate = undefined;
+			break;
+	}
+
+	console.log(query);
+	console.log(fieldToUpdate);
+
+	Restaurant.findOneAndUpdate(query, fieldToUpdate, options, callback);
 }
 
 // Delete Restaurant
 module.exports.removeRestaurant = (name, callback) => {
 	Restaurant.deleteOne({ Name: name }, callback);
 }
-
-
-// =============================================================================
-// ~ AUTH Function ~
-
-// Authenticate Restaurant User
-module.exports.auth = (restaurantName, callback) => {
-
-  Restaurant.create(newRestaurant, callback);
-};
 
 
 

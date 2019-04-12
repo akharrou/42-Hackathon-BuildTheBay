@@ -3,13 +3,14 @@
 // =============================================================================
 
 /* Dependencies */
-const express      = require('express')
+const express      = require('express');
+const sha256       = require('sha256');
 
 /* Creating API Router */
 const router       = express.Router();
 
 /* Models */
-const Restaurant   = require('../models/restaurant')
+const Restaurant   = require('../models/restaurant');
 
 // =============================================================================
 /* ~ GET Requests ~ */
@@ -92,76 +93,45 @@ router.get('/categories', (req, res) => {
 
 router.post('/login', (req, res) => {
 
-	console.log(req.body.Email);
-	console.log(req.body.Passwd);
+	console.log(`Email : ${req.body.Email}`);
+	console.log(`Passwd : ${req.body.Passwd}`);
 
-	res.json({ response : 'true' });
-	// res.json({ response : 'false' });
+	Restaurant.getRestaurantByEmail(req.body.Email, (err, result) => {
 
-	// if (Restaurant.auth(req.body.Email, req.body.Passwd) == true) {
-	// 	res.json({ response : 'true'});
-	// } else {
-	// 	res.json({ response : 'false'});
-	// }
+		/* Case: Error (1) */
+		if (err) {
+			console.log('error')
+			res.json({ response: 'Error: Authentication Operation Failed (1)' });
+		}
+
+		/* Case: User Doesn't Exist */
+		else if (result == undefined) {
+			console.log('doesnt exist')
+			res.json({ response: 'false' });
+		}
+
+		/* Case: User Exists */
+		else {
+
+			if (req.body.Email == result.Email && sha256(req.body.Passwd) == result.Passwd) {
+
+				/* Case: Authentic User */
+				console.log('true')
+				res.json({ response : result })
+
+			} else {
+
+				/* Case: Not Authentic User */
+				console.log('false')
+				res.json({ response : 'false' })
+			}
+		}
+	});
 });
 
 router.post('/update/:field', (req, res) => {
 
 	console.log(req.params.field);
-
-	switch (req.params.field) {
-
-		case 'Name':
-			console.log(req.body.Name);
-			/* update name */
-			break;
-
-		case 'Address':
-			console.log(req.body.Address);
-			/* update address */
-			break;
-
-		case 'Website':
-			console.log(req.body.Website);
-			/* update website */
-			break;
-
-		case 'Description':
-			console.log(req.body.Description);
-			/* update description */
-			break;
-
-		case 'Hours':
-			console.log(req.body.Hours);
-			/* update hours */
-			break;
-
-		case 'Phone':
-			console.log(req.body.Phone);
-			/* update phone */
-			break;
-
-		case 'Photos':
-			console.log(req.body.Photos);
-			/* update photos */
-			break;
-
-		case 'Cater':
-			console.log(req.body.Cater);
-			/* update cater */
-			break;
-
-		case 'Service':
-			console.log(req.body.Service);
-			/* update service */
-			break;
-
-		case 'Media':
-			console.log(req.body.Media);
-			/* update service */
-			break;
-
-	};
 
 	res.end('API under construction...')
 });

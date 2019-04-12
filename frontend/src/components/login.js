@@ -6,22 +6,9 @@ class Login extends React.Component {
         super();
         this.state = {
             login: "",
-            pass: ""
+            pass: "",
+            res: ""
         }
-    }
-
-    login_listen = (e) => {
-        this.setState({
-            login: e.target.value
-        });
-        console.log(this.state.login);
-    }
-
-    pass_listen = (e) => {
-        this.setState({
-            pass: e.target.value
-        });
-        console.log(this.state.pass);
     }
 
     store_field = (e, field) => {
@@ -33,18 +20,29 @@ class Login extends React.Component {
 
     update_field = (field) => {
 		let obj = {
-            "Login": this.state.login,
+            "Email": this.state.login,
             "Passwd": this.state.pass
 		}
-		let url = `http://localhost:8000/admin/update/${field}`
+		let url = `http://localhost:8000/api/login`
 		fetch(url, {
 		    method: 'POST',
 			headers: {
-   				 'Accept': 'application/json',
+   				'Accept': 'application/json',
     			'Content-Type': 'application/json'
   			},
     		body: JSON.stringify(obj)
-		});
+        })
+        .then(res => res.json())
+        .then(data => {
+            this.setState({
+                res: data.response
+            });
+            if (this.state.res === "true")
+                window.location = "./admin";
+            else
+                window.location = "./login";
+        });
+        console.log(JSON.stringify(obj));
 	}
 
     render() {
@@ -65,11 +63,11 @@ class Login extends React.Component {
             <div className="main">
                 <div className="col-md-6 col-sm-12">
                     <div className="login-form">
-                                <p id="ULog">User Login</p>
+                                <p id="ULog">User Sign in</p>
                         <form>
                         <div className="login-conten">
                             <div className="form-title">
-                                <p className="txt">Username</p>
+                                <p className="txt">Email</p>
                                 <p className="txt">Password</p>
                             </div>
                             <div className="form-group">
@@ -77,7 +75,7 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" onChange={(e) => this.store_field(e)} name="pass"/>
                             </div>
                         </div>
-                            <button type="submit" onClick={() => this.update_field()} className="btn btn-secondary">Login</button>
+                            <button type="submit" onClick={() => this.update_field()} className="btn btn-secondary">Sign in</button>
                         </form>
                     </div>
                 </div>

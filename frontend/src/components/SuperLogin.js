@@ -23,7 +23,6 @@ class Sulogin extends React.Component {
             "Login": this.state.login,
             "Passwd": this.state.pass
         }
-        console.log(this.state.login + " and " + this.state.pass)
 		let url = `http://localhost:8000/admin/login`
 		fetch(url, {
 		    method: 'POST',
