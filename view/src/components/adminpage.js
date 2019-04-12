@@ -28,7 +28,11 @@ class Adminpage extends React.Component {
 		let obj = {
 			[field]: this.state[field]
 		}
+<<<<<<< HEAD
 		let url = `localhost:8000/admin/update/${field}`
+=======
+		let url = `http://localhost:8000/admin/update/${field}`
+>>>>>>> a12067e13ac9451d6bdf05247db2ce3b54847e95
 		fetch(url, {
 		    method: 'POST',
 			headers: {
