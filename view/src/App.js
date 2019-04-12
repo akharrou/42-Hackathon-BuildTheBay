@@ -205,6 +205,15 @@ class App extends Component {
 	return (
 	<div className="App">
   <BrowserRouter>
+<<<<<<< HEAD
+		{this.state.restaurants.loaded && <Route path="/home" render={(props) => 
+			<LandingPage 
+				coords				={this.state.coords} 
+				user					={this.state.user} 
+				get_coords		={this.get_coords} 
+				set_category	={this.set_category} 
+				category			={this.state.category} 
+=======
 		{this.state.restaurants.loaded && <Route path="/home" render={(props) =>
 			<LandingPage
 				coords			={this.state.coords}
@@ -212,6 +221,7 @@ class App extends Component {
 				get_coords		={this.get_coords}
 				set_category	={this.set_category}
 				category		={this.state.category}
+>>>>>>> 708fddf34fca3900d69d70ebeb7528109a82c83d
 				restaurants		={this.state.restaurants}
 				handle_search	={this.handle_search}
 			/>}

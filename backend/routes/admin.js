@@ -62,48 +62,57 @@ router.post('/delete', (req, res) => {
 	res.end('API under construction...');
 });
 
-router.post('/update', (req, res) => {
+router.post('/update/:field', (req, res) => {
 
-	console.log(req.body.object);
+	console.log(req.params.field);
 
-	// switch (req.params.field) {
+	switch (req.params.field) {
 
-	// 	case 'name':
-	// 		/* update name */
-	// 		break;
+		case 'Name':
+			console.log(req.body.Name);
+			/* update name */
+			break;
 
-	// 	case 'address':
-	// 		/* update address */
-	// 		break;
+		case 'Address':
+			console.log(req.body.Address);
+			/* update address */
+			break;
 
-	// 	case 'website':
-	// 		/* update website */
-	// 		break;
+		case 'Website':
+			console.log(req.body.Website);
+			/* update website */
+			break;
 
-	// 	case 'description':
-	// 		/* update description */
-	// 		break;
+		case 'Description':
+			console.log(req.body.Description);
+			/* update description */
+			break;
 
-	// 	case 'hours':
-	// 		/* update hours */
-	// 		break;
+		case 'Hours':
+			console.log(req.body.Hours);
+			/* update hours */
+			break;
 
-	// 	case 'phone':
-	// 		/* update phone */
-	// 		break;
+		case 'Phone':
+			console.log(req.body.Phone);
+			/* update phone */
+			break;
 
-	// 	case 'photos':
-	// 		/* update photos */
-	// 		break;
+		case 'Photos':
+			console.log(req.body.Photos);
+			/* update photos */
+			break;
 
-	// 	case 'cater':
-	// 		/* update cater */
-	// 		break;
+		case 'Cater':
+			console.log(req.body.Cater);
+			/* update cater */
+			break;
 
-	// 	case 'service':
-	// 		/* update service */
-	// 		break;
-	// }
+		case 'Service':
+			console.log(req.body.Service);
+			/* update service */
+			break;
+	}
 
 	res.end('API under construction...')
 });
