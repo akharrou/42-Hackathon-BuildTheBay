@@ -39,8 +39,8 @@ class Login extends React.Component {
             });
             if (this.state.res === "true")
                 window.location = "./admin";
-            else
-                window.location = "./login";
+            // else
+            //     window.location = "./login";
         });
         console.log(JSON.stringify(obj));
 	}
@@ -75,8 +75,8 @@ class Login extends React.Component {
                                 <input type="password" className="form-control" onChange={(e) => this.store_field(e)} name="pass"/>
                             </div>
                         </div>
-                            <button type="submit" onClick={() => this.update_field()} className="btn btn-secondary">Sign in</button>
                         </form>
+                        <button type="submit" onClick={() => this.update_field()} className="btn btn-secondary">Sign in</button>
                     </div>
                 </div>
             </div>

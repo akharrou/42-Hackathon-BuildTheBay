@@ -93,20 +93,15 @@ router.get('/categories', (req, res) => {
 
 router.post('/login', (req, res) => {
 
-	console.log(`Email : ${req.body.Email}`);
-	console.log(`Passwd : ${req.body.Passwd}`);
-
 	Restaurant.getRestaurantByEmail(req.body.Email, (err, result) => {
 
 		/* Case: Error (1) */
 		if (err) {
-			console.log('error')
 			res.json({ response: 'Error: Authentication Operation Failed (1)' });
 		}
 
 		/* Case: User Doesn't Exist */
 		else if (result == undefined) {
-			console.log('doesnt exist')
 			res.json({ response: 'false' });
 		}
 
@@ -116,13 +111,11 @@ router.post('/login', (req, res) => {
 			if (req.body.Email == result.Email && sha256(req.body.Passwd) == result.Passwd) {
 
 				/* Case: Authentic User */
-				console.log('true')
-				res.json({ response : result })
+				res.json({ response : 'true' })
 
 			} else {
 
 				/* Case: Not Authentic User */
-				console.log('false')
 				res.json({ response : 'false' })
 			}
 		}
