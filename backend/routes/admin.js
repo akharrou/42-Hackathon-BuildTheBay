@@ -28,21 +28,7 @@ router.post('/login', (req, res) => {
 	}
 });
 
-router.post('/add', (req, res) => {
-
-	// Name
-	// Address
-	// Phone
-	// Description
-	// Website
-	// Cater
-	// Ratings
-	// Hours
-	// Category
-	// Service
-	// Distance
-	// Lat
-	// Lng
+router.post('/create', (req, res) => {
 
 	var login   = req.body.login;
 	var passwd  = req.body.passwd;
@@ -55,9 +41,7 @@ router.post('/add', (req, res) => {
 
 router.post('/delete', (req, res) => {
 
-/* Delete Restaurant Entry */
-
-	console.log(req.params.id);
+	console.log(req.body.Name);
 
 	res.end('API under construction...');
 });

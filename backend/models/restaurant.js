@@ -8,12 +8,13 @@ const mongoose = require('mongoose');
 const restaurantSchema = mongoose.Schema({
 
          Name:  {   type: String,    required: true,    default: null   },
+        Email:  {   type: String,    required: true,    default: null   },
       Address:  {   type: String,    required: true,    default: null   },
         Phone:  {   type: String,    required: true,    default: null   },
   Description:  {   type: String,    required: true,    default: null   },
       Website:  {   type: String,    required: true,    default: null   },
         Cater:  {   type: String,    required: true,    default: null   },
-      Ratings:  {   type: String,    required: true,    default: null   },
+      Ratings:  {   type: Number,    required: true,    default: null   },
         Hours:  {   type: String,    required: true,    default: null   },
      Category:  {   type: String,    required: true,    default: null   },
       Service:  {   type: String,    required: true,    default: null   },
@@ -52,22 +53,42 @@ module.exports.getCategories = (callback, limit) => {
 	Restaurant.find({}, { Category: 1, _id: 0 }, callback).limit(limit);
 };
 
+
+
+// =============================================================================
+// ~ CRUD Functions ~
+
 // Add Restaurant
 module.exports.addRestaurant = (restaurant, callback) => {
 	Restaurant.create(restaurant, callback);
 }
 
-// // Update Restaurant
-// module.exports.updateRestaurant = (id, restaurant, options, callback) => {
+// Update Restaurant
+module.exports.updateRestaurant = (id, restaurant, options, callback) => {
 
-// 	var query = {_id: id};
-// 	var update = {
-// 		name: restaurant.name
-// 	}
-// 	Restaurant.findOneAndUpdate(query, update, options, callback);
-// }
+	var query = {_id: id};
+	var update = {
+		name: restaurant.name
+	}
+	Restaurant.findOneAndUpdate(query, update, options, callback);
+}
 
 // Delete Restaurant
 module.exports.removeRestaurant = (id, callback) => {
 	Restaurant.remove({_id: id}, callback);
 }
+
+
+
+// =============================================================================
+// ~ Mongo Commands ~
+
+// /* DELETE A FIELD FOR ALL DOCUMENTS OF A COLLECTION */
+// db.restaurants.update({}, {$unset: { "FIELD": 1 }} , {multi: true})
+
+// /* RENAME A FIELD FOR ALL DOCUMENTS OF A COLLECTION */
+// db.restaurants.updateMany({}, { $rename: { "FIELD": "NEW_FIELD" }})
+
+// /* SETS A FIELD FOR ALL DOCUMENTS OF A COLLECTION; IF NOT EXISTANT THAN CREATES FIELD (can specify a default)*/
+// db.restaurants.updateMany({}, { $set: { "FIELD": "" }})
+// db.restaurants.update({}, {$set : { "FIELD": null }}, {upsert:false, multi:true})

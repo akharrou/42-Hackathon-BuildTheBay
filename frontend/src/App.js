@@ -76,7 +76,7 @@ class App extends Component {
 		const restaurants = this.state.restaurants.filtered;
 		for(let i = 0; i < restaurants.length; i++)
 		{
-			Geocode.fromAddress(restaurants[i].Address_complete).then(
+			Geocode.fromAddress(restaurants[i].Address).then(
 				response => {
 					const current_lat = this.state.coords.lat;
 					const current_lng = this.state.coords.lng;

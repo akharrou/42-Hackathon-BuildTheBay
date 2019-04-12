@@ -98,8 +98,6 @@ router.post('/authenticate', (req, res) => {
 	console.log(login);
 	console.log(passwd);
 
-
-
 	// if (auth(login, passwd) == true) {
 	// 	res.end(true);
 	// } else {
@@ -115,39 +113,48 @@ router.post('/update/:field', (req, res) => {
 
 	switch (req.params.field) {
 
-		case 'name':
+		case 'Name':
+			console.log(req.body.Name);
 			/* update name */
 			break;
 
-		case 'address':
+		case 'Address':
+			console.log(req.body.Address);
 			/* update address */
 			break;
 
-		case 'website':
+		case 'Website':
+			console.log(req.body.Website);
 			/* update website */
 			break;
 
-		case 'description':
+		case 'Description':
+			console.log(req.body.Description);
 			/* update description */
 			break;
 
-		case 'hours':
+		case 'Hours':
+			console.log(req.body.Hours);
 			/* update hours */
 			break;
 
-		case 'phone':
+		case 'Phone':
+			console.log(req.body.Phone);
 			/* update phone */
 			break;
 
-		case 'photos':
+		case 'Photos':
+			console.log(req.body.Photos);
 			/* update photos */
 			break;
 
-		case 'cater':
+		case 'Cater':
+			console.log(req.body.Cater);
 			/* update cater */
 			break;
 
-		case 'service':
+		case 'Service':
+			console.log(req.body.Service);
 			/* update service */
 			break;
 	}
