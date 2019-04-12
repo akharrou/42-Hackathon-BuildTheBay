@@ -64,7 +64,7 @@ router.post('/delete', (req, res) => {
 
 router.post('/update/:field', (req, res) => {
 
-	console.log(req.body.object);
+	console.log(req.params.field);
 
 	// switch (req.params.field) {
 
