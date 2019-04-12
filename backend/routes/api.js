@@ -92,19 +92,17 @@ router.get('/categories', (req, res) => {
 
 router.post('/login', (req, res) => {
 
-	var login   = req.body.login;
-	var passwd  = req.body.passwd;
+	console.log(req.body.Email);
+	console.log(req.body.Passwd);
 
-	console.log(login);
-	console.log(passwd);
+	res.json({ response : 'true' });
+	// res.json({ response : 'false' });
 
-	if (auth(login, passwd) == true) {
-		res.end(true);
-	} else {
-		res.end(false);
-	}
-
-	res.end('API under construction...')
+	// if (Restaurant.auth(req.body.Email, req.body.Passwd) == true) {
+	// 	res.json({ response : 'true'});
+	// } else {
+	// 	res.json({ response : 'false'});
+	// }
 });
 
 router.post('/update/:field', (req, res) => {

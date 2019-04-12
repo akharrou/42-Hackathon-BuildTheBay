@@ -21,8 +21,13 @@ router.post('/login', (req, res) => {
 	if ( req.body.Login   ==  process.env.ADMIN_LOGIN  &&
 		 req.body.Passwd  ==  process.env.ADMIN_PWD     )
 	{
+
+		/* Case: User Authentic */
 		res.json({ response: 'true' });
+
 	} else {
+
+		/* Case: User Not Authentic */
 		res.json({ response: 'false' });
 	}
 });
@@ -33,7 +38,7 @@ router.post('/add', (req, res) => {
 
 	Restaurant.getRestaurantByEmail(restaurantEmail, (err, result) => {
 
-		/* Case: Error */
+		/* Case: Error (1) */
 		if (err) {
 			res.json({ response: 'Error: Add Operation Failed (1)' });
 		}
@@ -57,24 +62,36 @@ router.post('/add', (req, res) => {
 				.then(result => {
 					console.log(result);
 				});
-			} catch (err) {
+			}
+
+			/* Case: Error (2) : Adding User */
+			catch (err) {
 				res.json({ response: 'Error: Add Operation Failed (2)' });
 			}
+
+			/* Case: Successful Add Opteration */
+			res.json({ response : 'Add Succesful' })
 		}
 	});
 });
 
 router.post('/delete', (req, res) => {
 
-	console.log(req.body.Name);
+	Restaurant.removeRestaurant(req.body.Name, (err, result) => {
 
-	Restaurant.removeRestaurant(req.body.Name, (err) => {
-
+		/* Case: Error */
 		if (err) {
-			console.log('Error: Delete Operation Failed (1)');
-			res.end('Deletion Operation Failed');
-		} else {
-			console.log('Delete Operation Successful');
+			res.json({ response: 'Error: Delete Operation Failed (1)' });
+		}
+
+		/* Case: User Doesn't Exist */
+		else if (result.deletedCount == 0) {
+			res.json({ response: 'User does not exist' });
+		}
+
+		/* Case: Successful Delete Opteration */
+		else {
+			res.json({ response: 'Delete Successful' });
 		}
 	});
 });

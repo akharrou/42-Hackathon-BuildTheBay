@@ -22,6 +22,29 @@ class Login extends React.Component {
             pass: e.target.value
         });
         console.log(this.state.pass);
+    }
+
+    store_field = (e, field) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+		console.log(this.state);
+	}
+
+    update_field = (field) => {
+		let obj = {
+            "Login": this.state.login,
+            "Passwd": this.state.pass
+		}
+		let url = `http://localhost:8000/admin/update/${field}`
+		fetch(url, {
+		    method: 'POST',
+			headers: {
+   				 'Accept': 'application/json',
+    			'Content-Type': 'application/json'
+  			},
+    		body: JSON.stringify(obj)
+		});
 	}
 
     render() {
@@ -50,11 +73,11 @@ class Login extends React.Component {
                                 <p className="txt">Password</p>
                             </div>
                             <div className="form-group">
-                                <input type="text" className="form-control" onChange={this.login_listen} /><br></br>
-                                <input type="password" className="form-control" onChange={this.pass_listen}/>
+                                <input type="text" className="form-control" onChange={(e) => this.store_field(e)} name="login"/><br></br>
+                                <input type="password" className="form-control" onChange={(e) => this.store_field(e)} name="pass"/>
                             </div>
                         </div>
-                            <button type="submit" className="btn btn-secondary">Login</button>
+                            <button type="submit" onClick={() => this.update_field()} className="btn btn-secondary">Login</button>
                         </form>
                     </div>
                 </div>

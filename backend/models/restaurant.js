@@ -66,7 +66,6 @@ module.exports.getCategories = (callback, limit) => {
 
 // Add Restaurant
 module.exports.addRestaurant = (newRestaurant, callback) => {
-  console.log(newRestaurant);
   Restaurant.create(newRestaurant, callback);
 };
 
@@ -82,8 +81,18 @@ module.exports.updateRestaurant = (restaurantName, field, value, options, callba
 
 // Delete Restaurant
 module.exports.removeRestaurant = (name, callback) => {
-	Restaurant.remove({ Name: name }, callback);
+	Restaurant.deleteOne({ Name: name }, callback);
 }
+
+
+// =============================================================================
+// ~ AUTH Function ~
+
+// Authenticate Restaurant User
+module.exports.auth = (restaurantName, callback) => {
+
+  Restaurant.create(newRestaurant, callback);
+};
 
 
 

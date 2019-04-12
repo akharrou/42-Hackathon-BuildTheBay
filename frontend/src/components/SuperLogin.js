@@ -40,7 +40,7 @@ class Sulogin extends React.Component {
                 res: data.response
             });
             if (this.state.res === "true")
-                window.location = "http://localhost:8080/suadmin";
+                window.location = "./suadmin";
             else
                 alert("Incorrect Username and Password");
         });
