@@ -23,8 +23,8 @@ router.get('/all', (req, res) => {
 			res.end('Error None Found');
 			return ;
 		}
-		// console.log(restaurants);
-		res.json(new Object(results));
+		console.log(new Object(results));
+		res.json({ restaurants: results });
 	});
 });
 
@@ -40,7 +40,7 @@ router.get('/restaurant/_id=:_id', (req, res) => {
 			return ;
 		}
 		// console.log(result);
-		res.json(new Object(result));
+		res.json({ restaurant: result });
 	});
 });
 
@@ -56,7 +56,7 @@ router.get('/restaurant/name=:name', (req, res) => {
 			return ;
 		}
 		// console.log(result);
-		res.json(new Object(result));
+		res.json({ restaurant: result });
 	});
 });
 
@@ -87,7 +87,7 @@ router.get('/categories', (req, res) => {
 				categories.push(results[i]['Category']);
 		}
 		// console.log(categories);
-		res.json(new Object(categories));
+		res.json({ categories: categories });
 	});
 });
 
