@@ -2,10 +2,14 @@
 /* ADMIN ROUTER */
 // =============================================================================
 
+/* Private Constants */
+const admin_login   = process.env.ADMIN_LOGIN;
+const admin_passwd  = process.env.ADMIN_PWD;
+
 /* Dependencies */
-const express      = require('express');
-const mongoose     = require('mongoose');
-const sha256       = require('sha256');
+const express       = require('express');
+const mongoose      = require('mongoose');
+const sha256        = require('sha256');
 
 /* Creating ADMIN Router */
 const router       = express.Router();
@@ -18,8 +22,8 @@ const Restaurant   = require('../models/restaurant')
 
 router.post('/login', (req, res) => {
 
-	if ( req.body.Login   ==  process.env.ADMIN_LOGIN  &&
-		 req.body.Passwd  ==  process.env.ADMIN_PWD     )
+	if ( req.body.Login   ==  admin_login   &&
+	     req.body.Passwd  ==  admin_passwd   )
 	{
 
 		/* Case: User Authentic */
