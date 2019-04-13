@@ -3,7 +3,7 @@
 // ===============================================================================
 
 /* Private Constants */
-const PORT         = process.env.PORT     || 8000;
+const PORT         = process.env.PORT     || 8080;
 const LOCALHOST    = process.env.LOCALIP  || 'localhost';
 const DB_URI       = process.env.DB_URI;
 
