@@ -5,10 +5,7 @@
 /* Private Constants */
 const PORT         = process.env.PORT     || 8000;
 const LOCALHOST    = process.env.LOCALIP  || 'localhost';
-
-const DB_USER      = process.env.DB_USER  || '42';
-const DB_PWD       = process.env.DB_PWD   || '42';
-const DB_URI       = `mongodb+srv://${DB_USER}:${DB_PWD}@42-buildthebay-project-7nufr.mongodb.net/btb`;
+const DB_URI       = process.env.DB_URI;
 
 /* Dependencies */
 const express      = require('express');
