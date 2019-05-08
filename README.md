@@ -6,4 +6,4 @@ I was part of a 5 man team 'October's Very Own', composed of [Kai Chen](https://
 
 We built a Restaurant E-Guide that focuses on the needs of local restaurants. Specifically, they want to emphasize the positive experiences that people have had at restaurants in the Newark area.
 
-The website was built in the *M.E.R.N* stack.
+The website was built in the **M.E.R.N** stack.
